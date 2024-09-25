@@ -1,6 +1,8 @@
 .Button {
-    width: 18.75rem;
-    height: 2.5rem;
+    /* width: 18.75rem;
+    height: 2.5rem; */
+    width: 200px;
+    height: 40px;
     display: block;
     border-radius: 0.375rem;
     border: 1px solid #545F71;

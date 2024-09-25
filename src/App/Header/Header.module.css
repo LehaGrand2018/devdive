@@ -1,9 +1,14 @@
 .Header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height: 50px;
+    z-index: 2;
     background-color: #E3E3E3;
     box-shadow: 3px 4px 10px 0 rgba(0, 0, 0, 0.25);
 }   
@@ -13,12 +18,11 @@
 }
 
 .QuestionButton{
-    width: 200px;
-    height: 40px;
+    margin-left: 525px;
 }
 .Username{
     display: block;
-    /* height: 30px; */
+
     
     font-size: 24px;
     

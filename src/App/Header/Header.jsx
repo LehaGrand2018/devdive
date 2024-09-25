@@ -12,8 +12,8 @@ const Header = (props) => {
         <header className={`${styles.Header} ${props.className}`}>
             <Logo className={styles.Logo}></Logo>
             <Button className={styles.QuestionButton}value = "Задать вопрос" onClick={click} ></Button>
-            <p className={styles.Username}>username</p>
-            <div className={styles.ProfilePhoto} style={{'background-color': ''}}></div>
+            <span className={styles.Username}>username</span>
+            <div className={styles.ProfilePhoto} style={{backgroundColor: ''}}></div>
         </header>
     );
 };

@@ -1,0 +1,35 @@
+ul, ul li, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+  }
+  
+  .Tags{
+    display: block;
+    margin: 0 auto;
+    justify-content: space-between;
+    width: 185px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 65px;
+    margin-left: 25px;
+    /* margin-right: 21px; */
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.38rem;
+    letter-spacing: -0.02em;
+    color: #545f71;
+
+  }
+
+  /* .Tag:first-child{
+    margin-right: 25px;
+  }
+  .Tag:last-child{
+    margin-left: 25px;
+  }
+  .Tag{
+    margin: 25px;
+  } */
