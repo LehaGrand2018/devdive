@@ -5,15 +5,13 @@ import styles from './Post.module.scss'
 
 const Post = (props) => {
     //props: postTitle username userPhoto date answerCount votesCount 
-
     const tags = props.tags.map((tag, index) => {
         return <p key={index} className = {styles.Tag}> {`#${tag}`}</p>
     })
 
     return (
         <div className={`${styles.Post} ${props.className}`}>
-            <PostInfo
-             className={styles.PostInfo}
+            <PostInfo className={styles.PostInfo}
              username={props.username}
              date = {props.date}
              answersCount={props.answersCount}

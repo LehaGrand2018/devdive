@@ -4,8 +4,8 @@ import Input from '../../Input/Input.jsx';
 import PasswordInput from '../PasswordInput/PasswordInput.jsx';
 
 import Button from '../../Button/Button.jsx';
-import styles from './LoginForm.module.css';
-import buttonStyles from '../../Button/Button.module.css';
+import styles from './LoginForm.module.scss';
+import buttonStyles from '../../Button/Button.module.scss';
 
 
 const LoginForm = (props) => {

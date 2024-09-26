@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from '../../Button/Button.jsx';
 import Input from '../../Input/Input.jsx';
-import styles from './RegisterForm.module.css'
-import buttonStyles from '../../Button/Button.module.css';
+import styles from './RegisterForm.module.scss'
+import buttonStyles from '../../Button/Button.module.scss';
 import PasswordInput from '../../PasswordInput/PasswordInput.jsx';
 
 

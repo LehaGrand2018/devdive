@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Tags.module.css";
+import styles from "./Tags.module.scss";
 import axios from "axios";
 
 const Tags = (props) => {

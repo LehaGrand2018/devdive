@@ -29,7 +29,7 @@ const PostInfo = (props) => {
                 {`${props.answersCount} ${addEnding('ответ', props.answersCount)}`}
             </p>
             <p className={styles.PostVotes}>
-                {`${props.votesCount} ${addEnding('голосов', props.votesCount)}`}
+                {`${props.votesCount} ${addEnding('голос', props.votesCount)}`}
             </p>
         </div>
     );

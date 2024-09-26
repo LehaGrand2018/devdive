@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import eye from './eye.svg';
 import eyeClosed from './eye-closed.svg';
 
-import styles from './PasswordInput.module.css';
+import styles from './PasswordInput.module.scss';
 
 
 const PasswordInput = (props) => {

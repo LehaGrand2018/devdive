@@ -1,7 +1,7 @@
-import styles from './App.module.css'
 import Header from './Header/Header';
 import NavigationPanel from './NavigationPanel/NavigationPanel';
 import PostsList from './Components/PostsList/PostsList';
+import styles from './App.module.scss'
 
 const App = () => {
   return (

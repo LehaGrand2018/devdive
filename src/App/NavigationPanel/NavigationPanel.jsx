@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../Components/Button/Button";
 import Tag from "./Tags/Tags";
-import styles from './NavigationPanel.module.css'
+import styles from './NavigationPanel.module.scss'
 
 
 const NavigationPanel = (props) => {
