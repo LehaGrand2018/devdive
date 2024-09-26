@@ -4,6 +4,8 @@ import {
 } from "react-router-dom";
 
 import App from "../App/App";
+import Tags from "../App/Tags";
+
 
 const router = createBrowserRouter([
   {
@@ -12,7 +14,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/tags",
-    element: <div>Tags</div>,
+    element: <Tags/>,
   },
 ]);
 

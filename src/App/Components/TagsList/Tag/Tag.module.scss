@@ -1,0 +1,24 @@
+.tag {
+    width: 100%; /* Фиксированная ширина для прямоугольника */
+    height: 100%; /* Фиксированная высота для прямоугольника */
+    padding: 20px;
+    border: 1px solid #545F71;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #e3e3e3; /* Легкий фон */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень для объема */
+  }
+  
+  .tag h2 {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+  }
+  
+  .tag p {
+    font-size: 14px;
+    color: #666;
+  }
+  
