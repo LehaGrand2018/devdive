@@ -1,13 +1,14 @@
 .NavigationPanel{
     height: 100%;
-    width: 230px; 
-    position: fixed;
+    width: 230px;
+    /* position: fixed;
     z-index: 1;
     top: 0;
-    left: 0;
+    left: 0; */
     background-color: #E3E3E3;
     box-shadow: 3px 4px 10px 0 rgba(0, 0, 0, 0.25);
-    overflow-x: hidden; 
+    overflow: hidden; 
+    
 }
 
 .PanelButton:first-child{
@@ -19,5 +20,7 @@
 }
 
 .PanelButton:last-child{
-    margin-top: 260px;
+    /* margin-top: 260px; */
+    margin-top: 20vh;
+    /* position: absolute; */
 }

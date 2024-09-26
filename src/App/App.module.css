@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: red;
+  /* background-color: red; */
 }
 
 *{
@@ -8,7 +8,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
-  font-weight: 700;
+  /* font-weight: 700; */
   /* font-size: 24px; */
   line-height: 125%;
   letter-spacing: -0.02em;
@@ -20,4 +20,11 @@ body{
   line-height: 125%;
   letter-spacing: -0.02em;
   color: #545f71;
+  background: #E3E3E3;
+}
+.Content{
+  margin-top: 50px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
 }

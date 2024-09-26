@@ -1,0 +1,28 @@
+.Post {
+    width: 60.94rem;
+    height: 13.88rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5px;
+    border-bottom: 1px solid #545F71;
+
+    .PostTitle {
+        margin-top: 15px;
+        max-width: 790px;
+    }
+
+    .Tags {
+        display: inline-block;
+        font-weight: 600;
+        font-size: 1rem;
+        // line-height: 137%;
+        letter-spacing: -0.02em;
+        color: #545f71;
+    }
+
+    .Tag {
+        display: inline-block;
+        margin-right: 10px;
+    }
+}
