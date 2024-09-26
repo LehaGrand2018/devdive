@@ -6,7 +6,7 @@ import styles from './App.module.scss'
 const App = () => {
   return (
     <div className={styles.App}>
-      <Header className=''></Header>
+      <Header className={styles.Header}></Header>
       <div className={styles.Content}>
         <NavigationPanel></NavigationPanel>
         <PostsList></PostsList>

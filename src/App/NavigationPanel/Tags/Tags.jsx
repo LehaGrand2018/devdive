@@ -15,23 +15,20 @@ const Tags = (props) => {
                 console.error(error);
             }
         };
-        getPopularTags();
+        getPopularTags();   
     }, []);
+    
     let elements;
     if(users !== undefined) {
-        
-        console.log("users");
-        console.dir(users);
         elements = users.map((user) => {
             return <li className={styles.Tag} key={user.id}>#{user.username}</li>
         })
-        console.log(elements)
     }
 
     return (
-        <div className={`${styles.Tags} ${props.className}`}>
+        <ul className={`${styles.Tags} ${props.className}`}>
             {elements}
-        </div>
+        </ul>
     );
 };
 export default Tags;

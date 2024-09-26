@@ -11,31 +11,35 @@
     z-index: 2;
     background-color: #E3E3E3;
     box-shadow: 3px 4px 10px 0 rgba(0, 0, 0, 0.25);
+    .Logo{
+        margin-left: 12px;
+    }
+    
+    .QuestionButton{
+        margin-left: 525px;
+    }
+    .SignInButton{
+        width: 80px;
+        margin-right: 25px;
+    }
+    .Username{
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    
+    .ProfilePhoto{
+        width: 40px;
+        height: 40px;
+        /* border-radius: 50%; */
+        margin-left: 25px;
+        margin-right: 5px;
+        border-radius: 100%;
+        background-color: #935D5D;
+        box-shadow: 1px 0 8px 0 rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+    }
 }   
 
-.Logo{
-    margin-left: 12px;
-}
 
-.QuestionButton{
-    margin-left: 525px;
-}
-.Username{
-    display: block;
-
-    
-    font-size: 24px;
-    
-}
-
-.ProfilePhoto{
-    width: 40px;
-    height: 40px;
-    /* border-radius: 50%; */
-    margin-left: 25px;
-    margin-right: 5px;
-    border-radius: 100%;
-    background-color: #935D5D;
-    box-shadow: 1px 0 8px 0 rgba(0, 0, 0, 0.25);
-}
 

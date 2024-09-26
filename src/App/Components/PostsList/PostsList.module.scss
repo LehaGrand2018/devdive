@@ -1,12 +1,12 @@
-.PostsList{
-    margin-top: 15px;
-    margin-right: 45px;
+.PostsList {
+    padding-top: 15px;
+    padding-right: 45px;
     text-align: left;
+    height: calc(100vh - 50px);
 
-    .Header{
+    .Header {
         height: 50px;
         font-size: 32px;
-        border-bottom: 1px solid #545F71;
+        border-bottom: 1px solid #545f71;
     }
 }
-
