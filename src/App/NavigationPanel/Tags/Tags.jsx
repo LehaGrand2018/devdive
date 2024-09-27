@@ -26,7 +26,7 @@ const Tags = (props) => {
     }
 
     return (
-        <ul className={`${styles.Tags} ${props.className}`}>
+        <ul className={`${styles.tags} ${props.className}`}>
             {elements}
         </ul>
     );

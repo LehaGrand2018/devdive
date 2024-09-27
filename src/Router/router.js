@@ -3,18 +3,17 @@ import {
 
 } from "react-router-dom";
 
-import App from "../App/App";
-import Tags from "../App/Tags";
-
+import PostsList from '../App/Components/PostsList/PostsList';
+import TagsList from '../App/Components/TagsList/TagsList'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <PostsList/>,
   },
   {
     path: "/tags",
-    element: <Tags/>,
+    element: <TagsList/>,
   },
 ]);
 

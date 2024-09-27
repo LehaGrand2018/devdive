@@ -1,4 +1,4 @@
-.Header{
+.header{
     position: absolute;
     top: 0;
     left: 0;
@@ -11,24 +11,25 @@
     z-index: 2;
     background-color: #E3E3E3;
     box-shadow: 3px 4px 10px 0 rgba(0, 0, 0, 0.25);
-    .Logo{
+    
+    .logo{
         margin-left: 12px;
     }
     
-    .QuestionButton{
+    .questionButton{
         margin-left: 525px;
     }
-    .SignInButton{
+    .signInButton{
         width: 80px;
         margin-right: 25px;
     }
-    .Username{
+    .username{
         display: block;
         font-size: 24px;
         cursor: pointer;
     }
     
-    .ProfilePhoto{
+    .profilePhoto{
         width: 40px;
         height: 40px;
         /* border-radius: 50%; */

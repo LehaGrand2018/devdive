@@ -26,16 +26,16 @@ const Header = (props) => {
             elements.push(
                 <Button
                     key="questionButton"
-                    className={styles.QuestionButton}
+                    className={styles.questionButton}
                     value="Задать вопрос"
                     onClick={out}
                 ></Button>,
-                <p key="username" className={styles.Username}>
+                <p key="username" className={styles.username}>
                     {username}
                 </p>,
                 <div
                     key="profilePhoto"
-                    className={styles.ProfilePhoto}
+                    className={styles.profilePhoto}
                     style={{ backgroundImage: "" }}
                 ></div>
             );
@@ -43,7 +43,7 @@ const Header = (props) => {
             elements.push(
                 <Button
                     key="signInButton"
-                    className={styles.SignInButton}
+                    className={styles.signInButton}
                     value="Вход"
                     onClick={login}
                 ></Button>
@@ -54,8 +54,8 @@ const Header = (props) => {
    
 
     return (
-        <header className={`${styles.Header} ${props.className}`}>
-            <Logo className={styles.Logo}></Logo>
+        <header className={`${styles.header} ${props.className}`}>
+            <Logo className={styles.logo}></Logo>
             {elements}
         </header>
     );
