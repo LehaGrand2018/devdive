@@ -21,7 +21,7 @@ const Tags = (props) => {
     let elements;
     if(users !== undefined) {
         elements = users.map((user) => {
-            return <li className={styles.Tag} key={user.id}>#{user.username}</li>
+            return <li className={styles.tag} key={user.id}>#{user.username}</li>
         })
     }
 

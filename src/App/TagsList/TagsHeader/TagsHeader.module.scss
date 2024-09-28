@@ -1,0 +1,24 @@
+.tagsHeader{
+    margin: 0 auto;
+    width: 975px;
+    display: flex;
+    justify-content: space-between;
+    // width: 1280px;
+    height: 50px;
+    font-size: 32px;
+    border-bottom: 1px solid #545f71;
+    .title{
+        font-size: 32px;
+        display: inline-block;
+    }
+    .search{
+        font-weight: 700;
+        font-size: 24px;
+        width: 650px;
+        height: 40px;
+        // display: inline-block;
+    }
+    input{
+        border: none;
+    }
+}

@@ -8,7 +8,7 @@ const Input = (props) => {
 
     return (
         <div className={`${styles.Input} ${props.className}`}>
-            <input className={styles.Field} placeholder={props.value} type={props.type} name={props.name} id={props.id} />
+            <input className={styles.Field} placeholder={props.placeholder} type={props.type} name={props.name} id={props.id} onChange={props.onChange}/>
         </div>
     );
 };

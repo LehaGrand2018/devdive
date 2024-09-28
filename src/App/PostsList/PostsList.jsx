@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Post from '../Post/Post';
+import Post from '../Components/Post/Post';
 
 import styles from './PostsList.module.scss'
 import axios from 'axios';
@@ -34,7 +34,6 @@ const PostsList = (props) => {
         
             try {
                 let posts = await axios.get('https://jsonplaceholder.typicode.com/posts');
-                console.log(posts.data)
                 setPosts(posts.data);
             } catch (error) {
                 console.error(error)
@@ -51,10 +50,11 @@ const PostsList = (props) => {
     
     if (posts != undefined) {
         postsList = posts.map((post /*{userId, id, title}*/) => {
-            console.log("map");
+            // console.log("map");
             return (
                 <Post
-                    className={styles.Post}
+                    key = {post.id}
+                    className={styles.post}
                     postTitle={post.title}
                     username={"user" + post.userId}
                     userPhoto={null}
@@ -69,8 +69,8 @@ const PostsList = (props) => {
 
     
     return (
-        <div className={`${styles.PostsList} ${props.className}`}>
-            <h2 className={styles.Header}>Вопросы</h2>
+        <div className={`${styles.postsList} ${props.className}`}>
+            <h2 className={styles.header}>Вопросы</h2>
             {/* <Post
              postTitle={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure maiores explicabo voluptas, neque deleniti perferendis.'} 
              username={'neurotrier'}

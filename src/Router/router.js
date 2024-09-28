@@ -3,8 +3,8 @@ import {
 
 } from "react-router-dom";
 
-import PostsList from '../App/Components/PostsList/PostsList';
-import TagsList from '../App/Components/TagsList/TagsList'
+import PostsList from '../App/PostsList/PostsList';
+import TagsList from '../App/TagsList/TagsList'
 
 const router = createBrowserRouter([
   {

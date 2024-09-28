@@ -1,0 +1,25 @@
+.tagsList {
+    // margin: 20px;
+    display: block;
+    padding-top: 15px;
+    padding-right: 30px;
+    padding-left: 30px;
+    .header{
+        // margin: 0 auto;
+        // margin-bottom: 30px;
+        width: 975px;
+    }
+
+    .tags{
+        justify-content: space-between;
+        display: flex;
+        flex-wrap: wrap;
+        width: 975px;
+        .tag{
+            margin-top: 30px;
+            margin-top: 30px;
+        }
+    }
+}
+
+
