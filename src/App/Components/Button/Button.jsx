@@ -1,9 +1,13 @@
-import React from 'react';
-import styles from './Button.module.scss'
+import React from "react";
+import styles from "./Button.module.scss";
 
-const Button = (props) => {
+const Button = ({ className, onClick, value, type }) => {
     return (
-        <button className={`${styles.Button} ${props.className}`} onClick={props.onClick}>{props.value}</button>
+        <button
+            className={`${styles.Button} ${className}`}
+            onClick={onClick}
+            type={type}
+        >{value}</button>
     );
 };
 

@@ -5,6 +5,15 @@ import styles from './PostInfo.module.scss'
 const PostInfo = (props) => {
     
     // const date = Date.parse(props.date);
+    const parseDate = (dateSource) => {
+        let result
+        const date = new Date(dateSource).toLocaleDateString('ru-RU').replace('', '');
+        const time = new Date(dateSource).toLocaleTimeString('ru-RU').slice(0, 5);
+        // console.log(dateSource)
+        console.log(time)
+        // console.log(date);
+        return time + ' ' + date;
+    }
 
     const addEnding = (word, count) => {
 
@@ -23,7 +32,7 @@ const PostInfo = (props) => {
             <div className={styles.UserPhoto} style={{backgroundImage: 'none' /*props.userPhoto*/ }}></div>
             <p className={styles.UserName}>{props.username}</p>
             <time className={styles.PostDate} dateTime={props.date}>
-                {props.date}
+                {parseDate(props.date)}
             </time>
             <p className={styles.PostAnswers}>
                 {`${props.answersCount} ${addEnding('ответ', props.answersCount)}`}
