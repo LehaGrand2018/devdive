@@ -13,8 +13,8 @@ const App = () => {
   // console.log('create')
   return (
     <div className={styles.app}>
-      <Header className={styles.header}></Header>
       <div className={styles.content}>
+        <Header className={styles.header}></Header>
         <NavigationPanel></NavigationPanel>
         <StrictMode>
           <RouterProvider router={router} />

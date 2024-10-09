@@ -5,16 +5,15 @@ import styles from "./PostsList.module.scss";
 import axios from "axios";
 
 const PostsList = (props) => {
-
-//   const getPosts = async () => {
-//     try {
-//       let posts = await axios.get("https://jsonplaceholder.typicode.com/posts");
-//       console.log(posts.data);
-//       setPosts(posts.data);
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
+  //   const getPosts = async () => {
+  //     try {
+  //       let posts = await axios.get("https://jsonplaceholder.typicode.com/posts");
+  //       console.log(posts.data);
+  //       setPosts(posts.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
   const tags = ["python", "javascript", "ruby", "golang"];
 

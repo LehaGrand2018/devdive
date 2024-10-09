@@ -9,6 +9,9 @@ import TopQuestions from "./TopQuestions/TopQuestions";
 import PropTypes from "prop-types";
 
 const Profile = ({ className }) => {
+
+
+
   let user = {
     username: "neurotrier",
     description: "Информация о пользователе",
@@ -17,7 +20,7 @@ const Profile = ({ className }) => {
     role: "admin",
     questionsCount: 35,
     answersCount: 89,
-    registrationDate: Date.now(),
+    createdAt: Date.now(),
     tags: [
       "python",
       "javascript",
@@ -49,16 +52,7 @@ const Profile = ({ className }) => {
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor justo est. Lorem ipsum dolor.",
         description: "",
       },
-      {
-        title:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor justo est. Lorem ipsum dolor.",
-        description: "",
-      },
-      {
-        title:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor justo est. Lorem ipsum dolor.",
-        description: "",
-      },
+
     ],
   };
 
@@ -78,7 +72,7 @@ const Profile = ({ className }) => {
           answers={user.answersCount}
         />
       </div>
-      <Since className={styles.since} date={user.registrationDate} />
+      <Since className={styles.since} date={user.createdAt} />
       <TopTags className={styles.topTags} tags={user.tags} />
       <TopQuestions
         className={styles.topQuestions}
@@ -87,6 +81,7 @@ const Profile = ({ className }) => {
     </div>
   );
 };
+
 
 Profile.propTypes = {
   className: PropTypes.string,

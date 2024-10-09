@@ -7,6 +7,7 @@ import PostsList from '../App/PostsList/PostsList';
 import TagsList from '../App/TagsList/TagsList'
 import PostCommentsList from '../App/PostCommentsList/PostCommentsList'
 import Profile from "../App/Profile/Profile";
+import AddPost from "../App/AddPost/AddPost";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <Profile/>
+  },
+  {
+    path: "/addPost",
+    element: <AddPost/>
   }
 ]);
 

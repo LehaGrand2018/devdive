@@ -1,12 +1,16 @@
 .postsList {
-    
-    padding-top: 15px;
-    padding-right: 45px;
-    text-align: left;
-    height: calc(100vh - 50px);
-    .header {
-        height: 50px;
-        font-size: 32px;
-        border-bottom: 1px solid #545f71;
-    }
+  padding-top: 15px;
+  padding-right: 45px;
+  text-align: left;
+  height: calc(100vh - 50px);
+
+  .header {
+    height: 50px;
+    font-size: 32px;
+    border-bottom: 1px solid #545f71;
+  }
+
+  .post {
+    width: 950px;
+  }
 }
