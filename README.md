@@ -1,3 +1,13 @@
+# dev_dive_frontend
+
+## Dev Dive
+
+**This is a Q&A platform with a built-in gpt-like bot, which provides all the means to search for interesting data and communicate with other people.**
+
+**The frontend is built with React for a dynamic user interface, and SASS is used for styling, allowing modular and maintainable CSS through a preprocessor.**
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
