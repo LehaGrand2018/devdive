@@ -3,25 +3,40 @@ import Button from "../Components/Button/Button";
 import Tag from "./Tags/Tags";
 import styles from "./NavigationPanel.module.scss";
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 
-const NavigationPanel = (props) => {
+
+
+const NavigationPanel = ({className}) => {
   return (
-    <div className={`${styles.NavigationPanel} ${props.className}`}>
-      <Button
-        className={styles.PanelButton}
-        value="Главная"
-        onClick={null}
-      ></Button>
-      <Button
-        className={styles.PanelButton}
-        value="Мои вопросы"
-        onClick={null}
-      ></Button>
-      <Button
-        className={styles.PanelButton}
-        value="Метки"
-        onClick={null}
-      ></Button>
+    <div className={`${styles.NavigationPanel} ${className}`}>
+
+      <NavLink
+        className={({ isActive }) =>
+          `${styles.PanelButton} ${isActive ? styles.active : ''}`
+        }
+        to="/"
+      >
+        Главная
+      </NavLink>
+
+      <NavLink
+        className={({ isActive }) =>
+          `${styles.PanelButton} ${isActive ? styles.active : ''}`
+        }
+        to="/posts/:id"
+      >
+        Мои вопросы
+      </NavLink>
+
+      <NavLink
+        className={({ isActive }) =>
+          `${styles.PanelButton} ${isActive ? styles.active : ''}`
+        }
+        to="/tags"
+      >
+        Метки
+      </NavLink>
 
       <Tag value="#tag"></Tag>
 
@@ -29,7 +44,7 @@ const NavigationPanel = (props) => {
         className={styles.PanelButton}
         value="Сбросить метки"
         onClick={null}
-      ></Button>
+      />
     </div>
   );
 };

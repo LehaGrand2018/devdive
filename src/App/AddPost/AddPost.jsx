@@ -3,12 +3,23 @@ import Input from "../Components/Input/Input";
 import styles from "./AddPost.module.scss";
 import { useState } from "react";
 import Button from "../Components/Button/Button";
+import { useEffect } from "react";
+import PropTypes from "prop-types";
 
-const AddPost = ({ className }) => {
+const AddPost = ({ className, setIsAddPost }) => {
   const [headerValue, setHeaderValue] = useState("Введите заголовок");
   const [textareaValue, setTextareaValue] = useState("Описание");
   const [tagsValue, setTagsValue] = useState("Введите теги");
 
+  useEffect(() => {
+    setIsAddPost("true")
+  
+    return () => {
+      setIsAddPost('false')
+    }
+  }, [])
+  
+  
   return (
     <div className={`${styles.AddPost} ${className}`}>
       <h1 className={styles.header}>Задать вопрос</h1>
@@ -40,4 +51,9 @@ const AddPost = ({ className }) => {
   );
 };
 
+
+AddPost.propTypes = {
+  className: PropTypes.string,
+  setIsAddPost: PropTypes.string,
+}
 export default AddPost;

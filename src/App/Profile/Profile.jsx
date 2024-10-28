@@ -1,6 +1,6 @@
 import React from "react";
 import User from "./User/User";
-
+import { useEffect } from "react";
 import styles from "./Profile.module.scss";
 import Status from "./Status/Status";
 import Since from "./Since/Since";
@@ -8,7 +8,7 @@ import TopTags from "./TopTags/TopTags";
 import TopQuestions from "./TopQuestions/TopQuestions";
 import PropTypes from "prop-types";
 
-const Profile = ({ className }) => {
+const Profile = ({ className, setIsProfile }) => {
 
 
 
@@ -55,6 +55,15 @@ const Profile = ({ className }) => {
 
     ],
   };
+useEffect(() => {
+  console.log("PROFILE")
+  setIsProfile("true");
+  
+  return () => {
+    setIsProfile("false")
+  }
+
+}, [])
 
   return (
     <div className={`${styles.profile} ${className}`}>
@@ -85,5 +94,6 @@ const Profile = ({ className }) => {
 
 Profile.propTypes = {
   className: PropTypes.string,
+  setIsProfile: PropTypes.func,
 };
 export default Profile;

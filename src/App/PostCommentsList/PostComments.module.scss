@@ -1,6 +1,8 @@
 .comments{
     padding-top: 20px;
     margin: 0 auto;
+    max-height: calc(100vh - 50px); 
+    overflow-y: auto;
 
     .commentsHeader{
         margin: 0 auto;
