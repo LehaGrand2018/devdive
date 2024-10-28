@@ -54,6 +54,6 @@ const AddPost = ({ className, setIsAddPost }) => {
 
 AddPost.propTypes = {
   className: PropTypes.string,
-  setIsAddPost: PropTypes.string,
+  setIsAddPost: PropTypes.func,
 }
 export default AddPost;
