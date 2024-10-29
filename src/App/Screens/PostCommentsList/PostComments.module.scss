@@ -1,0 +1,15 @@
+.comments{
+    padding-top: 20px;
+    margin: 0 auto;
+    max-height: calc(100vh - 50px); 
+    overflow-y: auto;
+
+    .commentsHeader{
+        margin: 0 auto;
+        width: 990px;
+        height: 110px;
+        // width: 61.88rem;
+        // height: 6.81rem;
+    }
+}
+

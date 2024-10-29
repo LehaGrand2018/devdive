@@ -1,0 +1,20 @@
+.status {
+  width: 18.75rem;
+  // height: 11.06rem;
+  // width: 300px;
+  // height: 180px;
+
+  text-align: center;
+
+  .elements {
+    width: 18.75rem;
+    height: 8.44rem;
+    margin-top: 10px;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    border: 1px solid #545f71;
+  }
+}

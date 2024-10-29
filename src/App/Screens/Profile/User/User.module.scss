@@ -1,0 +1,29 @@
+.user {
+  width: 600px;
+  height: 155px;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+
+  .photo {
+    width: 155px;
+    height: 155px;
+    border-radius: 50%;
+    background-color: #935d5d;
+  }
+
+  .info {
+    width: 395px;
+    font-size: 1rem;
+    font-weight: 400;
+
+    .username {
+      font-size: 2rem;
+    }
+
+    .description {
+      margin-top: 10px;
+    }
+  }
+
+}

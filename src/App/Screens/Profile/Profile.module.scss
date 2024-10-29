@@ -1,0 +1,26 @@
+.profile {
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 30px;
+  padding-bottom: 35px;
+
+  .userStatus {
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .status {
+    margin-top: 15px;
+    margin-right: 40px;
+  }
+
+  .since {
+    margin-top: -4px;
+  }
+
+  .topTags {
+    margin-top: 30px;
+  }
+}

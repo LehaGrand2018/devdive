@@ -1,0 +1,26 @@
+.top {
+  // width: 100%;
+  text-align: left;
+
+  .header {
+    margin-bottom: 10px;
+  }
+
+  .tags {
+    // width: 61.88rem;
+    // width: 100%;
+    height: 2.5rem;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid #545f71;
+
+    .tag {
+      display: inline-block;
+      margin-right: 20px;
+    }
+  }
+}
