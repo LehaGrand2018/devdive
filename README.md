@@ -7,6 +7,7 @@
 - ES6
 - React
 - React Router
+- MobX
 - Axios
 - SASS
 - Webpack
@@ -21,7 +22,10 @@
   `git clone https://github.com/LehaGrand2018/devdive.git
   `
   ### 3. In the project directory, run: 
-  `npm start`
+  `npm i`
 
-  ### 4. Open [http://localhost:3000](http://localhost:3000) to view app in your browser.
+  ### 4. In the project directory, run: 
+  `npm start`
+  
+  ### 5. Open [http://localhost:3030](http://localhost:3030) to view app in your browser.
 
