@@ -3,16 +3,16 @@ import React from "react";
 import styles from "./Input.module.scss";
 import PropTypes from "prop-types";
 
-const Input = (props) => {
+const Input = ({className, placeholder, type, name, id, onChange}) => {
   return (
-    <div className={`${styles.Input} ${props.className}`}>
+    <div className={`${styles.Input} ${className}`}>
       <input
         className={styles.Field}
-        placeholder={props.placeholder}
-        type={props.type}
-        name={props.name}
-        id={props.id}
-        onChange={props.onChange}
+        placeholder={placeholder}
+        type={type}
+        name={name}
+        id={id}
+        onChange={onChange}
       />
     </div>
   );

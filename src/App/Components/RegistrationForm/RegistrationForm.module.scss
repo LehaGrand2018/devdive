@@ -1,25 +1,27 @@
-.LoginForm {
+.RegistrationForm {
+  
   width: 18.75rem;
-  height: 15rem;
+  height: 17.62rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.625rem;
 
-  .Button {
-    width: 100%;
-  }
-
-  .LoginLable{
-    width: 100%;
+  .RegistrationLable {
     font-weight: 700;
     font-size: 40px;
     text-align: center;
   }
 
-  .RegistrationButton {
+  .Input {
+    width: 18.75rem;
+    // height: 40px;
+  }
+  .Button{
+    width: 100%;
+    // text-shadow: 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .LoginButton {
     height: 1.12rem;
     font-weight: 400;
     font-size: 1.12rem;
