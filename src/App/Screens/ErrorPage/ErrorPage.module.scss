@@ -1,0 +1,29 @@
+.ErrorPage {
+  padding-top: 15px;
+  padding-right: 45px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #545f71;
+
+  .header {
+    text-align: left;
+    width: 950px;
+    height: 50px;
+    font-size: 2rem;
+    border-bottom: 1px solid #545f71;
+  }
+
+  .errorCode {
+    font-size: 16rem;
+    margin-top: 85px;
+    line-height: 16rem;
+  }
+
+  .errorLable {
+    margin-top: 0px;
+    line-height: 8rem;
+    font-size: 8rem;
+  }
+}
