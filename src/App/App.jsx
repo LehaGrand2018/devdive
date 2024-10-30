@@ -1,6 +1,6 @@
 import styles from "./App.module.scss";
-import { Route,Routes, useNavigate } from "react-router-dom";
-import {useEffect, useState } from "react";
+import { Route,Routes } from "react-router-dom";
+import {useState } from "react";
 
 
 import Header from "./Components/Header/Header";
@@ -12,9 +12,10 @@ import TagsList from "./Screens/TagsList/TagsList"
 import PostCommentsList from "./Screens/PostCommentsList/PostCommentsList";
 import AutorizationPage from "./Screens/AutorizationPage/AutorizationPage";
 import GlobalStore from "./Stores/GlobalStore";
-import { observer } from "mobx-react-lite";
+import Root from "./Root/Root"
+import ErrorPage from "./Screens/ErrorPage/ErrorPage";
 
-const App = observer(() => {
+const App = () => {
 
   const [isProfile, setIsProfile] = useState("false")
   const [isAddPost, setIsAddPost] = useState("false")
@@ -22,22 +23,8 @@ const App = observer(() => {
   
   const {isLoggedIn} = GlobalStore;
   
-  const Root = () => {
-    
-    const navigate = useNavigate()
-    useEffect(() => {
-      if (isLoggedIn === "false"){
-        navigate("/autorization")
-      }
-      if( isLoggedIn === "true")
-      navigate("/posts")
-    // eslint-disable-next-line
-    }, [isLoggedIn])
 
-    return (
-      <></>
-    );
-  };
+
   
 
 
@@ -57,10 +44,11 @@ const App = observer(() => {
           <Route path="/tags" element={<TagsList />} />
           <Route path="/profile" element={<Profile setIsProfile ={setIsProfile}/>} ></Route>
           <Route path="/autorization" element={<AutorizationPage />}></Route>
+          <Route path="*" element={<ErrorPage/>}></Route>
         </Routes>
       </div>
     </div>
   );
-});
+};
 
 export default App;

@@ -4,7 +4,6 @@ import styles from "./TopQuestions.module.scss";
 
 const TopQuestions = ({ className, questions }) => {
   const elements = questions.map(({ title }, index) => {
-    console.log(title);
     return (
       <p key={index} className={styles.question}>{`${index + 1}. ${title}`}</p>
     );

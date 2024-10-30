@@ -56,7 +56,6 @@ const Profile = ({ className, setIsProfile }) => {
     ],
   };
 useEffect(() => {
-  console.log("PROFILE")
   setIsProfile("true");
   
   return () => {
