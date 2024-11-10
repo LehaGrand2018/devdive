@@ -12,7 +12,7 @@ import TagsList from "./Screens/TagsList/TagsList"
 import PostCommentsList from "./Screens/PostCommentsList/PostCommentsList";
 import AutorizationPage from "./Screens/AutorizationPage/AutorizationPage";
 import GlobalStore from "./Stores/GlobalStore";
-import Root from "./Root/Root"
+import Root from "./Screens/Root/Root"
 import ErrorPage from "./Screens/ErrorPage/ErrorPage";
 
 const App = () => {

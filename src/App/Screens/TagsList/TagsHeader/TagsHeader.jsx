@@ -19,7 +19,7 @@ const TagsHeader = ({searchTerm, setSearchTerm, className}) => {
                 value={searchTerm}
                 // onChange={(event) => setSearchValue(event.target.value)}
                 onChange={(event) => setSearchTerm(event.target.value)}
-                onClick={(event) => setSearchTerm(searchValue)}
+                onClick={(event) =>{ console.log(searchTerm)}}
             ></Search>
         </div>
     );

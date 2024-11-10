@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import GlobalStore from "../Stores/GlobalStore";
+import GlobalStore from "../../Stores/GlobalStore";
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 

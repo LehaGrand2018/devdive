@@ -66,7 +66,7 @@ const TagsList = (props) => {
 
   return (
     <section className={`${styles.tagsList} ${props.className}`}>
-      <TagsHeader className={styles.header}searchTerm={searchTerm} setSearchTerm={setSearchTerm}></TagsHeader>
+      <TagsHeader className={styles.header} searchTerm={searchTerm} setSearchTerm={setSearchTerm}></TagsHeader>
       <ul className={styles.tags}>{elements}</ul>
     </section>
   );

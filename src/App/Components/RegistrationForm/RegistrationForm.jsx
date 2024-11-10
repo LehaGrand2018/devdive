@@ -2,7 +2,6 @@ import React from 'react';
 import Button from '../Button/Button.jsx';
 import Input from '../Input/Input.jsx';
 import styles from './RegistrationForm.module.scss'
-import buttonStyles from '../Button/Button.module.scss';
 import PasswordInput from '../PasswordInput/PasswordInput.jsx';
 import PropTypes from 'prop-types';
 

@@ -18,6 +18,11 @@ const AddPost = ({ className, setIsAddPost }) => {
       setIsAddPost('false')
     }
   }, [])
+
+  const addPostFunc = (e) => {
+    console.log(e)
+    e.preventDefault();
+  }
   
   
   return (
@@ -45,7 +50,7 @@ const AddPost = ({ className, setIsAddPost }) => {
           placeholder={tagsValue}
           // onChange={(e) => setTagsValue(e.target.value)}
         ></Input>
-        <Button className={styles.button} type="submit" value="Задать вопрос"/>
+        <Button className={styles.button} type="submit" value="Задать вопрос" onSubmit={addPostFunc}/>
       </form>
     </div>
   );
