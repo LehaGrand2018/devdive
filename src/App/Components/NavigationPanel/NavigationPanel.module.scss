@@ -1,5 +1,5 @@
 .NavigationPanel {
-
+    
     width: 230px;
     height: 100%;
     flex-shrink: 0;
@@ -12,7 +12,8 @@
     // z-index: 1;
     // top: 0;
     // left: 0;
-
+    
+    transition: display 0.3s ease;
 
 
 
@@ -70,3 +71,18 @@
 
 
 }
+
+@media (max-width: 480px) {
+    .NavigationPanel {
+      display: none; /* Панель скрыта на экранах до 480px */
+      position: absolute;
+      top: 50px;
+      left: 0; 
+    }
+  }
+  
+ @media (min-width: 481px) {
+    .NavigationPanel {
+      display: block; /* Панель видна на экранах больше 480px */
+    }
+  }

@@ -17,3 +17,19 @@
     width: 950px;
   }
 }
+
+@media (max-width: 1024px){
+.postsList{
+  font-size: 12px;
+  margin-left: 0px;
+  .header{
+    width: 90%;
+    font-size: 28px;
+  }
+  .post{
+    width: 90%;
+  }
+}
+
+
+}
