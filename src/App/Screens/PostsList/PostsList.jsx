@@ -39,7 +39,7 @@ const PostsList = (props) => {
   }, []);
 
   if (posts !== undefined) {
-    postsList = posts.map((post /*{userId, id, title}*/) => {
+    postsList = posts.map((post /*{userId, id, title}*/,index) => {
       // console.log("map");
       return (
         <Post
@@ -52,6 +52,7 @@ const PostsList = (props) => {
           answersCount={post.id}
           votesCount={0}
           tags={tags}
+          postId={index}
         ></Post>
       );
     });

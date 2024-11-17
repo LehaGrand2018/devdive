@@ -1,4 +1,5 @@
-import { React, useEffect, useState } from "react";
+import { React, useContext, useEffect, useState } from "react";
+import Menu from "../Menu/Menu";
 import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
 import styles from "./Header.module.scss";
@@ -6,26 +7,31 @@ import PropTypes from "prop-types";
 import { Link, useNavigate } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import GlobalStore from "../../Stores/GlobalStore";
+import { MenuContext } from "../../Contexts/MenuContext";
+
 
 const Header = observer(({ className, isProfile, isAddPost}) => {
 
-
+  const {active} = useContext(MenuContext);
   const {isLoggedIn, setIsLoggedIn} = GlobalStore;
-
+  
+  const navigate = useNavigate();
+  
   const login = () => {
     setIsLoggedIn("true");
   };
-
-  const navigate = useNavigate();
-
+  
   const out = () => {
     setIsLoggedIn("false");
     navigate("/");
   };
-
+  
   const questionButtonHandler = () => {
     navigate("/addPost");
   }
+
+  // const {active} = useContext(MenuContext)
+  // console.log(active)
 
   //there will be username from server
   let username = "neurotrier";
@@ -85,8 +91,10 @@ const Header = observer(({ className, isProfile, isAddPost}) => {
   }, [isLoggedIn, isProfile, isAddPost, username]);
 
   return (
+    
     <header className={`${styles.header} ${className}`}>
-      <Logo className={styles.logo}></Logo>
+      <Menu className={styles.menu} isActive={active.value} setIsActive={active.set} />
+      <Logo className={styles.logo} onClick={()=> {navigate("/")}}/>
       {elements}
     </header>
   );

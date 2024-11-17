@@ -52,8 +52,20 @@
 
   }
 }
-@media (max-width: 480px) {
-  
 
+/* Desktop styles */
+ @media (min-width: 481px) {
+  .menu{
+    display: none;
+  }
+
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+
+  .menu{
+    display: block;
+  }
 
 }

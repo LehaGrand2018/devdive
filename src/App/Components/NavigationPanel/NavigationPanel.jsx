@@ -1,17 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Button from "../Button/Button";
 import Tag from "./Tags/Tags";
 import styles from "./NavigationPanel.module.scss";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { observer } from "mobx-react-lite";
+import { MenuContext } from "../../Contexts/MenuContext";
 import GlobalStore from "../../Stores/GlobalStore";
 
 const NavigationPanel = observer(({ className}) => {
   const [button, setButton] = useState();
+  
 
   // let isLoggedIn = null;
   const {isLoggedIn} = GlobalStore;
+
+  const {active} = useContext(MenuContext);
+  
+  const isVisible = active.value;
+
 
   useEffect(() => {
 
@@ -22,7 +29,8 @@ const NavigationPanel = observer(({ className}) => {
           className={({ isActive }) =>
             `${styles.PanelButton} ${isActive ? styles.active : ""}`
           }
-          to="/posts/:id"
+          to="/posts/"
+          // to="/posts/userId"
         >
           Мои вопросы
         </NavLink>
@@ -33,7 +41,7 @@ const NavigationPanel = observer(({ className}) => {
   }, [isLoggedIn]);
 
   return (
-    <div className={`${styles.NavigationPanel} ${className}`}>
+    <div className={`${styles.NavigationPanel} ${className} ${isVisible ? styles.visible : ""}`}>
       <NavLink
         className={({ isActive }) =>
           `${styles.PanelButton} ${isActive ? styles.active : ""}`

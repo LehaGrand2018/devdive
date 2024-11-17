@@ -13,7 +13,7 @@
     // top: 0;
     // left: 0;
     
-    transition: display 0.3s ease;
+    transition:  0.5s;
 
 
 
@@ -74,15 +74,21 @@
 
 @media (max-width: 480px) {
     .NavigationPanel {
-      display: none; /* Панель скрыта на экранах до 480px */
+      
       position: absolute;
       top: 50px;
-      left: 0; 
+      left: -50%; 
+
+      &.visible{
+        display: block;
+        left: 0;
+      }
     }
+    
   }
   
- @media (min-width: 481px) {
-    .NavigationPanel {
-      display: block; /* Панель видна на экранах больше 480px */
-    }
-  }
+//  @media (min-width: 481px) {
+//     .NavigationPanel {
+//       display: block;
+//     }
+//   }
