@@ -8,21 +8,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import GlobalStore from "../../Stores/GlobalStore";
 import { MenuContext } from "../../Contexts/MenuContext";
+import { AuthContext } from "../../Contexts/AuthContext";
 
 
 const Header = observer(({ className, isProfile, isAddPost}) => {
 
   const {active} = useContext(MenuContext);
+  const {signOut} = useContext(AuthContext);
   const {isLoggedIn, setIsLoggedIn} = GlobalStore;
   
   const navigate = useNavigate();
   
   const login = () => {
-    setIsLoggedIn("true");
+    navigate("/autorization");
   };
   
   const out = () => {
-    setIsLoggedIn("false");
+    signOut();
     navigate("/");
   };
   

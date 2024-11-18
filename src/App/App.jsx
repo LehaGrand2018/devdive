@@ -14,6 +14,8 @@ import GlobalStore from "./Stores/GlobalStore";
 import Root from "./Screens/Root/Root"
 import ErrorPage from "./Screens/ErrorPage/ErrorPage";
 import { MenuProvider } from "./Contexts/MenuContext";
+import { AuthProvider } from "./Contexts/AuthContext";
+import { URLProvider } from "./Contexts/URLContext";
 
 
 const App = () => {
@@ -24,27 +26,30 @@ const App = () => {
   
   const {isLoggedIn} = GlobalStore;
 
-  
-  return (
 
-   <MenuProvider>
-      <div className={styles.app}>
-        <div className={styles.content}>
-          <Header className={styles.header} isProfile={isProfile} setIsProfile={setIsProfile} isAddPost={isAddPost} setIsAddPost={setIsAddPost}></Header>
-          <NavigationPanel setIsAddPost={setIsAddPost} isLoggedIn={isLoggedIn}></NavigationPanel>
-          <Routes>
-            <Route path="/" element={<Root/>}></Route>
-            <Route path="/posts" element={<PostsList />} />
-            <Route path="posts/:postId" element={<PostCommentsList />} />
-            <Route path="/addPost" element={<AddPost setIsAddPost={setIsAddPost} />} />
-            <Route path="/tags" element={<TagsList />} />
-            <Route path="/profile" element={<Profile setIsProfile ={setIsProfile}/>} ></Route>
-            <Route path="/autorization" element={<AutorizationPage />}></Route>
-            <Route path="*" element={<ErrorPage/>}></Route>
-          </Routes>
-        </div>
-      </div>
-    </MenuProvider>
+  return (
+    <URLProvider>
+      <AuthProvider>
+        <MenuProvider>
+          <div className={styles.app}>
+            <div className={styles.content}>
+              <Header className={styles.header} isProfile={isProfile} setIsProfile={setIsProfile} isAddPost={isAddPost} setIsAddPost={setIsAddPost}></Header>
+              <NavigationPanel setIsAddPost={setIsAddPost} isLoggedIn={isLoggedIn}></NavigationPanel>
+              <Routes>
+                <Route path="/" element={<Root/>}></Route>
+                <Route path="/posts" element={<PostsList />} />
+                <Route path="posts/:postId" element={<PostCommentsList />} />
+                <Route path="/addPost" element={<AddPost setIsAddPost={setIsAddPost} />} />
+                <Route path="/tags" element={<TagsList />} />
+                <Route path="/profile" element={<Profile setIsProfile ={setIsProfile}/>} ></Route>
+                <Route path="/autorization" element={<AutorizationPage />}></Route>
+                <Route path="*" element={<ErrorPage/>}></Route>
+              </Routes>
+            </div>
+          </div>
+        </MenuProvider>
+      </AuthProvider>
+    </URLProvider>
   );
 };
 

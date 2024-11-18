@@ -17,5 +17,10 @@ export const parseDate = (dateSource) => {
     return time + ' ' + date;
 }
 
+export const validate = () => {
+    
+}
+
+
 
 

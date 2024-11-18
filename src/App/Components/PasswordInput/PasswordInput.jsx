@@ -4,8 +4,9 @@ import eye from "./eye.svg";
 import eyeClosed from "./eye-closed.svg";
 
 import styles from "./PasswordInput.module.scss";
+import PropTypes from "prop-types";
 
-const PasswordInput = ({ className, placeholder, name, id }) => {
+const PasswordInput = ({ className, placeholder, name, id, onClick, onChange, onBlur }) => {
   const [visible, setVisible] = useState(false);
 
   let resultEye = null;
@@ -19,7 +20,7 @@ const PasswordInput = ({ className, placeholder, name, id }) => {
   }
 
   return (
-    <div className={`${styles.PasswordInput} ${className}`}>
+    <div className={`${styles.PasswordInput} ${className}`} onClick={onClick} onChange={onChange} onBlur={onBlur}>
       <input
         className={styles.Field}
         placeholder={placeholder}
@@ -45,6 +46,16 @@ const invertVissibility = ([visible, setVisible]) => {
   } else {
     setVisible(true);
   }
+};
+
+PasswordInput.propTypes = {
+  className: PropTypes.string,
+  placeholder: PropTypes.string,
+  name: PropTypes.string,
+  id: PropTypes.string,
+  onClick: PropTypes.func,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
 };
 
 export default PasswordInput;

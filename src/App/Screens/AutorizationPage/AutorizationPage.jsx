@@ -13,6 +13,7 @@ const AutorizationPage = observer(({ className }) => {
   const [element, setElement] = useState(null);
   const { isLoggedIn } = GlobalStore;
   const navigate = useNavigate();
+  
   useEffect(() => {
     let isLoggedIn = localStorage.getItem("isLoggedIn");
     console.log("isRegistered: ", isRegistered);
@@ -23,7 +24,6 @@ const AutorizationPage = observer(({ className }) => {
       setElement(
         <LoginForm
           className={styles.LoginForm}
-          loginFunc={() => {}}
           registrationFunc={() => {
             setIsRegistered("false");
           }}
