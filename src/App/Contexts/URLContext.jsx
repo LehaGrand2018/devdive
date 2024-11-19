@@ -13,7 +13,7 @@ const URLProvider = ({children}) => {
     REFRESH_TOKEN_URL: `${BASE_URL}/api/v1/auth/refresh-token/`,
 
     TAGS_URL: `${BASE_URL}/api/v1/tags/`,
-
+    USERS_URL: `${BASE_URL}/api/v1/users/`,
   }
 
   return (
