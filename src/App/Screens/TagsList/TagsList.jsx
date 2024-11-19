@@ -3,35 +3,13 @@ import styles from "./TagsList.module.scss";
 import Tag from "./Tag/Tag";
 import TagsHeader from "./TagsHeader/TagsHeader";
 import { TagsContext } from "../../Contexts/TagsContext";
+import PropTypes from "prop-types";
 
-const TagsList = (props) => {
-  const { getTags, createTag } = useContext(TagsContext);
+const TagsList = ({className}) => {
+  const { getTags } = useContext(TagsContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [tagsObj, setTagsObj] = useState(null);
   const [elements, setElements] = useState(null);
-
-
-  // useEffect(() => {
-  //   const createTags = async () => {
-  //     for (const tag of programmingTags) {
-  //       const name = tag;
-  //       const description = `This tag is related to ${tag} in programming and software development.`;
-  //       try {
-  //         await createTag({ name, description });
-  //         console.log(`Successfully created tag: ${name}`);
-  //         break
-  //       } catch (error) {
-  //         console.error(`Failed to create tag: ${name}`, error);
-  //         break
-  //       }
-  //     }
-  //   };
-    
-  //   createTags();
-  
-
-  // }, [])
-  
 
   // get tags
   useEffect(() => {
@@ -63,21 +41,20 @@ const TagsList = (props) => {
     }
   }, [tagsObj, searchTerm]);
 
-
-
-  
-  
-
   return (
-    <section className={`${styles.tagsList} ${props.className}`}>
+    <section className={`${styles.tagsList} ${className}`}>
       <TagsHeader
         className={styles.header}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-      ></TagsHeader>
+      />
       <ul className={styles.tags}>{elements}</ul>
     </section>
   );
 };
+
+TagsList.propTypes = {
+  className: PropTypes.string,
+}
 
 export default TagsList;
