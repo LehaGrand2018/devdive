@@ -1,6 +1,6 @@
 import axios from "axios";
 import qs from "qs";
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext } from "react";
 import { URLContext } from "./URLContext";
 import GlobalStore from "../Stores/GlobalStore";
 
@@ -12,24 +12,7 @@ const AuthProvider = ({ children }) => {
     useContext(URLContext);
 
   const session = {
-    user: {
-      login: "undefined",
-      password: "undefined",
-      email: "undefined",
-      jwtToken: "undefined",
-      accessToken: "undefined",
-      refresh_token: "undefined",
-      token_type: "Bearer",
-    },
-
     signIn: async (email, password) => {
-      console.log("SignIn function called");
-
-      console.log("Request data: ", {
-        username: email,
-        password,
-      });
-
       const res = await axios.post(
         SIGN_IN_URL,
         qs.stringify({
@@ -37,8 +20,7 @@ const AuthProvider = ({ children }) => {
           password,
         }),
         {
-          accept: "application/json",
-          "Content-Type": "application/x-www-form-urlencoded",
+          headers: { accept: "application/json" },
         }
       );
       const data = res.data;
@@ -46,18 +28,16 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("refresh_token", data.refresh_token);
       localStorage.setItem("token_type", data.token_type);
+      localStorage.setItem("user_id", data.user_id);
       setIsLoggedIn("true");
     },
 
     signUp: async (username, password, email) => {
-      console.log("SignUp function called");
-
       const res = await axios.post(
         SIGN_UP_URL,
         { username, password, email },
         {
-          accept: "application/json",
-          "Content-Type": "application/json",
+          headers: { accept: "application/json" },
         }
       );
       console.log(res.data);
@@ -66,8 +46,10 @@ const AuthProvider = ({ children }) => {
     refreshToken: () => {
       console.log("Refresh token function called");
       const data = axios.post(REFRESH_TOKEN_URL, null, {
-        accept: "application/json",
-        refresh: localStorage.getItem("refresh_token"),
+        headers: {
+          accept: "application/json",
+          refresh: localStorage.getItem("refresh_token"),
+        },
       });
       data
         .then((res) => res.data)
@@ -84,6 +66,7 @@ const AuthProvider = ({ children }) => {
       localStorage.removeItem("access_token");
       localStorage.removeItem("refresh_token");
       localStorage.removeItem("token_type");
+      localStorage.removeItem("user_id");
       setIsLoggedIn("false");
     },
   };

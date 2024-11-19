@@ -12,6 +12,8 @@ const URLProvider = ({children}) => {
     SIGN_UP_URL: `${BASE_URL}/api/v1/auth/signup/`,
     REFRESH_TOKEN_URL: `${BASE_URL}/api/v1/auth/refresh-token/`,
 
+    TAGS_URL: `${BASE_URL}/api/v1/tags/`,
+
   }
 
   return (

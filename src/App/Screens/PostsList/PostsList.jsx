@@ -23,19 +23,18 @@ const PostsList = (props) => {
 
   let postsList;
 
+  const getPosts = async () => {
+    try {
+      let posts = await axios.get(
+        "https://jsonplaceholder.typicode.com/posts"
+      );
+      setPosts(posts.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
-    const getPosts = async () => {
-      try {
-        let posts = await axios.get(
-          "https://jsonplaceholder.typicode.com/posts"
-        );
-        setPosts(posts.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getPosts();
+     getPosts();
   }, []);
 
   if (posts !== undefined) {

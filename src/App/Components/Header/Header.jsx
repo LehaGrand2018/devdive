@@ -9,6 +9,7 @@ import { observer } from "mobx-react-lite";
 import GlobalStore from "../../Stores/GlobalStore";
 import { MenuContext } from "../../Contexts/MenuContext";
 import { AuthContext } from "../../Contexts/AuthContext";
+import { TagsContext } from "../../Contexts/TagsContext";
 
 
 const Header = observer(({ className, isProfile, isAddPost}) => {
@@ -17,6 +18,8 @@ const Header = observer(({ className, isProfile, isAddPost}) => {
   const {signOut} = useContext(AuthContext);
   const {isLoggedIn, setIsLoggedIn} = GlobalStore;
   
+  const {createTag} = useContext(TagsContext)
+
   const navigate = useNavigate();
   
   const login = () => {
@@ -27,9 +30,80 @@ const Header = observer(({ className, isProfile, isAddPost}) => {
     signOut();
     navigate("/");
   };
+
+  const programmingTags = [
+    "HTML",
+    "CSS",
+    "TypeScript",
+    "Ruby",
+    "Java",
+    "C++",
+    "C#",
+    "PHP",
+    "Swift",
+    "Kotlin",
+    "Go",
+    "Rust",
+    "SQL",
+    "NoSQL",
+    "Node.js",
+    "React",
+    "Vue",
+    "Angular",
+    "Django",
+    "Flask",
+    "Spring",
+    "Express",
+    "GraphQL",
+    "Docker",
+    "Kubernetes",
+    "Git",
+    "GitHub",
+    "CI/CD",
+    "API",
+    "REST",
+    "Microservices",
+    "Web Development",
+    "Frontend",
+    "Backend",
+    "Fullstack",
+    "Machine Learning",
+    "Deep Learning",
+    "Data Science",
+    "Artificial Intelligence",
+    "Blockchain",
+    "DevOps",
+    "Testing",
+    "Agile",
+    "Scrum",
+    "Big Data",
+    "Cloud Computing",
+    "Serverless",
+    "Cybersecurity",
+    "Algorithms",
+    "Data Structures",
+  ];
   
-  const questionButtonHandler = () => {
-    navigate("/addPost");
+  
+  const questionButtonHandler = async () => {
+    // navigate("/addPost");
+    for (const name of programmingTags) {
+
+        const description = `This tag is related to ${name} in programming and software development.`;
+        try {
+          const tag = {
+            name, description
+          }
+          console.log(tag)
+
+          await createTag(tag);
+          console.log(`Successfully created tag: ${name}`);
+          // break
+        } catch (error) {
+          console.error(`Failed to create tag: ${name}`, error);
+          // break
+        }
+      }
   }
 
   // const {active} = useContext(MenuContext)
