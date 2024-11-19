@@ -1,26 +1,26 @@
 import React from 'react';
-import styles from './PostInfo.module.scss'
+import styles from './QuestionInfo.module.scss'
 import { parseDate, addEnding } from '../../../../Functions/Functions';
 
-const PostInfo = (props) => {
+const QuestionInfo = (props) => {
     
     // const date = Date.parse(props.date);
 
     return (
-        <div className={`${styles.PostInfo} ${props.className}`}>
+        <div className={`${styles.QuestionInfo} ${props.className}`}>
             <div className={styles.UserPhoto} style={{backgroundImage: 'none' /*userPhoto*/ }}></div>
             <p className={styles.UserName}>{props.username}</p>
-            <time className={styles.PostDate} dateTime={props.date}>
+            <time className={styles.QuestionDate} dateTime={props.date}>
                 {parseDate(props.date)}
             </time>
-            <p className={styles.PostAnswers}>
+            <p className={styles.QuestionAnswers}>
                 {`${props.answersCount} ${addEnding('ответ', props.answersCount)}`}
             </p>
-            <p className={styles.PostVotes}>
+            <p className={styles.QuestionVotes}>
                 {`${props.votesCount} ${addEnding('голос', props.votesCount)}`}
             </p>
         </div>
     );
 };
 
-export default PostInfo;
+export default QuestionInfo;

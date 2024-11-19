@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./PostComments.module.scss";
+import styles from "./QuestionCommentsList.module.scss";
 import CommentsHeader from "./CommentsHeader/CommentsHeader";
 import Comment from "./Comment/Comment";
 import { useState } from "react";
@@ -8,15 +8,15 @@ import AnswerForm from "./AnswerForm/AnswerForm";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 
-const PostCommentsList = ({ className }) => {
+const QuestionCommentsList = ({ className }) => {
   // eslint-disable-next-line
   const [answers, setAnswers] = useState(0);
   // eslint-disable-next-line
   const [votes, setVotes] = useState(3);
 
-  const {postId} = useParams();
+  const {questionId} = useParams();
   
-  console.log("postId: ", postId);
+  console.log("questionId: ", questionId);
 
   const data = {
     title:
@@ -53,8 +53,8 @@ const PostCommentsList = ({ className }) => {
   );
 };
 
-PostCommentsList.propTypes = {
+QuestionCommentsList.propTypes = {
   className: PropTypes.string,
 };
 
-export default PostCommentsList;
+export default QuestionCommentsList;

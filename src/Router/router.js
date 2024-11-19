@@ -1,10 +1,10 @@
 // import { createBrowserRouter } from "react-router-dom";
 
-// import PostsList from "../App/PostsList/PostsList";
+// import QuestionsList from "../App/QuestionsList/QuestionsList";
 // import TagsList from "../App/TagsList/TagsList";
-// import PostCommentsList from "../App/PostCommentsList/PostCommentsList";
+// import QuestionCommentsList from "../App/QuestionCommentsList/QuestionCommentsList";
 // import Profile from "../App/Profile/Profile";
-// import AddPost from "../App/AddPost/AddPost";
+// import AddQuestion from "../App/AddQuestion/AddQuestion";
 // import App from "../App/App";
 
 // // const router = createBrowserRouter([
@@ -14,12 +14,12 @@
 // //     children: [
 // //       {
 // //         path: "/",
-// //         element: <PostsList />,
+// //         element: <QuestionsList />,
         
 // //       },
 // //       {
-// //         path: "posts/:postId",
-// //         element: <PostCommentsList />,
+// //         path: "questions/:questionId",
+// //         element: <QuestionCommentsList />,
 // //       },
 // //       {
 // //         path: "/tags",
@@ -30,8 +30,8 @@
 // //         element: <Profile />,
 // //       },
 // //       {
-// //         path: "/addPost",
-// //         element: <AddPost />,
+// //         path: "/addQuestion",
+// //         element: <AddQuestion />,
 // //       },
 // //     ],
 // //   },

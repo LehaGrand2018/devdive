@@ -1,34 +1,34 @@
 import React from "react";
 import Input from "../../Components/Input/Input";
-import styles from "./AddPost.module.scss";
+import styles from "./AddQuestion.module.scss";
 import { useState } from "react";
 import Button from "../../Components/Button/Button";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
 
-const AddPost = ({ className, setIsAddPost }) => {
+const AddQuestion = ({ className, setIsAddQuestion }) => {
   const [headerValue, setHeaderValue] = useState("Введите заголовок");
   const [textareaValue, setTextareaValue] = useState("Описание");
   const [tagsValue, setTagsValue] = useState("Введите теги");
 
   useEffect(() => {
-    setIsAddPost("true")
+    setIsAddQuestion("true")
   
     return () => {
-      setIsAddPost('false')
+      setIsAddQuestion('false')
     }
   }, [])
 
-  const addPostFunc = (e) => {
+  const addQuestionFunc = (e) => {
     console.log(e)
     e.preventDefault();
   }
   
   
   return (
-    <div className={`${styles.AddPost} ${className}`}>
+    <div className={`${styles.AddQuestion} ${className}`}>
       <h1 className={styles.header}>Задать вопрос</h1>
-      <form className={styles.form} action="" method="post">
+      <form className={styles.form} action="" method="question">
         <label htmlFor="questionHeader">Заголовок</label>
         <Input
           className={styles.questionHeader}
@@ -50,15 +50,15 @@ const AddPost = ({ className, setIsAddPost }) => {
           placeholder={tagsValue}
           // onChange={(e) => setTagsValue(e.target.value)}
         ></Input>
-        <Button className={styles.button} type="submit" value="Задать вопрос" onSubmit={addPostFunc}/>
+        <Button className={styles.button} type="submit" value="Задать вопрос" onSubmit={addQuestionFunc}/>
       </form>
     </div>
   );
 };
 
 
-AddPost.propTypes = {
+AddQuestion.propTypes = {
   className: PropTypes.string,
-  setIsAddPost: PropTypes.func,
+  setIsAddQuestion: PropTypes.func,
 }
-export default AddPost;
+export default AddQuestion;

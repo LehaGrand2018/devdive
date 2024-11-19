@@ -10,63 +10,21 @@ import PropTypes from "prop-types";
 import { UsersContext } from "../../Contexts/UserContext";
 
 const Profile = ({ className, setIsProfile }) => {
-  let testu = {
-    username: "neurotrier",
-    description: "Информация о пользователе",
-    photo: "undefined",
-    reputation: 100,
-    role: "admin",
-    questionsCount: 35,
-    answersCount: 89,
-    createdAt: Date.now(),
-    tags: [
-      "python",
-      "javascript",
-      "golang",
-      "ruby",
-      "php",
-      "jquerry",
-      "rust",
-      "c++",
-    ],
-    questions: [
-      {
-        title:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor justo est. Lorem ipsum dolor.",
-        description: "",
-      },
-      {
-        title:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor justo est. Lorem ipsum dolor.",
-        description: "",
-      },
-      {
-        title:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor justo est. Lorem ipsum dolor.",
-        description: "",
-      },
-      {
-        title:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor justo est. Lorem ipsum dolor.",
-        description: "",
-      },
-    ],
-  };
 
-  let leha = {
-    user: {
-      id: "3a729c0c-8c95-4d54-85a6-37356c33befd",
-      username: "leha0501",
-      info: "JavaScript developher",
-      email: "leha0501@gmail.com",
-      reputation: 0,
-    },
-    questions: [],
-    answers: [],
-    tags: [],
-    presigned_url:
-      "http://minio:9000/images/3a729c0c-8c95-4d54-85a6-37356c33befd/?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20241119%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241119T150658Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=c858af5ad422d10f343755917524b86043a74516c12418bfa8f9673b3fde0977",
-  };
+  // const response = {
+  //   user: {
+  //     id: "3a729c0c-8c95-4d54-85a6-37356c33befd",
+  //     username: "leha0501",
+  //     info: "JavaScript developher",
+  //     email: "leha0501@gmail.com",
+  //     reputation: 0,
+  //   },
+  //   questions: [],
+  //   answers: [],
+  //   tags: [],
+  //   presigned_url:
+  //     "http://minio:9000/images/3a729c0c-8c95-4d54-85a6-37356c33befd/?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20241119%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241119T150658Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=c858af5ad422d10f343755917524b86043a74516c12418bfa8f9673b3fde0977",
+  // };
 
   const { getUser } = useContext(UsersContext);
   const [user, setUser] = useState(null);
@@ -100,12 +58,12 @@ const Profile = ({ className, setIsProfile }) => {
             <Status
               className={styles.status}
               reputation={userGenteralInfo.reputation}
-              role={"user"}
+              role={userGenteralInfo.role}
               questions={user.questions.length}
               answers={user.answers.length}
             />
           </div>
-          <Since className={styles.since} date={user.createdAt} />
+          <Since className={styles.since} date={user.created_at} />
           <TopTags className={styles.topTags} tags={user.tags} />
           <TopQuestions
             className={styles.topQuestions}

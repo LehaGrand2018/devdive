@@ -14,6 +14,7 @@ const URLProvider = ({children}) => {
 
     TAGS_URL: `${BASE_URL}/api/v1/tags/`,
     USERS_URL: `${BASE_URL}/api/v1/users/`,
+    QUESTIONS_URL: `${BASE_URL}/api/v1/questions/`,
   }
 
   return (

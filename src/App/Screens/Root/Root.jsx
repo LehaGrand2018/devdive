@@ -10,7 +10,7 @@ const Root = observer(() => {
     if (isLoggedIn === "false") {
       navigate("/autorization");
     }
-    if (isLoggedIn === "true") navigate("/posts");
+    if (isLoggedIn === "true") navigate("/questions");
     //eslint-disable-next-line
   }, [isLoggedIn]);
 

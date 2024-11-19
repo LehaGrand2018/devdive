@@ -3,9 +3,9 @@ import React from "react";
 import styles from "./TopQuestions.module.scss";
 
 const TopQuestions = ({ className, questions }) => {
-  const elements = questions.map(({ title }, index) => {
+  const elements = questions.map(({ content, question_id }, index) => {
     return (
-      <p key={index} className={styles.question}>{`${index + 1}. ${title}`}</p>
+      <p key={question_id} className={styles.question}>{`${index + 1}. ${content}`}</p>
     );
   });
 

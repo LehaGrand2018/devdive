@@ -11,7 +11,7 @@ import { MenuContext } from "../../Contexts/MenuContext";
 import { AuthContext } from "../../Contexts/AuthContext";
 
 
-const Header = observer(({ className, isProfile, isAddPost}) => {
+const Header = observer(({ className, isProfile, isAddQuestion}) => {
 
   const {active} = useContext(MenuContext);
   const {signOut} = useContext(AuthContext);
@@ -31,7 +31,7 @@ const Header = observer(({ className, isProfile, isAddPost}) => {
   };
 
   const questionButtonHandler = async () => {
-    navigate("/addPost");
+    navigate("/addQuestion");
   }
 
   // const {active} = useContext(MenuContext)
@@ -45,7 +45,7 @@ const Header = observer(({ className, isProfile, isAddPost}) => {
   useEffect(() => {
     let elements = [];
     if (isLoggedIn === "true") {
-      if(isAddPost === "false"){
+      if(isAddQuestion === "false"){
         elements.push(
           <Button
             key="questionButton"
@@ -92,7 +92,7 @@ const Header = observer(({ className, isProfile, isAddPost}) => {
     }
     setElements(elements);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn, isProfile, isAddPost, username]);
+  }, [isLoggedIn, isProfile, isAddQuestion, username]);
 
   return (
     
@@ -107,7 +107,7 @@ const Header = observer(({ className, isProfile, isAddPost}) => {
 Header.propTypes = {
   className: PropTypes.string,
   isProfile: PropTypes.string,
-  isAddPost: PropTypes.string,
+  isAddQuestion: PropTypes.string,
 };
 
 export default Header;

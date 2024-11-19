@@ -1,4 +1,4 @@
-.postsList {
+.questionsList {
   padding-top: 15px;
   padding-right: 45px;
   text-align: left;
@@ -13,20 +13,20 @@
     border-bottom: 1px solid #545f71;
   }
 
-  .post {
+  .question {
     width: 950px;
   }
 }
 
 @media (max-width: 1024px){
-.postsList{
+.questionsList{
   font-size: 12px;
   margin-left: 0px;
   .header{
     width: 90%;
     font-size: 28px;
   }
-  .post{
+  .question{
     width: 90%;
   }
 }

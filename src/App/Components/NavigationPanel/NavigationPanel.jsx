@@ -29,8 +29,8 @@ const NavigationPanel = observer(({ className}) => {
           className={({ isActive }) =>
             `${styles.PanelButton} ${isActive ? styles.active : ""}`
           }
-          to="/posts/"
-          // to="/posts/userId"
+          to="/questions/"
+          // to="/questions/userId"
         >
           Мои вопросы
         </NavLink>
