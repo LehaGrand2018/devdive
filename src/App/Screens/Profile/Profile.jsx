@@ -47,6 +47,7 @@ const Profile = ({ className, setIsProfile }) => {
     console.log("displayEffect")
     if (user) {
       const userGenteralInfo = user.user;
+      console.log(user.presigned_url)
       setElements(
         <>
           <div className={styles.userStatus}>

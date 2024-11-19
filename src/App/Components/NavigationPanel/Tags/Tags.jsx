@@ -1,34 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./Tags.module.scss";
-import axios from "axios";
+import PropTypes from "prop-types";
+import { TagsContext } from "../../../Contexts/TagsContext";
 
-const Tags = (props) => {
-    const [users, setUsers] = useState();
+const Tags = ({ className }) => {
+  const [tags, setTags] = useState(null);
+  const [elements, setElements] = useState(null);
+  const { getTags } = useContext(TagsContext);
 
-    useEffect(() => {
-        //Template Function
-        const getPopularTags = async () => {
-            try {
-                const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-                setUsers(response.data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        getPopularTags();   
-    }, []);
-    
-    let elements;
-    if(users !== undefined) {
-        elements = users.map((user) => {
-            return <li className={styles.tag} key={user.id}>#{user.username}</li>
+  //get tags
+  useEffect(() => {
+    const getPopularTags = async () => {
+      const tags = await getTags();
+      console.log("Tags:", tags);
+      setTags(tags);
+    };
+    getPopularTags();
+  }, []);
+
+  // display tags
+  useEffect(() => {
+    if (tags) {
+      setElements(
+        tags.tags.map(({ id, name }, index) => {
+          return index <= 20 ? (
+            <li className={styles.tag} key={id}>
+              #{name}
+            </li>
+          ) : null;
         })
+      );
     }
+  }, [tags]);
 
-    return (
-        <ul className={`${styles.tags} ${props.className}`}>
-            {elements}
-        </ul>
-    );
+  return <ul className={`${styles.tags} ${className}`}>{elements}</ul>;
+};
+
+Tags.propTypes = {
+  className: PropTypes.string,
 };
 export default Tags;

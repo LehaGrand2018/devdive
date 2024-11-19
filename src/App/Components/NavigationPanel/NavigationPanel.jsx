@@ -9,16 +9,14 @@ import { MenuContext } from "../../Contexts/MenuContext";
 import GlobalStore from "../../Stores/GlobalStore";
 
 const NavigationPanel = observer(({ className}) => {
+
   const [button, setButton] = useState();
   
-
-  // let isLoggedIn = null;
   const {isLoggedIn} = GlobalStore;
 
   const {active} = useContext(MenuContext);
   
   const isVisible = active.value;
-
 
   useEffect(() => {
 
@@ -30,7 +28,6 @@ const NavigationPanel = observer(({ className}) => {
             `${styles.PanelButton} ${isActive ? styles.active : ""}`
           }
           to="/questions/"
-          // to="/questions/userId"
         >
           Мои вопросы
         </NavLink>

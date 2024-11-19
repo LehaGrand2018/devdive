@@ -11,20 +11,25 @@ const AddQuestion = ({ className, setIsAddQuestion }) => {
   const [textareaValue, setTextareaValue] = useState("Описание");
   const [tagsValue, setTagsValue] = useState("Введите теги");
 
+  // setup
   useEffect(() => {
-    setIsAddQuestion("true")
-  
+    console.log("setup")
+    setIsAddQuestion("true");
     return () => {
-      setIsAddQuestion('false')
-    }
-  }, [])
+      setIsAddQuestion("false");
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const addQuestionFunc = (e) => {
-    console.log(e)
+  // useEffect(() => {
+
+  // }, [headerValue, textareaValue, tagsValue])
+
+  const submitHandler = (e) => {
+    console.log(e);
     e.preventDefault();
-  }
-  
-  
+  };
+
   return (
     <div className={`${styles.AddQuestion} ${className}`}>
       <h1 className={styles.header}>Задать вопрос</h1>
@@ -34,31 +39,35 @@ const AddQuestion = ({ className, setIsAddQuestion }) => {
           className={styles.questionHeader}
           id="questionHeader"
           placeholder={headerValue}
-          // onChange={(e) => setHeaderValue(e.target.value)}
+          onChange={(e) => setHeaderValue(e.target.value)}
         ></Input>
         <label htmlFor="questionDescription">Основная часть</label>
         <textarea
           className={styles.questionDescription}
           placeholder={textareaValue}
           id="questionDescription"
-          // onChange={(e) => setTextareaValue(e.target.value)}
+          onChange={(e) => setTextareaValue(e.target.value)}
         />
         <label htmlFor="questionTags">Метки</label>
         <Input
           className={styles.questionTags}
           id="questionTags"
           placeholder={tagsValue}
-          // onChange={(e) => setTagsValue(e.target.value)}
+          onChange={(e) => setTagsValue(e.target.value)}
         ></Input>
-        <Button className={styles.button} type="submit" value="Задать вопрос" onSubmit={addQuestionFunc}/>
+        <Button
+          className={styles.button}
+          type="submit"
+          value="Задать вопрос"
+          onSubmit={submitHandler}
+        />
       </form>
     </div>
   );
 };
 
-
 AddQuestion.propTypes = {
   className: PropTypes.string,
   setIsAddQuestion: PropTypes.func,
-}
+};
 export default AddQuestion;

@@ -3,11 +3,14 @@ import React from "react";
 import styles from "./TopQuestions.module.scss";
 
 const TopQuestions = ({ className, questions }) => {
-  const elements = questions.map(({ content, question_id }, index) => {
-    return (
-      <p key={question_id} className={styles.question}>{`${index + 1}. ${content}`}</p>
-    );
-  });
+  let elements = null;
+  if(questions){
+    elements = questions.map(({ content, id }, index) => {
+      return (
+        <p key={id} className={styles.question}>{`${index + 1}. ${content}`}</p>
+      );
+    });
+  }
 
   return (
     <div className={`${styles.top} ${className}`}>

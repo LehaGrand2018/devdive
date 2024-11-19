@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Question from "./Question/Question";
 
 import styles from "./QuestionsList.module.scss";
 import axios from "axios";
+import { QuestionsContext } from "../../Contexts/QuestionsContext";
 
 const QuestionsList = (props) => {
 
@@ -12,21 +13,18 @@ const QuestionsList = (props) => {
   let date = new Date(Date.now());
 
   const [questions, setQuestions] = useState();
+  const {getQuestions} = useContext(QuestionsContext);
+
 
   let questionsList;
 
-  const getQuestions = async () => {
-    try {
-      let questions = await axios.get(
-        "https://jsonplaceholder.typicode.com/questions"
-      );
-      setQuestions(questions.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const fetchQuestions = async () => {
+    const res = await getQuestions();
+    
+  }
+
   useEffect(() => {
-     getQuestions();
+    //  getQuestions();
   }, []);
 
   if (questions !== undefined) {

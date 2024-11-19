@@ -10,7 +10,7 @@ const Status = ({ className, reputation, role, questions, answers }) => {
       <h2 className={styles.header}>Статус</h2>
       <div className={styles.elements}>
         <StatusElement first={`${reputation}`} second='репутация'></StatusElement>
-        <StatusElement first={role} second='роль'></StatusElement>
+        <StatusElement first={`${role}`} second='роль'></StatusElement>
         <StatusElement first={`${questions}`} second={addEnding('вопрос', questions)}></StatusElement>
         <StatusElement first={`${answers}`} second={addEnding('ответ', answers)}></StatusElement>
       </div>
