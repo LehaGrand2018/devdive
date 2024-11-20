@@ -2,57 +2,63 @@ import React, { useState, useEffect, useContext } from "react";
 import Question from "./Question/Question";
 
 import styles from "./QuestionsList.module.scss";
-import axios from "axios";
 import { QuestionsContext } from "../../Contexts/QuestionsContext";
+import PropTypes from "prop-types";
 
-const QuestionsList = (props) => {
+const QuestionsList = ({className}) => {
 
 
-  const tags = ["python", "javascript", "ruby", "golang"];
 
-  let date = new Date(Date.now());
-
-  const [questions, setQuestions] = useState();
+  const [questions, setQuestions] = useState(null);
+  const [questionsToDisplay, setQuestionsToDisplay] = useState(null);
   const {getQuestions} = useContext(QuestionsContext);
+ 
 
-
-  let questionsList;
-
-  const fetchQuestions = async () => {
-    const res = await getQuestions();
-    
-  }
-
+  //load questions
   useEffect(() => {
-    //  getQuestions();
-  }, []);
+    const fetchQuestions = async () => {
+      setQuestions((await getQuestions()).questions);
+    }
 
-  if (questions !== undefined) {
-    questionsList = questions.map((question /*{userId, id, title}*/,index) => {
-      // console.log("map");
-      return (
-        <Question
-          key={question.id}
-          className={styles.question}
-          questionTitle={question.title}
-          username={"user" + question.userId}
-          userPhoto={null}
-          date={date.toUTCString()}
-          answersCount={question.id}
-          votesCount={0}
-          tags={tags}
-          questionId={index}
-        ></Question>
-      );
-    });
-  }
+    fetchQuestions();
+  }, [getQuestions]);
 
+  // display questions
+  useEffect(()=>{
+    console.log("Display questions:", questions)
+    if (questions) {
+      
+      setQuestionsToDisplay(
+        questions.map((question,index) => {
+        return (
+          <Question
+            key={question.id}
+            className={styles.question}
+            questionTitle={question.content}
+            username={question.user.username}
+            userPhoto={null}
+            date={question.created_at}
+            answersCount={0/*question.answers.length*/}
+            votesCount={0/*question.votes.length*/}
+            tags={question.tags}
+            questionId={question.id}
+          ></Question>
+        );
+      }));
+    }
+  }, [questions])
+  
   return (
-    <div className={`${styles.questionsList} ${props.className}`}>
+    <div className={`${styles.questionsList} ${className}`}>
       <h2 className={styles.header}>Вопросы</h2>
-      {questionsList}
+      {questionsToDisplay}
     </div>
   );
 };
+
+
+QuestionsList.propTypes = {
+  className : PropTypes.string,
+}
 
 export default QuestionsList;

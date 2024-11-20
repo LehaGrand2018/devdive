@@ -37,13 +37,15 @@ const App = () => {
           <MenuProvider>
             <div className={styles.app}>
               <div className={styles.content}>
-                <Header
-                  className={styles.header}
-                  isProfile={isProfile}
-                  setIsProfile={setIsProfile}
-                  isAddQuestion={isAddQuestion}
-                  setIsAddQuestion={setIsAddQuestion}
-                ></Header>
+                <UsersProvider>
+                  <Header
+                    className={styles.header}
+                    isProfile={isProfile}
+                    setIsProfile={setIsProfile}
+                    isAddQuestion={isAddQuestion}
+                    setIsAddQuestion={setIsAddQuestion}
+                  ></Header>
+                </UsersProvider>
                 <TagsProvider>
                   <NavigationPanel
                     setIsAddQuestion={setIsAddQuestion}
@@ -53,7 +55,7 @@ const App = () => {
                 <Routes>
                   <Route path="/" element={<Root />}></Route>
                   <Route
-                    path="/questions"
+                    path="questions"
                     element={
                       <QuestionsProvider>
                         <QuestionsList />
@@ -71,9 +73,11 @@ const App = () => {
                   <Route
                     path="/addQuestion"
                     element={
-                      <QuestionsProvider>
-                        <AddQuestion setIsAddQuestion={setIsAddQuestion} />
-                      </QuestionsProvider>
+                      <TagsProvider>
+                        <QuestionsProvider>
+                          <AddQuestion setIsAddQuestion={setIsAddQuestion} />
+                        </QuestionsProvider>
+                      </TagsProvider>
                     }
                   />
                   <Route

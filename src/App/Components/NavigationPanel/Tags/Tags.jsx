@@ -7,16 +7,15 @@ const Tags = ({ className }) => {
   const [tags, setTags] = useState(null);
   const [elements, setElements] = useState(null);
   const { getTags } = useContext(TagsContext);
-
+  
   //get tags
   useEffect(() => {
     const getPopularTags = async () => {
       const tags = await getTags();
-      console.log("Tags:", tags);
       setTags(tags);
     };
     getPopularTags();
-  }, []);
+  }, [getTags]);
 
   // display tags
   useEffect(() => {

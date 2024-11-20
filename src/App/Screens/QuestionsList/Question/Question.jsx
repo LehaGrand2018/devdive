@@ -6,11 +6,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Question = ({ className, questionTitle, questionId, username, date, answersCount, votesCount, tags}) => {
-  const tagsToShow = tags.map((tag, index) => {
+  console.log()
+  const tagsToShow = tags.map(({id, name}) => {
+
     return (
-      <p key={index} className={styles.tag}>
+      <p key={id} className={styles.tag}>
         {" "}
-        {`#${tag}`}
+        {`#${name}`}
       </p>
     );
   });
@@ -43,10 +45,11 @@ Question.propTypes = {
   questionTitle: PropTypes.string,
   questionId: PropTypes.string,
   username: PropTypes.string,
-  date: PropTypes.number,
+  date: PropTypes.string,
   answersCount: PropTypes.number,
   votesCount: PropTypes.number,
   tags: PropTypes.array,
+  id: PropTypes.string,
 };
 
 export default Question;

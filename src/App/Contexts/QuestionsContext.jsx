@@ -4,25 +4,38 @@ import { URLContext } from "./URLContext";
 
 const QuestionsContext = createContext(null);
 
-const QuestionsProvider = ({ clidren }) => {
+const QuestionsProvider = ({ children }) => {
   const { QUESTIONS_URL } = useContext(URLContext);
 
   const object = {
-    createQuestions: async ({ name, description }) => {
-      console.log("AT: ", localStorage.getItem("access_token"));
-      await axios.question(
-        QUESTIONS_URL,
-        {
-          name,
-          description,
-        },
-        {
-          headers: {
-            Accept: "application/json",
-            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-          },
-        }
-      );
+    createQuestion: async (content, tags) => {
+      console.log("tags")
+      console.log(tags)
+      const body = {
+        content: content,
+        user_id: localStorage.getItem("user_id"),
+        tags: tags,
+      }
+      console.log("Body");
+      console.log(body)
+
+      try {
+        await axios.post(
+          `${QUESTIONS_URL}`,
+          body,
+          {
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+            },
+          }
+        );
+      } catch (error) {
+        console.error(error);
+        console.log(`Error code: ${error.response.status}`);
+        console.log(`Error statusText: ${error.response.statusText}`);
+      }
+     
     },
 
     getQuestions: async () => {
@@ -59,7 +72,7 @@ const QuestionsProvider = ({ clidren }) => {
 
     updateQuestion: async (questionId, content) => {
       try {
-        const res = await axios.question(
+        const res = await axios.post(
           `${QUESTIONS_URL}${questionId}`,
           { content },
           {
@@ -80,7 +93,7 @@ const QuestionsProvider = ({ clidren }) => {
 
     deleteQuestion: async (questionId) => {
       try {
-        const res = await axios.question(
+        const res = await axios.delete(
           `${QUESTIONS_URL}${questionId}`,
           null,
           {
@@ -102,7 +115,7 @@ const QuestionsProvider = ({ clidren }) => {
 
   return (
     <QuestionsContext.Provider value={object}>
-      {clidren}
+      {children}
     </QuestionsContext.Provider>
   );
 };

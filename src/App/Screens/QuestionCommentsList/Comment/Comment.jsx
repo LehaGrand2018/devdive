@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './Comment.module.scss'
 import Votes from './Votes/Votes';
 import PropTypes from 'prop-types';
@@ -9,7 +9,7 @@ const Comment = ({className, commentText, votesCount}) => {
 
     let username = 'neurotrier'
 
-    const [votes, setVotes] = useState(votesCount)
+    // const [votes, setVotes] = useState(votesCount)
 
     return (
         <div className={`${styles.comment} ${className}`}>

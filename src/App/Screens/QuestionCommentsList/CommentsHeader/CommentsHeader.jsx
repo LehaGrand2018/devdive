@@ -2,7 +2,7 @@ import {React} from 'react';
 import PropTypes from 'prop-types';
 import styles from './CommentsHeader.module.scss'
 import { addEnding } from '../../../Functions/Functions';
-import { useEffect } from 'react';
+
 
 
 
