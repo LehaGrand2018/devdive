@@ -33,13 +33,6 @@ const Header = observer(({ className, isProfile, isAddQuestion}) => {
     navigate("/addQuestion");
   }
 
-  // const {active} = useContext(MenuContext)
-  // console.log(active)
-
-  // const [username, setUsername] = useState("undefined");
-
-
-
 
   const [elements, setElements] = useState([]);
 

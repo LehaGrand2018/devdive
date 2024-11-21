@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import Input from "../Input/Input.jsx";
 import PasswordInput from "../PasswordInput/PasswordInput.jsx";
@@ -9,11 +9,11 @@ import styles from "./LoginForm.module.scss";
 // import buttonStyles from '../Button/Button.module.scss';
 
 import PropTypes from "prop-types";
-import { AuthContext } from "../../Contexts/AuthContext.jsx";
+import { signIn } from "../../Requests/AuthRequests.js";
 
 const LoginForm = ({ className, registrationFunc }) => {
 
-  const authCtx = useContext(AuthContext);
+
 
   const [email, setEmail] = useState(null);
   const [username, setUsername] = useState(null);
@@ -41,10 +41,10 @@ const LoginForm = ({ className, registrationFunc }) => {
     return { error, code };
   };
 
-  const signIn = async () => {
+  const signInButtonHandler = async () => {
     console.log("SignIn button function called");
     try {
-      await authCtx.signIn(email, password);
+      await signIn(email, password);
     } catch (error) {
       console.error(error)
       console.log(`Error code: ${error.response.status}`)
@@ -103,7 +103,7 @@ const LoginForm = ({ className, registrationFunc }) => {
         onClick={(e) => {
           e.preventDefault();
           console.log(email, password, username);
-          signIn(email, password);
+          signInButtonHandler();
         }}
       />
       <Button

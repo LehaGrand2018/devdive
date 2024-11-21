@@ -14,7 +14,7 @@ import GlobalStore from "./Stores/GlobalStore";
 import Root from "./Screens/Root/Root"
 import ErrorPage from "./Screens/ErrorPage/ErrorPage";
 import { MenuProvider } from "./Contexts/MenuContext";
-import { AuthProvider } from "./Contexts/AuthContext";
+
 import { URLProvider } from "./Contexts/URLContext";
 import { TagsProvider } from "./Contexts/TagsContext";
 import { UsersProvider } from "./Contexts/UsersContext";
@@ -32,7 +32,7 @@ const App = () => {
 
   return (
     <URLProvider>
-      <AuthProvider>
+
         <UsersProvider>
           <MenuProvider>
             <div className={styles.app}>
@@ -102,7 +102,7 @@ const App = () => {
             </div>
           </MenuProvider>
         </UsersProvider>
-      </AuthProvider>
+
     </URLProvider>
   );
 };

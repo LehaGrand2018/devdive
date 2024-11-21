@@ -1,14 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Button from "../Button/Button.jsx";
 import Input from "../Input/Input.jsx";
 import styles from "./RegistrationForm.module.scss";
 import PasswordInput from "../PasswordInput/PasswordInput.jsx";
 import PropTypes from "prop-types";
-import { AuthContext } from "../../Contexts/AuthContext.jsx";
-// import {} from "../../Requests/AuthRequests.js"
+import {signIn, signUp} from "../../Requests/AuthRequests.js"
 
 const RegistrationForm = ({ className, registrationFunc, loginFunc }) => {
-  const authCtx = useContext(AuthContext);
+
   const [email, setEmail] = useState(null);
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
@@ -58,12 +57,12 @@ const RegistrationForm = ({ className, registrationFunc, loginFunc }) => {
     }
   };
 
-  const signUp = async () => {
+  const signUpButtonHandler = async () => {
     
     console.log("SignUp button function called");
     try {
-      await authCtx.signUp(username, password, email);
-      authCtx.signIn(email, password);
+      await signUp(username, password, email);
+      signIn(email, password);
     } catch (error) {
       console.error(error)
       console.log(`Error code: ${error.response.status}`)
@@ -112,7 +111,7 @@ const RegistrationForm = ({ className, registrationFunc, loginFunc }) => {
         value="Регистрация"
         onClick={(e) => {
           e.preventDefault();
-          signUp();
+          signUpButtonHandler();
         }}
       />
       <Button

@@ -1,74 +1,68 @@
-import React, { useContext } from "react";
+import React from "react";
 import Input from "../../Components/Input/Input";
 import styles from "./AddQuestion.module.scss";
 import { useState } from "react";
 import Button from "../../Components/Button/Button";
 import { useEffect } from "react";
 import PropTypes from "prop-types";
-import { TagsContext} from "../../Contexts/TagsContext";
-import { QuestionsContext } from "../../Contexts/QuestionsContext";
+import { getTags } from "../../Requests/TagsRequests";
+import { createQuestion } from "../../Requests/QuestionsRequests";
 
 const AddQuestion = ({ className, setIsAddQuestion }) => {
   const [header, setHeader] = useState(null);
   const [description, setDescription] = useState(null);
   const [tags, setTags] = useState(null);
   const [tagsFromServer, setTagsFromServer] = useState(null);
-  const {getTags} = useContext(TagsContext);
-  const {createQuestion} = useContext(QuestionsContext);
 
-const getTagIds = () => {
-  if (tags) {
-    const tagsFromInput = tags.split(" ");
-    const tagIds = [];
-    for (const tag of tagsFromInput) {
-      const foundTag = tagsFromServer.tags.find((currTag) => currTag.name === tag);
-      if (foundTag) {
-        tagIds.push(foundTag.id);
+  const getTagIds = () => {
+    if (tags) {
+      const tagsFromInput = tags.split(" ");
+      const tagIds = [];
+      for (const tag of tagsFromInput) {
+        const foundTag = tagsFromServer.tags.find(
+          (currTag) => currTag.name === tag
+        );
+        if (foundTag) {
+          tagIds.push(foundTag.id);
+        }
+        //  else {
+        //   return `Error: tag "${tag}" not found.`;
+        // }
       }
-      //  else {
-      //   return `Error: tag "${tag}" not found.`;
-      // }
+      return tagIds;
     }
-    return tagIds;
-  }
-  return `Error: field is empty`;
-}
+    return `Error: field is empty`;
+  };
 
   // setup
   useEffect(() => {
-    console.log("setup")
+    console.log("setup");
     setIsAddQuestion("true");
 
-    const getPopularTags = async () => {
-      setTagsFromServer( await getTags());
-    };
-    getPopularTags();
+    (async () => {
+      setTagsFromServer(await getTags());
+    })();
 
     return () => {
       setIsAddQuestion("false");
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [setIsAddQuestion]);
 
-  
+  // useEffect(() => {
 
-  useEffect(() => {
-
-  }, [header, description, tags])
-
-
+  // }, [header, description, tags]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(e);
-    console.info("Header:", header)
-    console.info("Description:", description)
-    console.info("Tags:", tags)
-    const tagsForHeaders = getTagIds()
-    if(tagsForHeaders){
+    console.info("Header:", header);
+    console.info("Description:", description);
+    console.info("Tags:", tags);
+    const tagsForHeaders = getTagIds();
+    if (tagsForHeaders) {
       console.log("TagsForHeaders:", tagsForHeaders);
-      const res = createQuestion(header, tagsForHeaders)
-      console.log(res)
+      const res = createQuestion(header, tagsForHeaders);
+      console.log(res);
     }
   };
 

@@ -1,21 +1,19 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Tags.module.scss";
 import PropTypes from "prop-types";
-import { TagsContext } from "../../../Contexts/TagsContext";
+import { getTags } from "../../../Requests/TagsRequests";
 
 const Tags = ({ className }) => {
   const [tags, setTags] = useState(null);
   const [elements, setElements] = useState(null);
-  const { getTags } = useContext(TagsContext);
-  
+
   //get tags
   useEffect(() => {
-    const getPopularTags = async () => {
+    (async () => {
       const tags = await getTags();
       setTags(tags);
-    };
-    getPopularTags();
-  }, [getTags]);
+    })();
+  }, []);
 
   // display tags
   useEffect(() => {

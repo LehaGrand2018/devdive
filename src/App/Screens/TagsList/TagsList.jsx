@@ -1,12 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./TagsList.module.scss";
 import Tag from "./Tag/Tag";
 import TagsHeader from "./TagsHeader/TagsHeader";
-import { TagsContext } from "../../Contexts/TagsContext";
 import PropTypes from "prop-types";
+import { getTags } from "../../Requests/TagsRequests";
 
-const TagsList = ({className}) => {
-  const { getTags } = useContext(TagsContext);
+const TagsList = ({ className }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [tagsObj, setTagsObj] = useState(null);
   const [elements, setElements] = useState(null);
@@ -55,6 +54,6 @@ const TagsList = ({className}) => {
 
 TagsList.propTypes = {
   className: PropTypes.string,
-}
+};
 
 export default TagsList;
