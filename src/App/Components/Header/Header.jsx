@@ -8,14 +8,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import GlobalStore from "../../Stores/GlobalStore";
 import { MenuContext } from "../../Contexts/MenuContext";
-import { AuthContext } from "../../Contexts/AuthContext";
-import { UsersContext } from "../../Contexts/UsersContext";
+import { signOut } from "../../Requests/AuthRequests";
+
 
 
 const Header = observer(({ className, isProfile, isAddQuestion}) => {
 
   const {active} = useContext(MenuContext);
-  const {signOut} = useContext(AuthContext);
+
   const {isLoggedIn, username} = GlobalStore;
   
   const navigate = useNavigate();
@@ -37,11 +37,9 @@ const Header = observer(({ className, isProfile, isAddQuestion}) => {
   // console.log(active)
 
   // const [username, setUsername] = useState("undefined");
-  const {getUser} = useContext(UsersContext);
 
-  useEffect(()=>{
-  
-  }, [getUser])
+
+
 
   const [elements, setElements] = useState([]);
 
@@ -95,7 +93,7 @@ const Header = observer(({ className, isProfile, isAddQuestion}) => {
     }
     setElements(elements);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn, isProfile, isAddQuestion, username]);
+  }, [isLoggedIn, isProfile, isAddQuestion]);
 
   return (
     
