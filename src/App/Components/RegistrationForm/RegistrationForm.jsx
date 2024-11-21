@@ -5,6 +5,7 @@ import styles from "./RegistrationForm.module.scss";
 import PasswordInput from "../PasswordInput/PasswordInput.jsx";
 import PropTypes from "prop-types";
 import { AuthContext } from "../../Contexts/AuthContext.jsx";
+// import {} from "../../Requests/AuthRequests.js"
 
 const RegistrationForm = ({ className, registrationFunc, loginFunc }) => {
   const authCtx = useContext(AuthContext);

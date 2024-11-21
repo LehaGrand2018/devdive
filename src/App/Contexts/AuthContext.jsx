@@ -6,6 +6,7 @@ import GlobalStore from "../Stores/GlobalStore";
 
 const AuthContext = createContext(null);
 
+
 const AuthProvider = ({ children }) => {
   const { setIsLoggedIn } = GlobalStore;
   const { SIGN_IN_URL, SIGN_UP_URL, REFRESH_TOKEN_URL } =

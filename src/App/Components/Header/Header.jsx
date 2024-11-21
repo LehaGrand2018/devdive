@@ -9,14 +9,14 @@ import { observer } from "mobx-react-lite";
 import GlobalStore from "../../Stores/GlobalStore";
 import { MenuContext } from "../../Contexts/MenuContext";
 import { AuthContext } from "../../Contexts/AuthContext";
-import { UsersContext } from "../../Contexts/UserContext";
+import { UsersContext } from "../../Contexts/UsersContext";
 
 
 const Header = observer(({ className, isProfile, isAddQuestion}) => {
 
   const {active} = useContext(MenuContext);
   const {signOut} = useContext(AuthContext);
-  const {isLoggedIn,} = GlobalStore;
+  const {isLoggedIn, username} = GlobalStore;
   
   const navigate = useNavigate();
   
@@ -36,15 +36,11 @@ const Header = observer(({ className, isProfile, isAddQuestion}) => {
   // const {active} = useContext(MenuContext)
   // console.log(active)
 
-  const [username, setUsername] = useState("undefined");
+  // const [username, setUsername] = useState("undefined");
   const {getUser} = useContext(UsersContext);
 
   useEffect(()=>{
-    const fetchUser = async () => {
-      const user = await getUser(localStorage.getItem("user_id"))
-      setUsername(user.user.username)
-    }
-    fetchUser();
+  
   }, [getUser])
 
   const [elements, setElements] = useState([]);

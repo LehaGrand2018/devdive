@@ -7,7 +7,7 @@ import Since from "./Since/Since";
 import TopTags from "./TopTags/TopTags";
 import TopQuestions from "./TopQuestions/TopQuestions";
 import PropTypes from "prop-types";
-import { UsersContext } from "../../Contexts/UserContext";
+import { UsersContext } from "../../Contexts/UsersContext";
 
 const Profile = ({ className, setIsProfile }) => {
 

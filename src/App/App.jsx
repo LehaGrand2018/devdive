@@ -17,7 +17,7 @@ import { MenuProvider } from "./Contexts/MenuContext";
 import { AuthProvider } from "./Contexts/AuthContext";
 import { URLProvider } from "./Contexts/URLContext";
 import { TagsProvider } from "./Contexts/TagsContext";
-import { UsersProvider } from "./Contexts/UserContext";
+import { UsersProvider } from "./Contexts/UsersContext";
 import { QuestionsProvider } from "./Contexts/QuestionsContext";
 
 
