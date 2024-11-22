@@ -2,8 +2,9 @@ import axios from "axios";
 import qs from "qs";
 import { SIGN_IN_URL, SIGN_UP_URL, REFRESH_TOKEN_URL } from "../Constants/URLs";
 import GlobalStore from "../Stores/GlobalStore";
+import {getUser} from "../Requests/UsersRequests"
+const { setIsLoggedIn, setUsername } = GlobalStore;
 
-const { setIsLoggedIn } = GlobalStore;
 
 export const signIn = async (email, password) => {
   const res = await axios.post(
@@ -23,6 +24,11 @@ export const signIn = async (email, password) => {
   localStorage.setItem("token_type", data.token_type);
   localStorage.setItem("user_id", data.user_id);
   setIsLoggedIn("true");
+  (async () => {
+    const user = await getUser(data.user_id)
+    console.info("User:",user.user.username)
+    setUsername(user.user.username)
+  })()
 };
 
 export const signUp = async (username, password, email) => {

@@ -7,12 +7,15 @@ import { useEffect } from "react";
 import PropTypes from "prop-types";
 import { getTags } from "../../Requests/TagsRequests";
 import { createQuestion } from "../../Requests/QuestionsRequests";
+import { useNavigate } from "react-router-dom";
 
 const AddQuestion = ({ className, setIsAddQuestion }) => {
   const [header, setHeader] = useState(null);
   const [description, setDescription] = useState(null);
   const [tags, setTags] = useState(null);
   const [tagsFromServer, setTagsFromServer] = useState(null);
+
+  const navigate = useNavigate();
 
   const getTagIds = () => {
     if (tags) {
@@ -61,8 +64,28 @@ const AddQuestion = ({ className, setIsAddQuestion }) => {
     const tagsForHeaders = getTagIds();
     if (tagsForHeaders) {
       console.log("TagsForHeaders:", tagsForHeaders);
-      const res = createQuestion(header, tagsForHeaders);
-      console.log(res);
+      (async () => {
+        try {
+          const res = await createQuestion(header, tagsForHeaders);
+          console.log("Response", res);
+          navigate("/questions");
+        } catch (error) {
+          console.error(error);
+          console.log(`Error code: ${error.response.status}`);
+          console.log(`Error statusText: ${error.response.statusText}`);
+        }
+      })();
+      // const res = createQuestion(header, tagsForHeaders);
+      // console.log("Response", res);
+      // res
+      //   .then(() => {
+      //     navigate("/questions");
+      //   })
+      //   .catch((error) => {
+      //     console.error(error);
+      //     console.log(`Error code: ${error.response.status}`);
+      //     console.log(`Error statusText: ${error.response.statusText}`);
+      //   });
     }
   };
 

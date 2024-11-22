@@ -9,6 +9,7 @@ import { observer } from "mobx-react-lite";
 import GlobalStore from "../../Stores/GlobalStore";
 import { MenuContext } from "../../Contexts/MenuContext";
 import { signOut } from "../../Requests/AuthRequests";
+import { getUser } from "../../Requests/UsersRequests";
 
 
 
@@ -16,7 +17,7 @@ const Header = observer(({ className, isProfile, isAddQuestion}) => {
 
   const {active} = useContext(MenuContext);
 
-  const {isLoggedIn, username} = GlobalStore;
+  const {isLoggedIn, username, setUsername} = GlobalStore;
   
   const navigate = useNavigate();
   
@@ -35,6 +36,15 @@ const Header = observer(({ className, isProfile, isAddQuestion}) => {
 
 
   const [elements, setElements] = useState([]);
+  // setup header
+  useEffect(()=>{
+    if (isLoggedIn === "true") {
+      (async()=>{
+        const user = await getUser(localStorage.getItem("user_id"))
+        setUsername(user.user.username)
+      })()
+    }
+  },[isLoggedIn, setUsername])
 
   useEffect(() => {
     let elements = [];
@@ -86,7 +96,7 @@ const Header = observer(({ className, isProfile, isAddQuestion}) => {
     }
     setElements(elements);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn, isProfile, isAddQuestion]);
+  }, [isLoggedIn, isProfile, isAddQuestion, username]);
 
   return (
     
