@@ -19,7 +19,7 @@ const Answer = ({className, content, user, votesCount, date}) => {
                 className={styles.answerFooter}
                 userPhoto={null}
                 username={user.username}
-                answerDate={Date.now()}
+                answerDate={Date.now()/*date*/}
             ></AnswerFooter>
         </div>
     );

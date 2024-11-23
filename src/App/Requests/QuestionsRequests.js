@@ -2,28 +2,24 @@ import axios from "axios";
 import { QUESTIONS_URL } from "../Constants/URLs";
 
 export const createQuestion = async (content, tags) => {
-  // console.log("tags");
-  // console.log(tags);
   const body = {
     content: content,
     user_id: localStorage.getItem("user_id"),
     tags: tags,
   };
-  // console.log("Body");
-  // console.log(body);
 
-  // try {
+  try {
     await axios.post(`${QUESTIONS_URL}`, body, {
       headers: {
         Accept: "application/json",
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
     });
-  // } catch (error) {
-  //   console.error(error);
-  //   console.log(`Error code: ${error.response.status}`);
-  //   console.log(`Error statusText: ${error.response.statusText}`);
-  // }
+  } catch (error) {
+    console.error(error);
+    console.log(`Error code: ${error.response.status}`);
+    console.log(`Error statusText: ${error.response.statusText}`);
+  }
 };
 
 export const getQuestions = async () => {

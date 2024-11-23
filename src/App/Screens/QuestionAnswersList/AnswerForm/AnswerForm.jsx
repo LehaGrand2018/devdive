@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import { createAnswer } from "../../../Requests/QuestionAnswersRequests";
 import { getQuestion } from "../../../Requests/QuestionsRequests";
 
-
 const AnswerForm = ({ className, questionId, setQuestion }) => {
   const [inputValue, setInputValue] = useState(null);
   const handleSubmit = (e) => {
@@ -14,7 +13,7 @@ const AnswerForm = ({ className, questionId, setQuestion }) => {
     console.log("You input:", inputValue);
     (async () => {
       const res = await createAnswer(inputValue, questionId);
-      console.log("RES Answer:", res)
+      console.log("RES Answer:", res);
       const question = await getQuestion(questionId);
       setQuestion(question);
     })();
@@ -30,10 +29,7 @@ const AnswerForm = ({ className, questionId, setQuestion }) => {
         id="answerInput"
         onChange={(e) => setInputValue(e.target.value)}
       />
-      <Button
-        className={styles.formButton}
-        value="Задать вопрос"
-      ></Button>
+      <Button className={styles.formButton} value="Задать вопрос"></Button>
     </form>
   );
 };
@@ -41,5 +37,6 @@ const AnswerForm = ({ className, questionId, setQuestion }) => {
 AnswerForm.propTypes = {
   className: PropTypes.string,
   questionId: PropTypes.string,
-}
+  setQuestion: PropTypes.func,
+};
 export default AnswerForm;

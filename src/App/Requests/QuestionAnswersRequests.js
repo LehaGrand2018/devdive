@@ -17,7 +17,7 @@ export const createAnswer = async (content, question_id) => {
         },
       }
     );
-    return res.data
+    return res.data;
   } catch (error) {
     console.error(error);
     console.log(`Error code: ${error.response.status}`);

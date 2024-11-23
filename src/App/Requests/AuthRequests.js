@@ -2,9 +2,8 @@ import axios from "axios";
 import qs from "qs";
 import { SIGN_IN_URL, SIGN_UP_URL, REFRESH_TOKEN_URL } from "../Constants/URLs";
 import GlobalStore from "../Stores/GlobalStore";
-import {getUser} from "../Requests/UsersRequests"
+import { getUser } from "../Requests/UsersRequests";
 const { setIsLoggedIn, setUsername } = GlobalStore;
-
 
 export const signIn = async (email, password) => {
   const res = await axios.post(
@@ -25,11 +24,12 @@ export const signIn = async (email, password) => {
   localStorage.setItem("user_id", data.user_id);
   setIsLoggedIn("true");
   localStorage.setItem("token_refreshed_at", Date.now());
+
   (async () => {
-    const user = await getUser(data.user_id)
-    console.info("User:",user.user.username)
-    setUsername(user.user.username)
-  })()
+    const user = await getUser(data.user_id);
+    console.info("User:", user.user.username);
+    setUsername(user.user.username);
+  })();
 };
 
 export const signUp = async (username, password, email) => {
@@ -65,6 +65,6 @@ export const signOut = () => {
   localStorage.removeItem("refresh_token");
   localStorage.removeItem("token_type");
   localStorage.removeItem("user_id");
-  localStorage.removeItem("token_refreshed_at")
+  localStorage.removeItem("token_refreshed_at");
   setIsLoggedIn("false");
 };
