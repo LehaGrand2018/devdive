@@ -25,9 +25,9 @@ const NavigationPanel = observer(({ className}) => {
       setButton(
         <NavLink
           className={({ isActive }) =>
-            `${styles.PanelButton} ${isActive ? styles.active : ""}`
+            `${styles.PanelButton}`
           }
-          to="/questions/"
+          to="/questions"
         >
           Мои вопросы
         </NavLink>
@@ -41,7 +41,8 @@ const NavigationPanel = observer(({ className}) => {
     <div className={`${styles.NavigationPanel} ${className} ${isVisible ? styles.visible : ""}`}>
       <NavLink
         className={({ isActive }) =>
-          `${styles.PanelButton} ${isActive ? styles.active : ""}`
+          `${styles.PanelButton}`
+          // `${styles.PanelButton} ${isActive ? styles.active : ""}`
         }
         to="/"
       >
@@ -52,7 +53,7 @@ const NavigationPanel = observer(({ className}) => {
 
       <NavLink
         className={({ isActive }) =>
-          `${styles.PanelButton} ${isActive ? styles.active : ""}`
+          `${styles.PanelButton}`
         }
         to="/tags"
       >

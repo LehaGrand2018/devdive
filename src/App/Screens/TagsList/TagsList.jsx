@@ -22,7 +22,7 @@ const TagsList = ({ className }) => {
   // display tags
   useEffect(() => {
     if (tagsObj) {
-      // Фильтрация тегов на основе поиска
+
       const filteredTags = tagsObj.tags.filter((tag) => {
         return tag.name.toLowerCase().includes(searchTerm.toLowerCase());
       });

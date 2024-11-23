@@ -1,6 +1,6 @@
 import styles from "./App.module.scss";
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Header from "./Components/Header/Header";
 import NavigationPanel from "./Components/NavigationPanel/NavigationPanel";
@@ -8,18 +8,31 @@ import QuestionsList from "./Screens/QuestionsList/QuestionsList";
 import Profile from "./Screens/Profile/Profile";
 import AddQuestion from "./Screens/AddQuestion/AddQuestion";
 import TagsList from "./Screens/TagsList/TagsList";
-import QuestionCommentsList from "./Screens/QuestionCommentsList/QuestionCommentsList";
+import QuestionAnswersList from "./Screens/QuestionAnswersList/QuestionAnswersList";
 import AutorizationPage from "./Screens/AutorizationPage/AutorizationPage";
 import GlobalStore from "./Stores/GlobalStore";
 import Root from "./Screens/Root/Root";
 import ErrorPage from "./Screens/ErrorPage/ErrorPage";
 import { MenuProvider } from "./Contexts/MenuContext";
+import { refreshToken } from "./Requests/AuthRequests";
 
 const App = () => {
   const [isProfile, setIsProfile] = useState("false");
   const [isAddQuestion, setIsAddQuestion] = useState("false");
-
   const { isLoggedIn } = GlobalStore;
+
+  useEffect(()=>{
+    if (isLoggedIn === "true") {
+      const dateLS = Number.parseInt(localStorage.getItem("token_refreshed_at"))
+      const dateNow = Date.now()
+      console.info("Date from local storage:", dateLS)
+      console.info("Date now:", dateNow)
+      if (dateNow > dateLS + 1700000) {
+        refreshToken();
+      }
+    }
+  }, [isLoggedIn])
+  
 
   return (
     <MenuProvider>
@@ -41,7 +54,7 @@ const App = () => {
             <Route path="questions" element={<QuestionsList />} />
             <Route
               path="questions/:questionId"
-              element={<QuestionCommentsList />}
+              element={<QuestionAnswersList />}
             />
             <Route
               path="/addQuestion"

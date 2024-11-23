@@ -1,13 +1,12 @@
-.comments{
+.answers{
     padding-top: 20px;
-    margin: 0 auto;
+    padding-right: 45px;
     max-height: calc(100vh - 50px); 
     overflow-y: auto;
 
-    .commentsHeader{
-        margin: 0 auto;
-        width: 990px;
-        height: 110px;
+    .answersHeader{
+        width: 950px;
+        min-height: 80px;
         // width: 61.88rem;
         // height: 6.81rem;
     }

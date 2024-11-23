@@ -16,4 +16,5 @@ export const REFRESH_TOKEN_URL= `${BASE_URL}/api/v1/auth/refresh-token/`;
 export const TAGS_URL= `${BASE_URL}/api/v1/tags/`;
 export const USERS_URL= `${BASE_URL}/api/v1/users/`;
 export const QUESTIONS_URL= `${BASE_URL}/api/v1/questions/`;
+export const ANSWERS_URL= `${BASE_URL}/api/v1/answers/`;
 

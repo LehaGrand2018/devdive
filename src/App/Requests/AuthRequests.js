@@ -24,6 +24,7 @@ export const signIn = async (email, password) => {
   localStorage.setItem("token_type", data.token_type);
   localStorage.setItem("user_id", data.user_id);
   setIsLoggedIn("true");
+  localStorage.setItem("token_refreshed_at", Date.now());
   (async () => {
     const user = await getUser(data.user_id)
     console.info("User:",user.user.username)
@@ -56,6 +57,7 @@ export const refreshToken = async () => {
   localStorage.setItem("refresh_token", data.refresh_token);
   localStorage.setItem("token_type", data.token_type);
   setIsLoggedIn("true");
+  localStorage.setItem("token_refreshed_at", Date.now());
 };
 
 export const signOut = () => {
@@ -63,5 +65,6 @@ export const signOut = () => {
   localStorage.removeItem("refresh_token");
   localStorage.removeItem("token_type");
   localStorage.removeItem("user_id");
+  localStorage.removeItem("token_refreshed_at")
   setIsLoggedIn("false");
 };
