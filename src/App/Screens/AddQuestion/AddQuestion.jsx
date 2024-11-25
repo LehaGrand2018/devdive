@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { getTags } from "../../Requests/TagsRequests";
 import { createQuestion } from "../../Requests/QuestionsRequests";
 import { useNavigate } from "react-router-dom";
+import { createAnswer } from "../../Requests/QuestionAnswersRequests";
 
 const AddQuestion = ({ className, setIsAddQuestion }) => {
   const [header, setHeader] = useState(null);
@@ -66,8 +67,10 @@ const AddQuestion = ({ className, setIsAddQuestion }) => {
       console.log("TagsForHeaders:", tagsForHeaders);
       (async () => {
         try {
-          const res = await createQuestion(header, tagsForHeaders);
-          console.log("Response", res);
+          let question = await createQuestion(header, tagsForHeaders);
+          console.log("qRes", question);
+          const answer = await createAnswer(description, question.id);
+          console.log("ansRes", answer);
           navigate("/questions");
         } catch (error) {
           console.error(error);

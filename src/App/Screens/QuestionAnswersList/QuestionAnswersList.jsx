@@ -33,23 +33,24 @@ const QuestionAnswersList = ({ className }) => {
   }, [questionId]);
 
   useEffect(() => {
-    if (answers) {
-      setElements(
-        answers.map(({ id, content, user, upvotes, downvotes, created_at }) => {
-          return (
-            <Answer
-              key={id}
-              className={styles.answer}
-              content={content}
-              votesCount={upvotes.length - downvotes.length}
-              user={user}
-              ƒ
-              date={created_at}
-            ></Answer>
-          );
-        })
-      );
-    }
+      if (answers) {
+        setElements(
+          answers.map(({ id, content, user, upvotes, downvotes, created_at }) => {
+            return (
+              <Answer
+                key={id}
+                sourceId={id}
+                className={styles.answer}
+                content={content}
+                votesCount={upvotes.length - downvotes.length}
+                user={user}
+                
+                date={created_at}
+              ></Answer>
+            );
+          })
+        );
+      }
   }, [answers, question]);
 
   return (

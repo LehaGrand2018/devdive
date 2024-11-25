@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import AnswerFooter from './AnswerFooter/AnswerFooter';
 
 
-const Answer = ({className, content, user, votesCount, date}) => {
+const Answer = ({className, content, sourceId, user, votesCount, date}) => {
 
 
 
@@ -13,7 +13,7 @@ const Answer = ({className, content, user, votesCount, date}) => {
 
     return (
         <div className={`${styles.answer} ${className}`}>
-            <Votes votesCount={votesCount}></Votes>
+            <Votes sourceId={sourceId} votesCount={votesCount}></Votes>
             <p className={styles.answerText}>{content}</p>
             <AnswerFooter
                 className={styles.answerFooter}

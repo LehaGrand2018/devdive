@@ -1,15 +1,13 @@
 import axios from "axios";
-import { QUESTIONS_URL } from "../Constants/URLs";
+import { VOTES_URL } from "../Constants/URLs";
 
-export const createQuestion = async (content, tags) => {
-  const body = {
-    content: content,
-    user_id: localStorage.getItem("user_id"),
-    tags: tags,
-  };
-  
+export const createUpvote = async (source_id) => {
   try {
-    const res = await axios.post(`${QUESTIONS_URL}`, body, {
+    const res = await axios.post(`${VOTES_URL}upvote/`,
+      {
+        source_id,
+        user_id: localStorage.getItem("user_id")
+      }, {
       headers: {
         Accept: "application/json",
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
@@ -20,53 +18,34 @@ export const createQuestion = async (content, tags) => {
     console.error(error);
     console.log(`Error code: ${error.response.status}`);
     console.log(`Error statusText: ${error.response.statusText}`);
+    throw new Error(error);
+    
   }
 };
 
-export const getQuestions = async () => {
-  try {
-    const res = await axios.get(`${QUESTIONS_URL}`, null, {
-      headers: {
-        Accept: "application/json",
-      },
-    });
-    console.log(res.data);
-    return res.data;
-  } catch (error) {
-    console.error(error);
-    console.log(`Error code: ${error.response.status}`);
-    console.log(`Error statusText: ${error.response.statusText}`);
-  }
-};
+export const createDownvote = async (source_id) => {
 
-export const getQuestion = async (questionId) => {
-  try {
-    const res = await axios.get(`${QUESTIONS_URL}${questionId}`, null, {
-      headers: {
-        Accept: "application/json",
-      },
-    });
-    console.log(res.data);
-    return res.data;
-  } catch (error) {
-    console.error(error);
-    console.log(`Error code: ${error.response.status}`);
-    console.log(`Error statusText: ${error.response.statusText}`);
-  }
-};
-
-export const updateQuestion = async (questionId, content) => {
-  try {
-    const res = await axios.post(
-      `${QUESTIONS_URL}${questionId}`,
-      { content },
+    const res = await axios.post(`${VOTES_URL}downvote/`,
       {
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-      }
-    );
+        source_id,
+        user_id: localStorage.getItem("user_id")
+      }, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    });
+    return res.data;
+
+};
+
+export const getUpvote = async (source_id) => {
+  try {
+    const res = await axios.get(`${VOTES_URL}upvote/${source_id}`, null, {
+      headers: {
+        Accept: "application/json",
+      },
+    });
     console.log(res.data);
     return res.data;
   } catch (error) {
@@ -76,9 +55,42 @@ export const updateQuestion = async (questionId, content) => {
   }
 };
 
-export const deleteQuestion = async (questionId) => {
+export const getDownvote = async (source_id) => {
   try {
-    const res = await axios.delete(`${QUESTIONS_URL}${questionId}`, null, {
+    const res = await axios.get(`${VOTES_URL}downvote/${source_id}`, null, {
+      headers: {
+        Accept: "application/json",
+      },
+    });
+    console.log(res.data);
+    return res.data;
+  } catch (error) {
+    console.error(error);
+    console.log(`Error code: ${error.response.status}`);
+    console.log(`Error statusText: ${error.response.statusText}`);
+  }
+};
+
+export const deleteUpvotes = async (source_id) => {
+  try {
+    const res = await axios.delete(`${VOTES_URL}upvotes/${source_id}`, null, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    });
+    console.log(res.data);
+    return res.data;
+  } catch (error) {
+    console.error(error);
+    console.log(`Error code: ${error.response.status}`);
+    console.log(`Error statusText: ${error.response.statusText}`);
+  }
+};
+
+export const deleteDownvotes = async (source_id) => {
+  try {
+    const res = await axios.delete(`${VOTES_URL}downvotes/${source_id}`, null, {
       headers: {
         Accept: "application/json",
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
