@@ -1,4 +1,5 @@
 .question {
+  position: relative;
   width: 60.94rem;
   height: 13.88rem;
   display: flex;
@@ -22,12 +23,13 @@
     font-size: 1rem;
     letter-spacing: -0.02em;
     color: #545f71;
-
+    position: absolute;
+    bottom: 10px;
+    left: 25px;
+    
     .tag {
       display: inline-block;
       margin-right: 10px;
     }
   }
-
-
 }

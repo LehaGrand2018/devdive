@@ -27,9 +27,6 @@ const Question = ({ className, questionTitle, questionId, user, date, answersCou
         className={styles.questionInfo}
         user={user}
         date={date}
-        answersCount={answersCount}
-        votesCount={votesCount}
-        rating={rating}
       ></QuestionInfo>
       <h3
         className={styles.questionTitle}
@@ -49,9 +46,6 @@ Question.propTypes = {
   questionId: PropTypes.string,
   user: PropTypes.object,
   date: PropTypes.string,
-  answersCount: PropTypes.number,
-  votesCount: PropTypes.number,
-  rating: PropTypes.number,
   tags: PropTypes.array,
   id: PropTypes.string,
 };

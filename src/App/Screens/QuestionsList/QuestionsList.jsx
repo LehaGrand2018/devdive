@@ -28,9 +28,7 @@ const QuestionsList = ({ className }) => {
               user={question.user}
               userPhoto={null}
               date={question.created_at}
-              answersCount={0 /*question.answers.length*/}
-              votesCount={0 /*question.votes.length*/}
-              rating={0 /*question.votes.length*/}
+              rating={0 /*question.upvotes - question.downvotes*/}
               tags={question.tags}
               questionId={question.id}
             ></Question>
