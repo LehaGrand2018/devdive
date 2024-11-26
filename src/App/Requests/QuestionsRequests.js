@@ -7,7 +7,7 @@ export const createQuestion = async (content, tags) => {
     user_id: localStorage.getItem("user_id"),
     tags: tags,
   };
-  
+
   try {
     const res = await axios.post(`${QUESTIONS_URL}`, body, {
       headers: {
@@ -23,9 +23,32 @@ export const createQuestion = async (content, tags) => {
   }
 };
 
-export const getQuestions = async () => {
+export const getQuestions = async (params) => {
+
+  let queryURL = `${QUESTIONS_URL}?`;
+  
+  if (params) {
+    if (params.tags && Array.isArray(params.tags) && params.tags.length > 0) {
+      params.tags.forEach((tag) => {
+        if (tag) {
+          queryURL += `tags=${encodeURIComponent(tag)}&`;
+        }
+      });
+    }
+    if (params.content) {
+      queryURL += `content=${encodeURIComponent(params.content)}&`;
+    }
+
+    if (params.user_id) {
+      queryURL += `user_id=${encodeURIComponent(params.user_id)}&`;
+    }
+  }
+
+  queryURL = queryURL.endsWith("&") ? queryURL.slice(0, -1) : queryURL;
+
+  console.log("Final query URL:", queryURL);
   try {
-    const res = await axios.get(`${QUESTIONS_URL}`, null, {
+    const res = await axios.get(queryURL, null, {
       headers: {
         Accept: "application/json",
       },

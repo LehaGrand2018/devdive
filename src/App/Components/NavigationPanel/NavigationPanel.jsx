@@ -27,7 +27,7 @@ const NavigationPanel = observer(({ className}) => {
           className={({ isActive }) =>
             `${styles.PanelButton}`
           }
-          to="/questions"
+          to={`/questions?user_id=${localStorage.getItem("user_id")}`}
         >
           Мои вопросы
         </NavLink>
