@@ -2,7 +2,7 @@ import axios from "axios";
 import { VOTES_URL } from "../Constants/URLs";
 
 export const createUpvote = async (source_id) => {
-  try {
+
     const res = await axios.post(`${VOTES_URL}upvote/`,
       {
         source_id,
@@ -14,13 +14,6 @@ export const createUpvote = async (source_id) => {
       },
     });
     return res.data;
-  } catch (error) {
-    console.error(error);
-    console.log(`Error code: ${error.response.status}`);
-    console.log(`Error statusText: ${error.response.statusText}`);
-    throw new Error(error);
-    
-  }
 };
 
 export const createDownvote = async (source_id) => {

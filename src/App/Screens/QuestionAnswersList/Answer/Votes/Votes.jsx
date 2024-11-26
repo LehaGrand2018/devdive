@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import minusIcon from "./minusIcon.svg";
 import plusIcon from "./plusIcon.svg";
-
 import { createUpvote, createDownvote } from "../../../../Requests/VotesRequests";
 import styles from "./Votes.module.scss";
 
@@ -10,39 +9,37 @@ import styles from "./Votes.module.scss";
 const Votes = ({ className, votesCount, sourceId }) => {
   const [votes, setVotes] = useState(votesCount);
 
-  const increaseVotes = () => {
-    try {
-      const res = createUpvote(sourceId);
-      console.log("SourceID:", sourceId);
-      if (res) {
-        setVotes(votes + 1);
-        console.log("Error!");
+  const increaseVotes = async () => {
+      try {
+        const res = await createUpvote(sourceId);
+        console.log("SourceID:", sourceId);
+        if (res) {
+          setVotes(votes + 1);
+          console.log("Error!");
+        }
+      } catch (error) {
+        console.error(error);
+        console.log(`Error code: ${error.response.status}`);
+        console.log(`Error statusText: ${error.response.statusText}`);
+        if (error.response.status === 400) {
+          
+        }
       }
-    } catch (error) {
-      console.error(error);
-      console.log(`Error code: ${error.response.status}`);
-      console.log(`Error statusText: ${error.response.statusText}`);
-      if (error.response.status === 400) {
-
-      }
-    }
   };
-  const decreaseVotes = () => {
-    try {
-      (async()=>{
+
+  const decreaseVotes = async () => {
+      try {
         const res = await createDownvote(sourceId);
         console.log(res)
         setVotes(votes-1);
-      })()
-    } catch (error) {
-      console.error(error);
-      console.log(`Error code: ${error.response.status}`);
-      console.log(`Error statusText: ${error.response.statusText}`);
-      if (error.response.status === 400) {
-        
+      } catch (error) {
+        console.error(error);
+        console.log(`Error code: ${error.response.status}`);
+        console.log(`Error statusText: ${error.response.statusText}`);
+        if (error.response.status === 400) {
+          
+        }
       }
-    }
-
   };
 
   return (
