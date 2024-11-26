@@ -5,16 +5,14 @@ import PropTypes from "prop-types";
 import { getQuestions } from "../../Requests/QuestionsRequests";
 import { useLocation } from "react-router-dom";
 
-const QuestionsList = ({ className, tags }) => {
+const QuestionsList = ({ className }) => {
   const [questions, setQuestions] = useState(null);
   const [questionsToDisplay, setQuestionsToDisplay] = useState(null);
 
   const location = useLocation();
-  console.log("Location:", location.search);
   const params = new URLSearchParams(location.search);
   let paramsObj = {};
   params.forEach((param, key) => {
-    console.log("Param:", param, "Key:", key);
     if (key === "tags") {
       if (!paramsObj[key]) {
         paramsObj[key] = [];
@@ -24,7 +22,6 @@ const QuestionsList = ({ className, tags }) => {
     }
     paramsObj[key] = param;
   });
-  console.log("FOREACH params:", paramsObj);
   //load questions
   useEffect(() => {
     (async () => {

@@ -22,6 +22,9 @@ ul, ul li, li {
     letter-spacing: -0.02em;
     color: #545f71;
 
+    .tag{
+      cursor: pointer;
+    }
   }
 
   /* .Tag:first-child{
