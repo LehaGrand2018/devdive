@@ -62,7 +62,7 @@ const App = () => {
             />
             <Route path="/tags" element={<TagsList />} />
             <Route
-              path="/profile"
+              path="/profile/:userId"
               element={<Profile setIsProfile={setIsProfile} />}
             ></Route>
             <Route path="/autorization" element={<AutorizationPage />}></Route>

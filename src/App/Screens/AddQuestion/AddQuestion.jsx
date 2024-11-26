@@ -24,7 +24,7 @@ const AddQuestion = ({ className, setIsAddQuestion }) => {
       const tagIds = [];
       for (const tag of tagsFromInput) {
         const foundTag = tagsFromServer.tags.find(
-          (currTag) => currTag.name === tag
+          (currTag) => currTag.name.toLowerCase() === tag.toLowerCase()
         );
         if (foundTag) {
           tagIds.push(foundTag.id);
@@ -78,17 +78,6 @@ const AddQuestion = ({ className, setIsAddQuestion }) => {
           console.log(`Error statusText: ${error.response.statusText}`);
         }
       })();
-      // const res = createQuestion(header, tagsForHeaders);
-      // console.log("Response", res);
-      // res
-      //   .then(() => {
-      //     navigate("/questions");
-      //   })
-      //   .catch((error) => {
-      //     console.error(error);
-      //     console.log(`Error code: ${error.response.status}`);
-      //     console.log(`Error statusText: ${error.response.statusText}`);
-      //   });
     }
   };
 

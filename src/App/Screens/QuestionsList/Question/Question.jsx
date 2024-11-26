@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import Votes from "../../QuestionAnswersList/Answer/Votes/Votes";
 
-const Question = ({ className, questionTitle, questionId, username, date, answersCount, votesCount, tags}) => {
+const Question = ({ className, questionTitle, questionId, user, date, answersCount, votesCount, rating, tags}) => {
   console.log()
   const tagsToShow = tags.map(({id, name}) => {
 
@@ -25,10 +25,11 @@ const Question = ({ className, questionTitle, questionId, username, date, answer
     <div className={`${styles.question} ${className}`}>
       <QuestionInfo
         className={styles.questionInfo}
-        username={username}
+        user={user}
         date={date}
         answersCount={answersCount}
         votesCount={votesCount}
+        rating={rating}
       ></QuestionInfo>
       <h3
         className={styles.questionTitle}
@@ -36,7 +37,7 @@ const Question = ({ className, questionTitle, questionId, username, date, answer
           navigate(`${location.pathname}/${questionId}`);
         }}
       >{`${questionTitle[0].toUpperCase()}${questionTitle.slice(1)}`}</h3>
-      <Votes className={styles.votes} votesCount={votesCount} sourceId={questionId}/>
+      <Votes className={styles.votes} rating={rating} sourceId={questionId}/>
       <div className={styles.tags}>{tagsToShow}</div>
     </div>
   );
@@ -46,10 +47,11 @@ Question.propTypes = {
   className: PropTypes.string,
   questionTitle: PropTypes.string,
   questionId: PropTypes.string,
-  username: PropTypes.string,
+  user: PropTypes.object,
   date: PropTypes.string,
   answersCount: PropTypes.number,
   votesCount: PropTypes.number,
+  rating: PropTypes.number,
   tags: PropTypes.array,
   id: PropTypes.string,
 };

@@ -25,11 +25,12 @@ const QuestionsList = ({ className }) => {
               key={question.id}
               className={styles.question}
               questionTitle={question.content}
-              username={question.user.username}
+              user={question.user}
               userPhoto={null}
               date={question.created_at}
               answersCount={0 /*question.answers.length*/}
               votesCount={0 /*question.votes.length*/}
+              rating={0 /*question.votes.length*/}
               tags={question.tags}
               questionId={question.id}
             ></Question>

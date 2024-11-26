@@ -6,8 +6,8 @@ import { createUpvote, createDownvote } from "../../../../Requests/VotesRequests
 import styles from "./Votes.module.scss";
 
 
-const Votes = ({ className, votesCount, sourceId }) => {
-  const [votes, setVotes] = useState(votesCount);
+const Votes = ({ className, rating, sourceId }) => {
+  const [votes, setVotes] = useState(rating);
 
   const increaseVotes = async () => {
       try {
@@ -50,7 +50,7 @@ const Votes = ({ className, votesCount, sourceId }) => {
         src={plusIcon}
         alt="plus"
       />
-      <p className={styles.votesCount}>{votes}</p>
+      <p className={styles.rating}>{votes}</p>
       <img
         onClick={decreaseVotes}
         className={`${styles.sign} ${styles.minus}`}
@@ -62,7 +62,7 @@ const Votes = ({ className, votesCount, sourceId }) => {
 };
 
 Votes.propTypes = {
-  votesCount: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
   sourceId: PropTypes.string.isRequired,
 };
 

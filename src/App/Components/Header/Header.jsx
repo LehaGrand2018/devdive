@@ -11,20 +11,13 @@ import { MenuContext } from "../../Contexts/MenuContext";
 import { signOut } from "../../Requests/AuthRequests";
 import { getUser } from "../../Requests/UsersRequests";
 
+const Header = observer(({ className, isProfile, isAddQuestion }) => {
+  const { active } = useContext(MenuContext);
 
+  const { isLoggedIn, username, setUsername } = GlobalStore;
 
-const Header = observer(({ className, isProfile, isAddQuestion}) => {
-
-  const {active} = useContext(MenuContext);
-
-  const {isLoggedIn, username, setUsername} = GlobalStore;
-  
   const navigate = useNavigate();
-  
-  const login = () => {
-    navigate("/autorization");
-  };
-  
+
   const out = () => {
     signOut();
     navigate("/");
@@ -32,24 +25,23 @@ const Header = observer(({ className, isProfile, isAddQuestion}) => {
 
   const questionButtonHandler = async () => {
     navigate("/addQuestion");
-  }
-
+  };
 
   const [elements, setElements] = useState([]);
   // setup header
-  useEffect(()=>{
+  useEffect(() => {
     if (isLoggedIn === "true") {
-      (async()=>{
-        const user = await getUser(localStorage.getItem("user_id"))
-        setUsername(user.user.username)
-      })()
+      (async () => {
+        const user = await getUser(localStorage.getItem("user_id"));
+        setUsername(user.user.username);
+      })();
     }
-  },[isLoggedIn, setUsername])
+  }, [isLoggedIn, setUsername]);
 
   useEffect(() => {
     let elements = [];
     if (isLoggedIn === "true") {
-      if(isAddQuestion === "false"){
+      if (isAddQuestion === "false") {
         elements.push(
           <Button
             key="questionButton"
@@ -61,20 +53,19 @@ const Header = observer(({ className, isProfile, isAddQuestion}) => {
       }
       if (isProfile === "false") {
         elements.push(
-          <div key="headerUser"className={styles.user}>
-            <p className={styles.username}>
-              {username}
-            </p>
+          <div key="headerUser" className={styles.user}>
+            <p className={styles.username}>{username}</p>
             <Link
-              to="/profile"
+              to={`/profile/${localStorage.getItem("user_id")}`}
               className={styles.profilePhoto}
               style={{ backgroundImage: "" }}
             ></Link>
-
           </div>
         );
-      } else {
-
+      } else if (
+        window.location.pathname.split("/profile/")[1] ===
+        localStorage.getItem("user_id")
+      ) {
         elements.push(
           <Button
             key="signOutButton"
@@ -84,25 +75,24 @@ const Header = observer(({ className, isProfile, isAddQuestion}) => {
           ></Button>
         );
       }
-    } else {
-      elements.push(
-        <Button
-          key="signInButton"
-          className={styles.signInButton}
-          value="Вход"
-          onClick={login}
-        ></Button>
-      );
     }
     setElements(elements);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn, isProfile, isAddQuestion, username]);
 
   return (
-    
     <header className={`${styles.header} ${className}`}>
-      <Menu className={styles.menu} isActive={active.value} setIsActive={active.set} />
-      <Logo className={styles.logo} onClick={()=> {navigate("/")}}/>
+      <Menu
+        className={styles.menu}
+        isActive={active.value}
+        setIsActive={active.set}
+      />
+      <Logo
+        className={styles.logo}
+        onClick={() => {
+          navigate("/");
+        }}
+      />
       {elements}
     </header>
   );

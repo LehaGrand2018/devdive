@@ -1,37 +1,31 @@
-import React from 'react';
-import styles from './Answer.module.scss'
-import Votes from './Votes/Votes';
-import PropTypes from 'prop-types';
-import AnswerFooter from './AnswerFooter/AnswerFooter';
+import React from "react";
+import styles from "./Answer.module.scss";
+import Votes from "./Votes/Votes";
+import PropTypes from "prop-types";
+import AnswerFooter from "./AnswerFooter/AnswerFooter";
 
-
-const Answer = ({className, content, sourceId, user, votesCount, date}) => {
-
-
-
-    // const [votes, setVotes] = useState(votesCount)
-
-    return (
-        <div className={`${styles.answer} ${className}`}>
-            <Votes sourceId={sourceId} votesCount={votesCount}></Votes>
-            <p className={styles.answerText}>{content}</p>
-            <AnswerFooter
-                className={styles.answerFooter}
-                userPhoto={null}
-                username={user.username}
-                answerDate={Date.now()/*date*/}
-            ></AnswerFooter>
-        </div>
-    );
+const Answer = ({ className, content, sourceId, user, rating, date }) => {
+  return (
+    <div className={`${styles.answer} ${className}`}>
+      <Votes sourceId={sourceId} rating={rating}></Votes>
+      <p className={styles.answerText}>{content}</p>
+      <AnswerFooter
+        className={styles.answerFooter}
+        userPhoto={null}
+        username={user.username}
+        answerDate={date}
+      ></AnswerFooter>
+    </div>
+  );
 };
 
 Answer.propTypes = {
-    className:PropTypes.string,
-    content: PropTypes.string,
-    user: PropTypes.object,
-    date: PropTypes.number,
-    votesCount: PropTypes.number,
-}
-
+  className: PropTypes.string,
+  content: PropTypes.string.isRequired,
+  date: PropTypes.string,
+  user: PropTypes.object.isRequired,
+  sourceId: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+};
 
 export default Answer;

@@ -12,7 +12,7 @@ import { getQuestion } from "../../Requests/QuestionsRequests";
 const QuestionAnswersList = ({ className }) => {
   const [answersCount, setAnswersCount] = useState(null);
   const [answers, setAnswers] = useState(null);
-  const [votesCount, setVotesCount] = useState(null);
+  const [rating, setRating] = useState(null);
   const { questionId } = useParams();
   const [elements, setElements] = useState(null);
   const [question, setQuestion] = useState(null);
@@ -21,7 +21,7 @@ const QuestionAnswersList = ({ className }) => {
     if (question) {
       setAnswers(question.answers);
       setAnswersCount(question.answers.length);
-      setVotesCount(question.upvotes.length - question.downvotes.length);
+      setRating(question.upvotes - question.downvotes);
     }
   }, [question]);
 
@@ -42,9 +42,9 @@ const QuestionAnswersList = ({ className }) => {
                 sourceId={id}
                 className={styles.answer}
                 content={content}
-                votesCount={upvotes.length - downvotes.length}
+                votesCount={upvotes + downvotes}
+                rating={upvotes - downvotes}
                 user={user}
-                
                 date={created_at}
               ></Answer>
             );
@@ -60,7 +60,8 @@ const QuestionAnswersList = ({ className }) => {
         title={question ? question.content : "undefined"}
         date={question ? question.created_at : null}
         answersCount={answersCount}
-        votesCount={votesCount}
+        rating={rating}
+        votesCount={ question ? question.upvotes + question.downvotes : null}
       ></AnswersHeader>
       {elements}
       <AnswerForm
