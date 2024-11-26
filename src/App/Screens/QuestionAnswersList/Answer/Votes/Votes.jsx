@@ -15,7 +15,7 @@ const Votes = ({ className, votesCount, sourceId }) => {
         console.log("SourceID:", sourceId);
         if (res) {
           setVotes(votes + 1);
-          console.log("Error!");
+
         }
       } catch (error) {
         console.error(error);
@@ -63,6 +63,7 @@ const Votes = ({ className, votesCount, sourceId }) => {
 
 Votes.propTypes = {
   votesCount: PropTypes.number.isRequired,
+  sourceId: PropTypes.string.isRequired,
 };
 
 export default Votes;

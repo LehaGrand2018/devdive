@@ -4,6 +4,7 @@ import QuestionInfo from "./QuestionInfo/QuestionInfo";
 import styles from "./Question.module.scss";
 import { useLocation, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
+import Votes from "../../QuestionAnswersList/Answer/Votes/Votes";
 
 const Question = ({ className, questionTitle, questionId, username, date, answersCount, votesCount, tags}) => {
   console.log()
@@ -35,6 +36,7 @@ const Question = ({ className, questionTitle, questionId, username, date, answer
           navigate(`${location.pathname}/${questionId}`);
         }}
       >{`${questionTitle[0].toUpperCase()}${questionTitle.slice(1)}`}</h3>
+      <Votes className={styles.votes} votesCount={votesCount} sourceId={questionId}/>
       <div className={styles.tags}>{tagsToShow}</div>
     </div>
   );

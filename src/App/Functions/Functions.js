@@ -1,7 +1,7 @@
 
 
 export const addEnding = (word, count) => {
-  
+    count = Math.abs(count);
     if (count % 10 >= 2 && count % 10 <= 4) {
         return (word += 'а');
     }
