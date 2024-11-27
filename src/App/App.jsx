@@ -15,6 +15,7 @@ import Root from "./Screens/Root/Root";
 import ErrorPage from "./Screens/ErrorPage/ErrorPage";
 import { MenuProvider } from "./Contexts/MenuContext";
 import { refreshToken } from "./Requests/AuthRequests";
+import ChatRoom from "./Screens/ChatRoom/ChatRoom";
 
 const App = () => {
   const [isProfile, setIsProfile] = useState("false");
@@ -64,6 +65,10 @@ const App = () => {
             <Route
               path="/profile/:userId"
               element={<Profile setIsProfile={setIsProfile} />}
+            ></Route>
+            <Route
+              path="/chatRoom"
+              element={<ChatRoom/>}
             ></Route>
             <Route path="/autorization" element={<AutorizationPage />}></Route>
             <Route path="*" element={<ErrorPage />}></Route>
