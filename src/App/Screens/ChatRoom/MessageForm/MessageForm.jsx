@@ -52,7 +52,7 @@ const MessageForm = ({ className, socket, onMessageSend }) => {
 
 MessageForm.propTypes = {
   className: PropTypes.string,
-  questionId: PropTypes.string,
-  setQuestion: PropTypes.func,
+  socket: PropTypes.object,
+  onMessageSend: PropTypes.func,
 };
 export default MessageForm;

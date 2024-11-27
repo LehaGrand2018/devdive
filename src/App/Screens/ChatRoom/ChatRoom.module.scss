@@ -19,7 +19,7 @@
     }
     .headerStatus {
       height: 50px;
-      line-height: 20px;
+      line-height: 50px;
       font-size: 20px;
     }
   }
@@ -28,7 +28,8 @@
     .message {
       width: 950px;
     }
-    height: 550px;
+    max-height: calc(100vh - 175px); 
+    // height: 550px;
     overflow-y: scroll;
   }
   
