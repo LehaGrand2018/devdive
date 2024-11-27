@@ -10,7 +10,7 @@ import GlobalStore from "../../Stores/GlobalStore";
 
 const NavigationPanel = observer(({ className}) => {
 
-  const [button, setButton] = useState();
+  const [buttons, setButtons] = useState();
   
   const {isLoggedIn} = GlobalStore;
 
@@ -22,7 +22,7 @@ const NavigationPanel = observer(({ className}) => {
 
     if (isLoggedIn === "true") {
 
-      setButton(
+      setButtons(<>
         <NavLink
           className={({ isActive }) =>
             `${styles.PanelButton}`
@@ -31,9 +31,19 @@ const NavigationPanel = observer(({ className}) => {
         >
           Мои вопросы
         </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            `${styles.PanelButton}`
+          }
+          to={`chatRoom?user_id=${localStorage.getItem("user_id")}`}
+        >
+          Чат комната
+        </NavLink>
+
+      </>
       );
     } else {
-      setButton(null); 
+      setButtons(null); 
     }
   }, [isLoggedIn]);
 
@@ -42,14 +52,11 @@ const NavigationPanel = observer(({ className}) => {
       <NavLink
         className={({ isActive }) =>
           `${styles.PanelButton}`
-          // `${styles.PanelButton} ${isActive ? styles.active : ""}`
         }
         to="/"
       >
         Главная
       </NavLink>
-
-      {button}
 
       <NavLink
         className={({ isActive }) =>
@@ -59,6 +66,8 @@ const NavigationPanel = observer(({ className}) => {
       >
         Метки
       </NavLink>
+
+      {buttons}
 
       <Tag value="#tag"></Tag>
 
