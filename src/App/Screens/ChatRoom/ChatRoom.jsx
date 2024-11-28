@@ -50,7 +50,7 @@ const ChatRoom = ({ className }) => {
         const recentMessages = await getResentMessages({limit: 50});
         console.log("Recent messages:", recentMessages);
         const messagesTmp = [];
-        recentMessages.forEach(msg => {
+        recentMessages.slice().reverse().forEach(msg => {
           messagesTmp.push({
             data: msg.message,
             user_id: msg.user.id,
@@ -59,7 +59,6 @@ const ChatRoom = ({ className }) => {
           })
         });
         setMessages(messagesTmp)
-        // data user_id username created_at
       })()
     };
 
