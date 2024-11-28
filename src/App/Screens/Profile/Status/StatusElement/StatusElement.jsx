@@ -12,6 +12,7 @@ const StatusElement = ({ className, first, second }) => {
 };
 
 StatusElement.propTypes = {
+  className: PropTypes.string,
   first: PropTypes.string.isRequired,
   second: PropTypes.string.isRequired,
 };

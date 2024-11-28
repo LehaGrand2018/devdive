@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Input.module.scss";
 import PropTypes from "prop-types";
 
-const Input = ({className, placeholder, type, name, id, onChange}) => {
+const Input = ({className, placeholder, type, name, id, onChange, onBlur, onClick}) => {
   return (
     <div className={`${styles.Input} ${className}`}>
       <input
@@ -13,6 +13,7 @@ const Input = ({className, placeholder, type, name, id, onChange}) => {
         name={name}
         id={id}
         onChange={onChange}
+        onBlur={onBlur}
       />
     </div>
   );
@@ -24,7 +25,9 @@ Input.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string,
   id: PropTypes.string,
+  onClick: PropTypes.func,
   onChange: PropTypes.func,
+  onBlur: PropTypes.func,
 };
 
 export default Input;

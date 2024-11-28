@@ -1,0 +1,35 @@
+.question {
+  position: relative;
+  width: 60.94rem;
+  height: 13.88rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 5px;
+  border-bottom: 1px solid #545F71;
+
+  .questionTitle {
+    padding-top: 15px;
+    padding-left: 25px;
+    padding-bottom: 20px;
+    width: 735px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .tags {
+    display: block;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+    color: #545f71;
+    position: absolute;
+    bottom: 10px;
+    left: 25px;
+    
+    .tag {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+}

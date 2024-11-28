@@ -1,31 +1,135 @@
-import React from 'react';
-import Button from '../Button/Button.jsx';
-import Input from '../Input/Input.jsx';
-import styles from './RegistrationForm.module.scss'
-import buttonStyles from '../Button/Button.module.scss';
-import PasswordInput from '../PasswordInput/PasswordInput.jsx';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import Button from "../Button/Button.jsx";
+import Input from "../Input/Input.jsx";
+import styles from "./RegistrationForm.module.scss";
+import PasswordInput from "../PasswordInput/PasswordInput.jsx";
+import PropTypes from "prop-types";
+import {signIn, signUp} from "../../Requests/AuthRequests.js"
 
+const RegistrationForm = ({ className, registrationFunc, loginFunc }) => {
 
-const RegistrationForm = ({className, registrationFunc, loginFunc}) => {
+  const [email, setEmail] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null);
 
-    return (
-        <div className={`${styles.RegistrationForm}  ${className}`}>
-            <h2 className={styles.RegistrationLable}>Регистрация</h2>
+  const validate = (name, value) => {
+    console.log("Validate function called");
+    let error = "undefined";
+    let code = 0;
 
-            <Input className={styles.Input} placeholder="Имя пользователя" type="text" name="username" id="username" />
-            <Input className={styles.Input} placeholder="Email" type="text" name="email" id="email" />
-            <PasswordInput className={styles.Input} placeholder="Пароль" type="password" name="password" id="password"/>
-            <Button className={styles.Button} value = "Регистрация" onClick={registrationFunc}/>
-            <Button className={styles.LoginButton} value="Вход" onClick={loginFunc}/>
-        </div>
-    );
+    switch (name) {
+      case "email":
+        break;
+      case "password":
+        break;
+
+      case "username":
+        break;
+
+      default:
+        break;
+    }
+    return { error, code };
+  };
+
+  const handleBlur = (event) => {
+    const { name, value } = event.target;
+    console.log(`${name}: `, value);
+    const { code } = validate(name, value);
+
+    if (code !== 0) {
+      console.error("Validation error");
+    }
+    switch (name) {
+      case "email":
+        setEmail(value);
+        break;
+      case "password":
+        setPassword(value);
+        break;
+
+      case "username":
+        setUsername(value);
+        break;
+      default:
+        console.log("Input data!");
+        break;
+    }
+  };
+
+  const signUpButtonHandler = async () => {
+    
+    console.log("SignUp button function called");
+    try {
+      await signUp(username, password, email);
+      signIn(email, password);
+    } catch (error) {
+      console.error(error)
+      console.log(`Error code: ${error.response.status}`)
+      console.log(`Error statusText: ${error.response.statusText}`)
+      if(error.response.data){
+        console.log(`Error description: ${error.response.data.detail}`)
+      }
+      return;
+    }
+
+    if (localStorage.getItem("isLoggedIn") === true) {
+      alert("Вы успешно зарегистрировались на сайте!");
+    }
+  };
+
+  return (
+    <div className={`${styles.RegistrationForm}  ${className}`}>
+      <h2 className={styles.RegistrationLable}>Регистрация</h2>
+
+      <Input
+        className={styles.Input}
+        placeholder="Имя пользователя"
+        type="text"
+        name="username"
+        id="username"
+        onBlur={handleBlur}
+      />
+      <Input
+        className={styles.Input}
+        placeholder="Email"
+        type="text"
+        name="email"
+        id="email"
+        onBlur={handleBlur}
+      />
+      <PasswordInput
+        className={styles.Input}
+        placeholder="Пароль"
+        type="password"
+        name="password"
+        id="password"
+        onBlur={handleBlur}
+      />
+      <Button
+        className={styles.Button}
+        value="Регистрация"
+        onClick={(e) => {
+          e.preventDefault();
+          signUpButtonHandler();
+        }}
+      />
+      <Button
+        className={styles.LoginButton}
+        value="Вход"
+        onClick={(e) => {
+          e.preventDefault();
+          loginFunc();
+        }}
+      />
+    </div>
+  );
 };
 
 RegistrationForm.propTypes = {
-    className: PropTypes.string,
-    registrationFunc: PropTypes.func,
-    loginFunc: PropTypes.func,
-}
+  className: PropTypes.string,
+  registrationFunc: PropTypes.func,
+  loginFunc: PropTypes.func,
+};
 
 export default RegistrationForm;

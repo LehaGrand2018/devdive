@@ -1,0 +1,59 @@
+.chat {
+  position: relative;
+  padding-top: 15px;
+  padding-right: 45px;
+  text-align: left;
+  height: calc(100vh - 50px);
+
+  max-height: calc(100vh - 50px); 
+  overflow-y: scroll;
+  .header {
+    width: 950px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #545f71;
+
+    .headerText {
+      font-size: 32px;
+    }
+    .headerStatus {
+      height: 50px;
+      line-height: 50px;
+      font-size: 20px;
+    }
+  }
+
+  .messagesList{
+    .message {
+      width: 950px;
+    }
+    max-height: calc(100vh - 175px); 
+    // height: 550px;
+    overflow-y: scroll;
+  }
+  
+  .messageForm{
+    position: absolute;
+    width: 950px;
+    height: 50px;
+    bottom: 20px;
+
+  }
+}
+
+@media (max-width: 1024px){
+.chat{
+  font-size: 12px;
+  margin-left: 0px;
+  .header{
+    width: 90%;
+    font-size: 28px;
+  }
+  .message{
+    width: 90%;
+  }
+}
+
+
+}

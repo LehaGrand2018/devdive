@@ -1,0 +1,49 @@
+.question {
+  position: relative;
+  margin: 0 auto;
+  text-align: left;
+  border-bottom: 1px solid #545f71;
+
+  .questionInfo {
+    position: absolute;
+    bottom: 0.2rem;
+    .answers {
+      vertical-align: bottom;
+      font-weight: 400;
+      font-size: 0.88rem;
+      display: inline-block;
+      line-height: 1rem;
+      letter-spacing: -0.02em;
+      color: #545f71;
+      margin-right: 20px;
+    }
+    .date {
+      vertical-align: bottom;
+      font-weight: 400;
+      font-size: 0.88rem;
+      display: inline-block;
+      line-height: 1rem;
+      letter-spacing: -0.02em;
+      color: #545f71;
+      margin-right: 20px;
+    }
+    .votes {
+      vertical-align: bottom;
+      font-weight: 400;
+      font-size: 0.88rem;
+      display: inline-block;
+      line-height: 1rem;
+      letter-spacing: -0.02em;
+      color: #545f71;
+      margin-right: 20px;
+    }
+  
+  }
+
+
+  .title {
+    display: block;
+    font-size: 35px;
+    line-height: 100%;
+  }
+}

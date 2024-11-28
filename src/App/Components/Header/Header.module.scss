@@ -17,7 +17,7 @@
   }
 
   .questionButton {
-    margin-left: 525px;
+    margin-left: 40%;
   }
 
   .signInButton {
@@ -51,4 +51,21 @@
     }
 
   }
+}
+
+/* Desktop styles */
+ @media (min-width: 481px) {
+  .menu{
+    display: none;
+  }
+
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+
+  .menu{
+    display: block;
+  }
+
 }

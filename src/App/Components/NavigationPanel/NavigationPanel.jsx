@@ -1,58 +1,73 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Button from "../Button/Button";
 import Tag from "./Tags/Tags";
 import styles from "./NavigationPanel.module.scss";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { observer } from "mobx-react-lite";
+import { MenuContext } from "../../Contexts/MenuContext";
 import GlobalStore from "../../Stores/GlobalStore";
 
 const NavigationPanel = observer(({ className}) => {
-  const [button, setButton] = useState();
 
-  // let isLoggedIn = null;
+  const [buttons, setButtons] = useState();
+  
   const {isLoggedIn} = GlobalStore;
+
+  const {active} = useContext(MenuContext);
+  
+  const isVisible = active.value;
 
   useEffect(() => {
 
     if (isLoggedIn === "true") {
 
-      setButton(
+      setButtons(<>
         <NavLink
           className={({ isActive }) =>
-            `${styles.PanelButton} ${isActive ? styles.active : ""}`
+            `${styles.PanelButton}`
           }
-          to="/posts/:id"
+          to={`/questions?user_id=${localStorage.getItem("user_id")}`}
         >
           Мои вопросы
         </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            `${styles.PanelButton}`
+          }
+          to={`chatRoom?user_id=${localStorage.getItem("user_id")}`}
+        >
+          Чат комната
+        </NavLink>
+
+      </>
       );
     } else {
-      setButton(null); 
+      setButtons(null); 
     }
   }, [isLoggedIn]);
 
   return (
-    <div className={`${styles.NavigationPanel} ${className}`}>
+    <div className={`${styles.NavigationPanel} ${className} ${isVisible ? styles.visible : ""}`}>
       <NavLink
         className={({ isActive }) =>
-          `${styles.PanelButton} ${isActive ? styles.active : ""}`
+          `${styles.PanelButton}`
         }
         to="/"
       >
         Главная
       </NavLink>
 
-      {button}
-
       <NavLink
         className={({ isActive }) =>
-          `${styles.PanelButton} ${isActive ? styles.active : ""}`
+          `${styles.PanelButton}`
         }
         to="/tags"
       >
         Метки
       </NavLink>
+
+      {buttons}
 
       <Tag value="#tag"></Tag>
 

@@ -1,75 +1,59 @@
-import React, { useState } from 'react';
-import styles from './TagsList.module.scss';
-import Tag from './Tag/Tag';
-import TagsHeader from './TagsHeader/TagsHeader';
+import React, { useEffect, useState } from "react";
+import styles from "./TagsList.module.scss";
+import Tag from "./Tag/Tag";
+import TagsHeader from "./TagsHeader/TagsHeader";
+import PropTypes from "prop-types";
+import { getTags } from "../../Requests/TagsRequests";
 
-const TagsList = (props) => {
+const TagsList = ({ className }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [tagsObj, setTagsObj] = useState(null);
+  const [elements, setElements] = useState(null);
 
-  const [searchTerm, setSearchTerm] = useState('');
+  // get tags
+  useEffect(() => {
+    const fetchTags = async () => {
+      setTagsObj(await getTags());
+    };
+    fetchTags();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const tags = [
-    { name: "python", description: "Python is an programming language" },
-    {
-      name: "JavaScript",
-      description: "JavaScript is an programming language",
-    },
-    { name: "Golang", description: "Go is an programming language" },
-    { name: "php", description: "PHP is an programming language" },
-    { name: "Rust", description: "Rust is an programming language" },
-    { name: "Ruby", description: "Ruby is an programming language" },
-    { name: "python", description: "Python is an programming language" },
-    {
-      name: "JavaScript",
-      description: "JavaScript is an programming language",
-    },
-    { name: "Golang", description: "Go is an programming language" },
-    { name: "php", description: "PHP is an programming language" },
-    { name: "Rust", description: "Rust is an programming language" },
-    { name: "Ruby", description: "Ruby is an programming language" },
-    { name: "python", description: "Python is an programming language" },
-    {
-      name: "JavaScript",
-      description: "JavaScript is an programming language",
-    },
-    { name: "Golang", description: "Go is an programming language" },
-    { name: "php", description: "PHP is an programming language" },
-    { name: "Rust", description: "Rust is an programming language" },
-    { name: "Ruby", description: "Ruby is an programming language" },
-    { name: "python", description: "Python is an programming language" },
-    {
-      name: "JavaScript",
-      description: "JavaScript is an programming language",
-    },
-    { name: "Golang", description: "Go is an programming language" },
-    { name: "php", description: "PHP is an programming language" },
-    { name: "Rust", description: "Rust is an programming language" },
-    { name: "Ruby", description: "Ruby is an programming language" },
-    { name: "python", description: "Python is an programming language" },
-    {
-      name: "JavaScript",
-      description: "JavaScript is an programming language",
-    },
-    { name: "Golang", description: "Go is an programming language" },
-    { name: "php", description: "PHP is an programming language" },
-    { name: "Rust", description: "Rust is an programming language" },
-    { name: "Ruby", description: "Ruby is an programming language" },
-  ];
+  // display tags
+  useEffect(() => {
+    if (tagsObj) {
 
-  // Фильтрация тегов на основе поиска
-  const filteredTags = tags.filter((tag) => {
-    return tag.name.toLowerCase().includes(searchTerm.toLowerCase());
-  });
+      const filteredTags = tagsObj.tags.filter((tag) => {
+        return tag.name.toLowerCase().includes(searchTerm.toLowerCase());
+      });
 
-  const elements = filteredTags.map((tag, index) => (
-    <Tag className={styles.tag} key={index} value={tag.name} description={tag.description} />
-  ));
+      const filtered = filteredTags.map(({ id, name, description }) => (
+        <Tag
+          className={styles.tag}
+          key={id}
+          value={name}
+          description={description}
+        />
+      ));
+
+      setElements(filtered);
+    }
+  }, [tagsObj, searchTerm]);
 
   return (
-    <section className={`${styles.tagsList} ${props.className}`}>
-      <TagsHeader className={styles.header}searchTerm={searchTerm} setSearchTerm={setSearchTerm}></TagsHeader>
+    <section className={`${styles.tagsList} ${className}`}>
+      <TagsHeader
+        className={styles.header}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
       <ul className={styles.tags}>{elements}</ul>
     </section>
   );
+};
+
+TagsList.propTypes = {
+  className: PropTypes.string,
 };
 
 export default TagsList;

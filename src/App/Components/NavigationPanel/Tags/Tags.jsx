@@ -1,34 +1,41 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Tags.module.scss";
-import axios from "axios";
+import PropTypes from "prop-types";
+import { getTags } from "../../../Requests/TagsRequests";
+import { useNavigate } from "react-router-dom";
+const Tags = ({ className }) => {
+  const [tags, setTags] = useState(null);
+  const [elements, setElements] = useState(null);
+  const navigate = useNavigate();
 
-const Tags = (props) => {
-    const [users, setUsers] = useState();
 
-    useEffect(() => {
-        //Template Function
-        const getPopularTags = async () => {
-            try {
-                const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-                setUsers(response.data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        getPopularTags();   
-    }, []);
-    
-    let elements;
-    if(users !== undefined) {
-        elements = users.map((user) => {
-            return <li className={styles.tag} key={user.id}>#{user.username}</li>
+  //get tags
+  useEffect(() => {
+    (async () => {
+      const tags = await getTags();
+      setTags(tags);
+    })();
+  }, []);
+
+  // display tags
+  useEffect(() => {
+    if (tags) {
+      setElements(
+        tags.tags.map(({ id, name }, index) => {
+          return index <= 20 ? (
+            <li className={styles.tag} key={id} onClick={()=>{navigate(`../questions?tags=${name}`)}}>
+              #{name}
+            </li>
+          ) : null;
         })
+      );
     }
+  }, [tags, navigate]);
 
-    return (
-        <ul className={`${styles.tags} ${props.className}`}>
-            {elements}
-        </ul>
-    );
+  return <ul className={`${styles.tags} ${className}`}>{elements}</ul>;
+};
+
+Tags.propTypes = {
+  className: PropTypes.string,
 };
 export default Tags;

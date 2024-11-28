@@ -1,5 +1,5 @@
 .NavigationPanel {
-
+    
     width: 230px;
     height: 100%;
     flex-shrink: 0;
@@ -12,7 +12,8 @@
     // z-index: 1;
     // top: 0;
     // left: 0;
-
+    
+    transition:  0.5s;
 
 
 
@@ -70,3 +71,24 @@
 
 
 }
+
+@media (max-width: 480px) {
+    .NavigationPanel {
+      
+      position: absolute;
+      top: 50px;
+      left: -50%; 
+
+      &.visible{
+        display: block;
+        left: 0;
+      }
+    }
+    
+  }
+  
+//  @media (min-width: 481px) {
+//     .NavigationPanel {
+//       display: block;
+//     }
+//   }

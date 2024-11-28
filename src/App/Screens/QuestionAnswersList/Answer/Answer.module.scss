@@ -1,0 +1,15 @@
+.answer{
+    width: 950px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #545f71;
+    .answerText{
+        width: 895px;
+        text-align: left;
+        margin-left: 15px;
+    }
+
+}

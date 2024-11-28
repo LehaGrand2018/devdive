@@ -36,3 +36,15 @@ body {
   color: #545f71;
   background: #e3e3e3;
 }
+
+@media (max-width: 360px){
+  body {
+    font-size: 18px; 
+  }
+
+  .app {
+    padding: 0 10px;
+  }
+
+  
+}

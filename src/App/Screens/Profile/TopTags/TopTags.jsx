@@ -5,8 +5,8 @@ import styles from './TopTags.module.scss'
 
 const TopTags = ({ className, tags }) => {
 
-  const elements = tags.map((tag, index) => {
-    return <p key={index} className={styles.tag}>{`#${tag}`}</p>;
+  const elements = tags.map(({id, name}, index) => {
+    return <p key={id} className={styles.tag}>{`#${name}`}</p>;
   });
 
   return (

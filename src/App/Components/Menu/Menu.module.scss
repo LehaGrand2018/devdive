@@ -1,0 +1,55 @@
+.menu {
+  // display: block;
+  width: 30px;
+  height: 40px;
+  position: relative;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
+
+
+  .central,
+  .central::before,
+  .central::after {
+    display: block;
+    width: 30px;
+    height: 3px;
+    border-radius: 1.5px;
+    background-color: #545f71;
+    transition: all 0.4s;
+  }
+  .central{
+    position: absolute;
+    top: 50%;
+  }
+  .central::before{
+    content: "";
+    position: absolute;
+    bottom: 11px;
+    
+  }
+  .central::after{
+    content: "";
+    position: absolute;
+    top: 11px;
+  }
+
+  
+  &.active .central::after, &.active .central::before{
+    background-color: brown ;
+  }
+  &.active .central{
+    background: transparent;
+  }
+  
+  &.active ::before{
+    transform: rotate(45deg);
+    bottom: 0;
+  }
+  &.active ::after{
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import User from "./User/User";
 import { useEffect } from "react";
 import styles from "./Profile.module.scss";
@@ -7,89 +7,63 @@ import Since from "./Since/Since";
 import TopTags from "./TopTags/TopTags";
 import TopQuestions from "./TopQuestions/TopQuestions";
 import PropTypes from "prop-types";
+import { getUser } from "../../Requests/UsersRequests";
+import { useParams } from "react-router-dom";
 
 const Profile = ({ className, setIsProfile }) => {
+  const [user, setUser] = useState(null);
+  const [elements, setElements] = useState(null);
+  const { userId } = useParams();
+  // get data about user
+  useEffect(() => {
+      (async () => {
+        const user = await getUser(userId);
+        setUser(user);
+      })();
+  }, [userId]);
 
+  // display data about user
+  useEffect(() => {
+    console.log("displayEffect");
+    if (user) {
+      const userGenteralInfo = user.user;
+      console.log(user.presigned_url);
+      setElements(
+        <>
+          <div className={styles.userStatus}>
+            <User
+              className={styles.user}
+              username={userGenteralInfo.username}
+              description={userGenteralInfo.info}
+            />
+            <Status
+              className={styles.status}
+              reputation={userGenteralInfo.reputation}
+              role={userGenteralInfo.role}
+              questions={user.total_questions}
+              answers={user.total_answers}
+            />
+          </div>
+          <Since className={styles.since} date={userGenteralInfo.created_at} />
+          <TopTags className={styles.topTags} tags={user.tags} />
+          <TopQuestions
+            className={styles.topQuestions}
+            questions={user.questions}
+          />
+        </>
+      );
+    }
+  }, [user]);
 
+  useEffect(() => {
+    setIsProfile("true");
+    return () => {
+      setIsProfile("false");
+    };
+  });
 
-  let user = {
-    username: "neurotrier",
-    description: "Информация о пользователе",
-    photo: "undefined",
-    reputation: 100,
-    role: "admin",
-    questionsCount: 35,
-    answersCount: 89,
-    createdAt: Date.now(),
-    tags: [
-      "python",
-      "javascript",
-      "golang",
-      "ruby",
-      "php",
-      "jquerry",
-      "rust",
-      "c++",
-    ],
-    questions: [
-      {
-        title:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor justo est. Lorem ipsum dolor.",
-        description: "",
-      },
-      {
-        title:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor justo est. Lorem ipsum dolor.",
-        description: "",
-      },
-      {
-        title:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor justo est. Lorem ipsum dolor.",
-        description: "",
-      },
-      {
-        title:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor justo est. Lorem ipsum dolor.",
-        description: "",
-      },
-
-    ],
-  };
-useEffect(() => {
-  setIsProfile("true");
-  
-  return () => {
-    setIsProfile("false")
-  }
-
-})
-
-  return (
-    <div className={`${styles.profile} ${className}`}>
-      <div className={styles.userStatus}>
-        <User
-          className={styles.user}
-          username={user.username}
-          description={user.description}
-        />
-        <Status
-          className={styles.status}
-          reputation={user.reputation}
-          role={user.role}
-          questions={user.questionsCount}
-          answers={user.answersCount}
-        />
-      </div>
-      <Since className={styles.since} date={user.createdAt} />
-      <TopTags className={styles.topTags} tags={user.tags} />
-      <TopQuestions
-        className={styles.topQuestions}
-        questions={user.questions}
-      />
-    </div>
-  );
+  return <div className={`${styles.profile} ${className}`}>{elements}</div>;
 };
-
 
 Profile.propTypes = {
   className: PropTypes.string,

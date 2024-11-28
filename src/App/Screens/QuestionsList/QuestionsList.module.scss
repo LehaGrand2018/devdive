@@ -1,0 +1,35 @@
+.questionsList {
+  padding-top: 15px;
+  padding-right: 45px;
+  text-align: left;
+  height: calc(100vh - 50px);
+  // position: fixed; 
+  max-height: calc(100vh - 50px); 
+  overflow-y: auto;
+  .header {
+    width: 950px;
+    height: 50px;
+    font-size: 32px;
+    border-bottom: 1px solid #545f71;
+  }
+
+  .question {
+    width: 950px;
+  }
+}
+
+@media (max-width: 1024px){
+.questionsList{
+  font-size: 12px;
+  margin-left: 0px;
+  .header{
+    width: 90%;
+    font-size: 28px;
+  }
+  .question{
+    width: 90%;
+  }
+}
+
+
+}
