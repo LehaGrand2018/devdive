@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Указываем порт, который будет использоваться приложением
-EXPOSE 3030
+EXPOSE ${PORT}
 
 # Запуск приложения
 CMD ["npm", "start"]

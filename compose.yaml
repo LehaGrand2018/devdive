@@ -4,7 +4,7 @@ services:
     build: ./
     container_name: dev_dive_frontend
     ports:
-      - "3030:3030"
+     - ${PORT}:${PORT}
     volumes:
       - ./:/app
     stdin_open: true
