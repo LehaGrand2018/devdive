@@ -29,3 +29,16 @@
   
   ### 5. Open [http://localhost:3030](http://localhost:3030) to view app in your browser.
 
+## Set up with docker
+  ### 1. Clone repository
+  `git clone https://github.com/LehaGrand2018/devdive.git
+  `
+  ### 2. Create `.env` file based on `.env example`
+
+  ### 4. Start docker compose containers in terminal from current folder
+  `docker compose up --build `
+  
+  ### 5. Open [http://localhost:3030](http://localhost:3030) to view app in your browser.
+
+
+
