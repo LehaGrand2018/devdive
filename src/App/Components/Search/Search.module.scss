@@ -31,10 +31,13 @@
   }
 
   .button {
-    width: 1.1875rem;
-    height: 1.1875rem;
-    display: inline-block;
+    max-width: 20px;
+    max-height: 20px;
     cursor: pointer;
+
+    &.show {
+      display: block;
+    }
 
     &.hide {
       display: none;

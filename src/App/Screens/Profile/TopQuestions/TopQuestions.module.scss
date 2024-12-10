@@ -5,6 +5,11 @@
 
   .header {
     margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .header:hover {
+    text-decoration: underline;
   }
 
   .questions {

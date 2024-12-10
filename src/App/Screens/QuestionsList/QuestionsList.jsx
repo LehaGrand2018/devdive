@@ -5,8 +5,10 @@ import PropTypes from "prop-types";
 import { getQuestions } from "../../Requests/QuestionsRequests";
 import { useLocation } from "react-router-dom";
 import Search from "../../Components/Search/Search";
+import { useTranslation } from "react-i18next";
 
 const QuestionsList = ({ className }) => {
+  const { t } = useTranslation();
   const [questions, setQuestions] = useState(null);
   const [questionsToDisplay, setQuestionsToDisplay] = useState(null);
 
@@ -61,7 +63,7 @@ const QuestionsList = ({ className }) => {
       params.delete("content");
     }
     location.search = params.toString();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.toString()]);
 
   useEffect(() => {
@@ -76,11 +78,11 @@ const QuestionsList = ({ className }) => {
   return (
     <div className={`${styles.questionsList} ${className}`}>
       <div className={styles.header}>
-        <h2 className={styles.title}>Вопросы</h2>
+        <h2 className={styles.title}>{t("questionsList.title")}</h2>
         <Search
           className={styles.search}
           type="text"
-          placeholder="Поиск"
+          placeholder={t("questionsList.search")}
           value={searchTerm}
           onChange={(event) => setSearchTerm(event.target.value)}
           hideButton={"true"}

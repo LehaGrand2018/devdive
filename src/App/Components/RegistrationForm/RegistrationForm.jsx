@@ -4,10 +4,11 @@ import Input from "../Input/Input.jsx";
 import styles from "./RegistrationForm.module.scss";
 import PasswordInput from "../PasswordInput/PasswordInput.jsx";
 import PropTypes from "prop-types";
-import {signIn, signUp} from "../../Requests/AuthRequests.js"
+import { signIn, signUp } from "../../Requests/AuthRequests.js";
+import { useTranslation } from "react-i18next";
 
 const RegistrationForm = ({ className, registrationFunc, loginFunc }) => {
-
+  const { t } = useTranslation();
   const [email, setEmail] = useState(null);
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
@@ -58,33 +59,34 @@ const RegistrationForm = ({ className, registrationFunc, loginFunc }) => {
   };
 
   const signUpButtonHandler = async () => {
-    
     console.log("SignUp button function called");
     try {
       await signUp(username, password, email);
       signIn(email, password);
     } catch (error) {
-      console.error(error)
-      console.log(`Error code: ${error.response.status}`)
-      console.log(`Error statusText: ${error.response.statusText}`)
-      if(error.response.data){
-        console.log(`Error description: ${error.response.data.detail}`)
+      console.error(error);
+      console.log(`Error code: ${error.response.status}`);
+      console.log(`Error statusText: ${error.response.statusText}`);
+      if (error.response.data) {
+        console.log(`Error description: ${error.response.data.detail}`);
       }
       return;
     }
 
     if (localStorage.getItem("isLoggedIn") === true) {
-      alert("Вы успешно зарегистрировались на сайте!");
+      alert(t("autorization.registrationAlert"));
     }
   };
 
   return (
     <div className={`${styles.RegistrationForm}  ${className}`}>
-      <h2 className={styles.RegistrationLable}>Регистрация</h2>
+      <h2 className={styles.RegistrationLable}>
+        {t("autorization.registration")}
+      </h2>
 
       <Input
         className={styles.Input}
-        placeholder="Имя пользователя"
+        placeholder={t("autorization.username")}
         type="text"
         name="username"
         id="username"
@@ -92,7 +94,7 @@ const RegistrationForm = ({ className, registrationFunc, loginFunc }) => {
       />
       <Input
         className={styles.Input}
-        placeholder="Email"
+        placeholder={t("autorization.email")}
         type="text"
         name="email"
         id="email"
@@ -100,7 +102,7 @@ const RegistrationForm = ({ className, registrationFunc, loginFunc }) => {
       />
       <PasswordInput
         className={styles.Input}
-        placeholder="Пароль"
+        placeholder={t("autorization.password")}
         type="password"
         name="password"
         id="password"
@@ -108,7 +110,7 @@ const RegistrationForm = ({ className, registrationFunc, loginFunc }) => {
       />
       <Button
         className={styles.Button}
-        value="Регистрация"
+        value={t("autorization.signUp")}
         onClick={(e) => {
           e.preventDefault();
           signUpButtonHandler();
@@ -116,7 +118,7 @@ const RegistrationForm = ({ className, registrationFunc, loginFunc }) => {
       />
       <Button
         className={styles.LoginButton}
-        value="Вход"
+        value={t("autorization.signIn")}
         onClick={(e) => {
           e.preventDefault();
           loginFunc();

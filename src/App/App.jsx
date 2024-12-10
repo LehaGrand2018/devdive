@@ -20,20 +20,22 @@ import ChatRoom from "./Screens/ChatRoom/ChatRoom";
 const App = () => {
   const [isProfile, setIsProfile] = useState("false");
   const [isAddQuestion, setIsAddQuestion] = useState("false");
+  const [isAutorization, setIsAutorization] = useState("false");
   const { isLoggedIn } = GlobalStore;
 
-  useEffect(()=>{
+  useEffect(() => {
     if (isLoggedIn === "true") {
-      const dateLS = Number.parseInt(localStorage.getItem("token_refreshed_at"))
-      const dateNow = Date.now()
-      console.info("Date from local storage:", dateLS)
-      console.info("Date now:", dateNow)
+      const dateLS = Number.parseInt(
+        localStorage.getItem("token_refreshed_at")
+      );
+      const dateNow = Date.now();
+      console.info("Date from local storage:", dateLS);
+      console.info("Date now:", dateNow);
       if (dateNow > dateLS + 1700000) {
         refreshToken();
       }
     }
-  }, [isLoggedIn])
-  
+  }, [isLoggedIn]);
 
   return (
     <MenuProvider>
@@ -42,9 +44,11 @@ const App = () => {
           <Header
             className={styles.header}
             isProfile={isProfile}
-            setIsProfile={setIsProfile}
             isAddQuestion={isAddQuestion}
+            isAutorization={isAutorization}
+            setIsProfile={setIsProfile}
             setIsAddQuestion={setIsAddQuestion}
+            setIsAutorization={setIsAutorization}
           ></Header>
           <NavigationPanel
             setIsAddQuestion={setIsAddQuestion}
@@ -59,18 +63,20 @@ const App = () => {
             />
             <Route
               path="/addQuestion"
-              element={<AddQuestion setIsAddQuestion={setIsAddQuestion} />}
+              element={<AddQuestion/>}
             />
             <Route path="/tags" element={<TagsList />} />
             <Route
               path="/profile/:userId"
-              element={<Profile setIsProfile={setIsProfile} />}
+              element={<Profile />}
             ></Route>
+            <Route path="/chatRoom" element={<ChatRoom />}></Route>
             <Route
-              path="/chatRoom"
-              element={<ChatRoom/>}
+              path="/autorization"
+              element={
+                <AutorizationPage />
+              }
             ></Route>
-            <Route path="/autorization" element={<AutorizationPage />}></Route>
             <Route path="*" element={<ErrorPage />}></Route>
           </Routes>
         </div>

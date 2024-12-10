@@ -1,4 +1,6 @@
-export const addEnding = (word, count) => {
+import i18next from "../../i18n";
+
+export const addEndingRU = (word, count) => {
   count = Math.abs(count);
   const lastDigit = count % 10;
   const lastTwoDigits = count % 100;
@@ -13,6 +15,29 @@ export const addEnding = (word, count) => {
     return word + "ов";
   }
   return word;
+};
+
+export const addEndingEN = (word, count) => {
+  if (Math.abs(count) !== 1) {
+    if (word.endsWith("y") && !/[aeiou]y$/.test(word)) {
+      return word.slice(0, -1) + "ies";
+    }
+    return word + "s";
+  }
+  return word;
+};
+
+export const addEnding = (word, count) => {
+  console.log("Language:", i18next.language);
+  switch (i18next.language) {
+    case "ru":
+      return addEndingRU(word, count);
+    case "en":
+      console.log("en");
+      return addEndingEN(word, count);
+    default:
+      return word;
+  }
 };
 
 export const parseDate = (dateSource) => {

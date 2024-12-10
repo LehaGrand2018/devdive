@@ -10,16 +10,16 @@ import PropTypes from "prop-types";
 import { getUser } from "../../Requests/UsersRequests";
 import { useParams } from "react-router-dom";
 
-const Profile = ({ className, setIsProfile }) => {
+const Profile = ({ className }) => {
   const [user, setUser] = useState(null);
   const [elements, setElements] = useState(null);
   const { userId } = useParams();
   // get data about user
   useEffect(() => {
-      (async () => {
-        const user = await getUser(userId);
-        setUser(user);
-      })();
+    (async () => {
+      const user = await getUser(userId);
+      setUser(user);
+    })();
   }, [userId]);
 
   // display data about user
@@ -55,18 +55,10 @@ const Profile = ({ className, setIsProfile }) => {
     }
   }, [user]);
 
-  useEffect(() => {
-    setIsProfile("true");
-    return () => {
-      setIsProfile("false");
-    };
-  });
-
   return <div className={`${styles.profile} ${className}`}>{elements}</div>;
 };
 
 Profile.propTypes = {
   className: PropTypes.string,
-  setIsProfile: PropTypes.func,
 };
 export default Profile;

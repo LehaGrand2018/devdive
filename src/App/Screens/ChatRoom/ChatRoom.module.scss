@@ -5,8 +5,9 @@
   text-align: left;
   height: calc(100vh - 50px);
 
-  max-height: calc(100vh - 50px); 
+  max-height: calc(100vh - 50px);
   overflow-y: scroll;
+
   .header {
     width: 950px;
     height: 50px;
@@ -17,6 +18,7 @@
     .headerText {
       font-size: 32px;
     }
+
     .headerStatus {
       height: 50px;
       line-height: 50px;
@@ -24,36 +26,38 @@
     }
   }
 
-  .messagesList{
+  .messagesList {
     .message {
       width: 950px;
     }
-    max-height: calc(100vh - 175px); 
-    // height: 550px;
+
+    max-height: calc(100vh - 185px);
     overflow-y: scroll;
   }
-  
-  .messageForm{
+
+  .messageForm {
     position: absolute;
     width: 950px;
     height: 50px;
-    bottom: 20px;
+    bottom: 15px;
 
   }
 }
 
-@media (max-width: 1024px){
-.chat{
-  font-size: 12px;
-  margin-left: 0px;
-  .header{
-    width: 90%;
-    font-size: 28px;
+@media (max-width: 1024px) {
+  .chat {
+    font-size: 12px;
+    margin-left: 0px;
+
+    .header {
+      width: 90%;
+      font-size: 28px;
+    }
+
+    .message {
+      width: 90%;
+    }
   }
-  .message{
-    width: 90%;
-  }
-}
 
 
 }

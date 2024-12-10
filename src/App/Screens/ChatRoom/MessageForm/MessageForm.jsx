@@ -2,9 +2,11 @@ import React, { useState } from "react";
 
 import styles from "./MessageForm.module.scss";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 
 const MessageForm = ({ className, socket, onMessageSend }) => {
+  const {t} = useTranslation();
   const [inputValue, setInputValue] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +41,7 @@ const MessageForm = ({ className, socket, onMessageSend }) => {
     <form className={`${styles.form} ${className}`} onSubmit={handleSubmit}>
       <input
         className={styles.formInput}
-        placeholder={"Введите сообщение"}
+        placeholder={t("chatRoom.message")}
         value={inputValue ? inputValue : ""}
         id="answerInput"
         onChange={(e) => setInputValue(e.target.value)}

@@ -6,14 +6,16 @@ import LoginForm from "../../Components/LoginForm/LoginForm";
 import { useNavigate } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import GlobalStore from "../../Stores/GlobalStore";
+import { useTranslation } from "react-i18next";
+import PropTypes from "prop-types";
 
 const AutorizationPage = observer(({ className }) => {
-  // const isRegistered = "false";
+  const { t } = useTranslation();
   const [isRegistered, setIsRegistered] = useState("true");
   const [element, setElement] = useState(null);
   const { isLoggedIn } = GlobalStore;
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     let isLoggedIn = localStorage.getItem("isLoggedIn");
     console.log("isRegistered: ", isRegistered);
@@ -44,10 +46,14 @@ const AutorizationPage = observer(({ className }) => {
 
   return (
     <div className={`${styles.AutorizationPage} ${className}`}>
-      <h2 className={styles.header}>Авторизация</h2>
+      <h2 className={styles.header}>{t("autorization.title")}</h2>
       {element}
     </div>
   );
 });
+
+AutorizationPage.propTypes = {
+  className: PropTypes.string,
+};
 
 export default AutorizationPage;

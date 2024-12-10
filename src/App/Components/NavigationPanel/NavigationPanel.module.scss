@@ -50,12 +50,7 @@
 .PanelButton{
     margin-top: 20px;
 }
-.PanelButton:last-child{
-    margin-bottom: 20px;
-    position: absolute;
-    bottom: 25px;
-    left: calc(50% - 100px);
-}
+
 .PanelButton:hover{
     // background: #FFFFFF;
     // color: #545F71;

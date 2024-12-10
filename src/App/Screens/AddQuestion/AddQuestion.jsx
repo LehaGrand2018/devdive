@@ -9,8 +9,10 @@ import { getTags } from "../../Requests/TagsRequests";
 import { createQuestion } from "../../Requests/QuestionsRequests";
 import { useNavigate } from "react-router-dom";
 import { createAnswer } from "../../Requests/QuestionAnswersRequests";
+import { useTranslation } from "react-i18next";
 
-const AddQuestion = ({ className, setIsAddQuestion }) => {
+const AddQuestion = ({ className }) => {
+  const { t } = useTranslation();
   const [header, setHeader] = useState(null);
   const [description, setDescription] = useState(null);
   const [tags, setTags] = useState(null);
@@ -29,9 +31,6 @@ const AddQuestion = ({ className, setIsAddQuestion }) => {
         if (foundTag) {
           tagIds.push(foundTag.id);
         }
-        //  else {
-        //   return `Error: tag "${tag}" not found.`;
-        // }
       }
       return tagIds;
     }
@@ -41,16 +40,11 @@ const AddQuestion = ({ className, setIsAddQuestion }) => {
   // setup
   useEffect(() => {
     console.log("setup");
-    setIsAddQuestion("true");
 
     (async () => {
       setTagsFromServer(await getTags());
     })();
-
-    return () => {
-      setIsAddQuestion("false");
-    };
-  }, [setIsAddQuestion]);
+  }, []);
 
   // useEffect(() => {
 
@@ -83,34 +77,36 @@ const AddQuestion = ({ className, setIsAddQuestion }) => {
 
   return (
     <div className={`${styles.AddQuestion} ${className}`}>
-      <h1 className={styles.header}>Задать вопрос</h1>
+      <h1 className={styles.header}>{t("addQuestion.title")}</h1>
       <form className={styles.form} action="" method="question">
-        <label htmlFor="questionHeader">Заголовок</label>
+        <label htmlFor="questionHeader">{t("addQuestion.header")}</label>
         <Input
           className={styles.questionHeader}
           id="questionHeader"
           name={"questionHeader"}
-          placeholder={"Введите заголовок"}
+          placeholder={t("addQuestion.inputHeader")}
           onChange={(e) => setHeader(e.target.value)}
         ></Input>
-        <label htmlFor="questionDescription">Основная часть</label>
+        <label htmlFor="questionDescription">
+          {t("addQuestion.description")}
+        </label>
         <textarea
           className={styles.questionDescription}
-          placeholder={"Описание"}
+          placeholder={t("addQuestion.inputDescription")}
           id="questionDescription"
           onChange={(e) => setDescription(e.target.value)}
         />
-        <label htmlFor="questionTags">Метки</label>
+        <label htmlFor="questionTags">{t("addQuestion.tags")}</label>
         <Input
           className={styles.questionTags}
           id="questionTags"
-          placeholder={"Введите теги"}
+          placeholder={t("addQuestion.inputTags")}
           onChange={(e) => setTags(e.target.value)}
         ></Input>
         <Button
           className={styles.button}
           type="submit"
-          value="Задать вопрос"
+          value={t("addQuestion.title")}
           onClick={submitHandler}
         />
       </form>
@@ -120,6 +116,5 @@ const AddQuestion = ({ className, setIsAddQuestion }) => {
 
 AddQuestion.propTypes = {
   className: PropTypes.string,
-  setIsAddQuestion: PropTypes.func,
 };
 export default AddQuestion;

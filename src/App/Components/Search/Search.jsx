@@ -25,7 +25,7 @@ const Search = ({
       />
       <img
         className={`${styles.button} ${className} ${
-          hideButton === "true" ? styles.hide : ""
+          hideButton === "true" ? styles.hide : styles.show
         }`}
         onClick={onClick}
         src={searchIcon}
