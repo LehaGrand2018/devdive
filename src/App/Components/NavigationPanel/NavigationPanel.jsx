@@ -6,6 +6,7 @@ import { observer } from "mobx-react-lite";
 import { MenuContext } from "../../Contexts/MenuContext";
 import GlobalStore from "../../Stores/GlobalStore";
 import { useTranslation } from "react-i18next";
+import LanguageSelector from "../LanguageSelector/LanguageSelector";
 
 const NavigationPanel = observer(({ className }) => {
   const [buttons, setButtons] = useState();
@@ -49,6 +50,7 @@ const NavigationPanel = observer(({ className }) => {
         isVisible ? styles.visible : ""
       }`}
     >
+      <LanguageSelector className={styles.languageSelector}/>
       <NavLink className={({ isActive }) => `${styles.PanelButton}`} to="/">
         {t("buttons.main")}
       </NavLink>

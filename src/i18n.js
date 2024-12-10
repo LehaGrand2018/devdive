@@ -13,5 +13,4 @@ i18next
     fallbackLng: "en",
   });
 
-i18next.changeLanguage("ru")
 export default i18next;

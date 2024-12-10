@@ -19,7 +19,7 @@
   },
   "chatRoom": {
     "title": "Чат комната",
-    "status": "Статсу",
+    "status": "Статус",
     "message": "Введите сообщения",
     "connected": "Подключен",
     "disconnected": "Отключен",

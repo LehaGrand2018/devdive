@@ -1,6 +1,6 @@
 import styles from "./App.module.scss";
 import { Route, Routes } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import Header from "./Components/Header/Header";
 import NavigationPanel from "./Components/NavigationPanel/NavigationPanel";
@@ -16,12 +16,17 @@ import ErrorPage from "./Screens/ErrorPage/ErrorPage";
 import { MenuProvider } from "./Contexts/MenuContext";
 import { refreshToken } from "./Requests/AuthRequests";
 import ChatRoom from "./Screens/ChatRoom/ChatRoom";
+import i18next from "../i18n";
 
 const App = () => {
-  const [isProfile, setIsProfile] = useState("false");
-  const [isAddQuestion, setIsAddQuestion] = useState("false");
-  const [isAutorization, setIsAutorization] = useState("false");
   const { isLoggedIn } = GlobalStore;
+  useEffect(() => {
+    const language = localStorage.getItem("language");
+    if (language) {
+      i18next.changeLanguage(language);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i18next.language]);
 
   useEffect(() => {
     if (isLoggedIn === "true") {
@@ -41,19 +46,8 @@ const App = () => {
     <MenuProvider>
       <div className={styles.app}>
         <div className={styles.content}>
-          <Header
-            className={styles.header}
-            isProfile={isProfile}
-            isAddQuestion={isAddQuestion}
-            isAutorization={isAutorization}
-            setIsProfile={setIsProfile}
-            setIsAddQuestion={setIsAddQuestion}
-            setIsAutorization={setIsAutorization}
-          ></Header>
-          <NavigationPanel
-            setIsAddQuestion={setIsAddQuestion}
-            isLoggedIn={isLoggedIn}
-          ></NavigationPanel>
+          <Header className={styles.header} />
+          <NavigationPanel />
           <Routes>
             <Route path="/" element={<Root />}></Route>
             <Route path="questions" element={<QuestionsList />} />
@@ -61,22 +55,11 @@ const App = () => {
               path="questions/:questionId"
               element={<QuestionAnswersList />}
             />
-            <Route
-              path="/addQuestion"
-              element={<AddQuestion/>}
-            />
+            <Route path="/addQuestion" element={<AddQuestion />} />
             <Route path="/tags" element={<TagsList />} />
-            <Route
-              path="/profile/:userId"
-              element={<Profile />}
-            ></Route>
+            <Route path="/profile/:userId" element={<Profile />}></Route>
             <Route path="/chatRoom" element={<ChatRoom />}></Route>
-            <Route
-              path="/autorization"
-              element={
-                <AutorizationPage />
-              }
-            ></Route>
+            <Route path="/autorization" element={<AutorizationPage />}></Route>
             <Route path="*" element={<ErrorPage />}></Route>
           </Routes>
         </div>
