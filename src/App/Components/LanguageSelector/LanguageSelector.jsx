@@ -8,7 +8,8 @@ const LanguageSelector = ({ className }) => {
   const [activeRu, setActiveRu] = useState("false");
 
   useEffect(() => {
-    switch (i18next.language) {
+    console.log("lang", i18next.language)
+    switch (i18next.language.slice(0,2)) {
       case "en":
         localStorage.setItem("language", "en");
         setActiveEn("true");
