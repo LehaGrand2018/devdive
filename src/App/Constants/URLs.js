@@ -1,4 +1,4 @@
-export const BASE_URL = `${process.env.REACT_APP_BACKEND_HOSTNAME}:${process.env.REACT_APP_BACKEND_PORT}`;
+export const BASE_URL = `${import.meta.env.REACT_APP_BACKEND_HOSTNAME}:${import.meta.env.REACT_APP_BACKEND_PORT}`;
 console.log("BASE_URL", BASE_URL)
 export const SIGN_IN_URL = `${BASE_URL}/api/v1/auth/signin/`;
 export const SIGN_UP_URL = `${BASE_URL}/api/v1/auth/signup/`;

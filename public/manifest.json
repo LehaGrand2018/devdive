@@ -1,7 +1,9 @@
 {
   "short_name": "devDive",
-  "name": "Create React App Sample",
-  "start_url": ".",
+  "name": "devDive Q&A Platform",
+  "description" : "This is a Q&A platform, which provides all the means to search for interesting data and communicate with other people.",
+  "start_url": "/",
+  "id" : "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
