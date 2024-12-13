@@ -17,7 +17,9 @@ const QuestionInfo = ({ className, user, date }) => {
         className={styles.UserPhoto}
         style={{ backgroundImage: "none" /*userPhoto*/ }}
         onClick={openUserProfile}
-      ></div>
+      ><span className={styles.letter}>{user.username.slice(0,1).toUpperCase()}</span>
+
+      </div>
       <p className={styles.UserName} onClick={openUserProfile}>
         {user.username}
       </p>

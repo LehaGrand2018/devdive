@@ -59,7 +59,12 @@ const Header = observer(({ className }) => {
       if (!location.pathname.includes("/profile")) {
         elements.push(
           <div key="headerUser" className={styles.user}>
-            <p className={styles.username}>{username}</p>
+            <Link
+              to={`/profile/${localStorage.getItem("user_id")}`}
+              className={styles.username}
+            >
+              {username}
+            </Link>
             <Link
               to={`/profile/${localStorage.getItem("user_id")}`}
               className={styles.profilePhoto}

@@ -7,10 +7,11 @@ const AnswerFooter = ({ className, username, userPhoto, answerDate }) => {
   return (
     <div className={`${styles.answerFooter} ${className}`}>
       <div className={styles.user}>
-        <div
-          className={styles.userPhoto}
-          styles={{ backgroundImage: "" }}
-        ></div>
+        <div className={styles.userPhoto} styles={{ backgroundImage: "" }}>
+          <span className={styles.letter}>
+            {username.slice(0, 1).toUpperCase()}
+          </span>
+        </div>
         <p className={styles.username}>{username}</p>
       </div>
       <time className={styles.answerDate} dateTime={answerDate}>

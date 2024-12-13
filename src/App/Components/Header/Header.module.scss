@@ -25,18 +25,20 @@
     margin-right: 25px;
   }
 
-  .user{
-   
+  .user {
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
+
     .username {
+      text-decoration: none;
       display: block;
       font-size: 24px;
       cursor: pointer;
     }
-  
+
     .profilePhoto {
       display: block;
       width: 40px;
@@ -54,8 +56,8 @@
 }
 
 /* Desktop styles */
- @media (min-width: 481px) {
-  .menu{
+@media (min-width: 481px) {
+  .menu {
     display: none;
   }
 
@@ -64,7 +66,7 @@
 /* Mobile styles */
 @media (max-width: 480px) {
 
-  .menu{
+  .menu {
     display: block;
   }
 
