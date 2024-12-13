@@ -61,3 +61,55 @@
 
 
 }
+
+@media (max-width: 480px){
+  .chat {
+    // position: relative;
+    // padding-top: 15px;
+     padding-right: 0px;
+     //font-size: 12px;
+    // text-align: left;
+    // height: calc(100vh - 50px);
+  
+    // max-height: calc(100vh - 50px);
+    // overflow-y: scroll;
+  
+    .header {
+      width: 100%;
+      
+      // height: 50px;
+      // display: flex;
+      // justify-content: space-between;
+      // border-bottom: 1px solid #545f71;
+  
+      .headerText {
+        font-size: 28px;
+        line-height: 22px;
+      }
+  
+      .headerStatus {
+        height: 50px;
+        line-height: 22px;
+        font-size: 20px;
+      }
+    }
+  
+    .messagesList {
+      .message {
+        width: 100%;
+        font-size: 16px;
+        white-space: normal;
+      }
+  
+  
+    }
+  
+    .messageForm {
+      width: 100%;
+      height: 40px;
+      //bottom: 15px;
+  
+    }
+  }
+
+}

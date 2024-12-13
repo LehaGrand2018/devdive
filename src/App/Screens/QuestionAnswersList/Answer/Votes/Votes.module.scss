@@ -22,3 +22,27 @@
         text-align: center;
     }
 }
+
+@media (max-width: 480px){
+    .votes{
+        width: 70px;
+        height: 30px;
+        display: flex;
+    
+        .sign{
+            width: 20px;
+            height: 20px;
+        }
+        .plus{
+            width: 20px;
+            height: 20px;
+        }
+        .rating{
+            width: 20px;
+            height: 20px;
+            font-size: 15px;
+            line-height: 20px;
+            padding-left: 0px;
+        }
+    }
+}

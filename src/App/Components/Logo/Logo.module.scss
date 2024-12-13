@@ -5,3 +5,9 @@
     background-image: url(logo.svg);
     background-size: auto;
 }
+
+@media (max-width: 480px){
+    .Logo{
+        display: none;
+    }
+}

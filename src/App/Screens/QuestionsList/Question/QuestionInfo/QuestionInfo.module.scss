@@ -24,3 +24,35 @@
     font-size: 1.5rem;
   }
 }
+
+@media (max-width: 480px){
+  .QuestionInfo {
+    width: 40%;
+    //padding: 15px;
+    font-size: 15px;
+    //padding-left: 0px;
+    display: flex;
+    //flex-direction: row;
+   // height: 80px;
+  
+    .UserPhoto {
+      padding-top: 30px;
+      padding-left: 30px;
+      margin-right: 0px;
+      width: 20px;
+      height: 20px;
+    }
+  
+    .UserName {
+      padding: 10px;
+      font-size: 15px;
+      
+    }
+    .QuestionDate{
+      padding: 10px;
+      white-space: nowrap;
+      //padding-left: 50px;
+      //text-align: right;
+    }
+  }
+}

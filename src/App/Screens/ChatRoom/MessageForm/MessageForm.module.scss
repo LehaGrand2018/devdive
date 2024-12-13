@@ -44,3 +44,24 @@
     border-bottom-left-radius: 0px;
   }
 }
+
+@media (max-width: 480px){
+  .form {
+     width: 100%;
+
+  
+    .formInput {
+      width: 90%;
+      height: 40px;
+      font-size: 18px;
+
+    }
+
+    
+    .formButton {
+
+      width: 10%px;
+      height: 40px;
+    }
+  }
+}

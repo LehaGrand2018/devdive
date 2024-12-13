@@ -64,8 +64,25 @@
 /* Mobile styles */
 @media (max-width: 480px) {
 
-  .menu{
-    display: block;
-  }
+  .header{
+    .menu{
+      display: block;
+    }
 
+    .questionButton {
+     margin-left: 25%;
+     //width: 60%;
+     line-height: 1.1;
+     font-size: 16px;
+    }
+
+    .user{
+      margin-left: 30px;
+  
+      .profilePhoto {
+      margin-left: 5px;
+     }
+
+    }
+  }
 }
