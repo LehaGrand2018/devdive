@@ -35,6 +35,7 @@ const Profile = ({ className }) => {
               className={styles.user}
               username={userGenteralInfo.username}
               description={userGenteralInfo.info}
+              photo={user.presigned_url}
             />
             <Status
               className={styles.status}
