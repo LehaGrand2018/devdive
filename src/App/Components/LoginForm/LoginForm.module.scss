@@ -1,5 +1,5 @@
 .LoginForm {
-  width: 18.75rem;
+  max-width: 18.75rem;
   height: 15rem;
   margin: 0 auto;
   display: flex;
@@ -8,15 +8,18 @@
   align-items: flex-start;
   gap: 0.625rem;
 
-  
+  .Input {
+    width: 100%;
+  }
+
   .Button {
     width: 100%;
   }
 
-  .LoginLable{
+  .LoginLable {
     width: 100%;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
   }
 

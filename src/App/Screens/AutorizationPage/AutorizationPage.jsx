@@ -25,7 +25,7 @@ const AutorizationPage = observer(({ className }) => {
     if (isRegistered === "true") {
       setElement(
         <LoginForm
-          className={styles.LoginForm}
+          className={styles.loginForm}
           registrationFunc={() => {
             setIsRegistered("false");
           }}
@@ -34,7 +34,7 @@ const AutorizationPage = observer(({ className }) => {
     } else {
       setElement(
         <RegistrationForm
-          className={styles.RegistrationForm}
+          className={styles.registrationForm}
           loginFunc={() => {
             setIsRegistered("true");
           }}

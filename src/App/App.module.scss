@@ -1,16 +1,16 @@
 .app {
   position: relative;
   text-align: center;
-  width: 1260px;
+  width: 100%; //1260px;
   margin: 0 auto;
+  max-width: 1260px;
   box-shadow: 1px 0 8px 0 rgba(0, 0, 0, 0.25);
 
   .content {
-    
+
     padding-top: 50px;
     height: 100%;
     display: flex;
-    
     justify-content: space-between;
   }
 
@@ -37,14 +37,14 @@ body {
   background: #e3e3e3;
 }
 
-@media (max-width: 360px){
-  body {
-    font-size: 18px; 
-  }
+@media (max-width: 360px) {
+  // .app {
+  //   // padding: 0 10px;
+  //   // width: 360px;
+  // }
 
-  .app {
-    padding: 0 10px;
-  }
+  // body {
+  //   //font-size: 18px; 
+  // }
 
-  
 }

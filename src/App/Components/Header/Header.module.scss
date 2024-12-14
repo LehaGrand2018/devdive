@@ -12,14 +12,6 @@
   background-color: #E3E3E3;
   box-shadow: 3px 4px 10px 0 rgba(0, 0, 0, 0.25);
 
-  .logo {
-    margin-left: 12px;
-  }
-
-  .questionButton {
-    margin-left: 40%;
-  }
-
   .signInButton {
     width: 100px;
     margin-right: 25px;
@@ -56,18 +48,91 @@
 }
 
 /* Desktop styles */
-@media (min-width: 481px) {
+@media (min-width: 1024px) {
   .menu {
     display: none;
   }
 
-}
-
-/* Mobile styles */
-@media (max-width: 480px) {
-
-  .menu {
-    display: block;
+  .questionButton {
+    margin-left: 40%;
   }
 
+}
+
+/* Tablet styles */
+@media (min-width: 481px) and (max-width: 1024px) {
+
+  .header {
+    .menu {
+      display: block;
+    }
+
+    .questionButton {
+      line-height: 1.1;
+      font-size: 24px;
+    }
+
+    .logo {
+      margin-left: 10px;
+    }
+
+    .user {
+      margin-left: 30px;
+
+      .profilePhoto {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+
+  .header {
+    .menu {
+      display: block;
+    }
+
+    .questionButton {
+      margin-left: auto;
+      // width: 90px;
+      line-height: 1.1;
+      // font-size: 16px;
+    }
+
+    .user {
+
+      .profilePhoto {
+        margin-left: 5px;
+      }
+
+    }
+  }
+}
+
+@media (max-width: 480px) and (min-width: 321px) {
+
+  .header {
+    .questionButton {
+      width: 90px;
+      font-size: 16px;
+    }
+
+    .user {
+      .profilePhoto {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .logo {
+    display: none;
+  }
+
+  .questionButton {
+    width: 50px;
+    font-size: 12px;
+  }
 }
