@@ -1,6 +1,5 @@
 .RegistrationForm {
-  
-  width: 18.75rem;
+  max-width: 18.75rem;
   height: 17.62rem;
   margin: 0 auto;
   display: flex;
@@ -8,13 +7,14 @@
   justify-content: space-between;
 
   .RegistrationLable {
+    width: 100%;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
   }
 
   .Input {
-    width: 18.75rem;
+    width: 100%;
     // height: 40px;
   }
   .Button{

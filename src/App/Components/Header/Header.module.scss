@@ -12,13 +12,13 @@
   background-color: #E3E3E3;
   box-shadow: 3px 4px 10px 0 rgba(0, 0, 0, 0.25);
 
-  .logo {
-    margin-left: 12px;
-  }
+  // .logo {
+  //   margin-left: 12px;
+  // }
 
-  .questionButton {
-    margin-left: 40%;
-  }
+  // .questionButton {
+  //   margin-left: 40%;
+  // }
 
   .signInButton {
     width: 100px;
@@ -54,15 +54,19 @@
 }
 
 /* Desktop styles */
- @media (min-width: 481px) {
+ @media (min-width: 1024px) {
   .menu{
     display: none;
   }
 
+  .questionButton {
+    margin-left: 40%;
+  }
+
 }
 
-/* Mobile styles */
-@media (max-width: 1024px) {
+/* Tablet styles */
+@media (min-width: 481px) and (max-width: 1024px ) {
 
   .header{
     .menu{
@@ -70,15 +74,42 @@
     }
 
     .questionButton {
-     margin-left: 25%;
-     //width: 60%;
+    //  margin-left: 25%;
+     width: 40%;
+     line-height: 1.1;
+     font-size: 24px;
+    }
+
+    .logo{
+      margin-left: 10px;
+    }
+    .user{
+      margin-left: 30px;
+  
+      .profilePhoto {
+      margin-left: 5px;
+     }
+
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  
+  .header{
+    .menu{
+      display: block;
+    }
+
+    .questionButton {
+      margin-left: auto;
+     width: 90px;
      line-height: 1.1;
      font-size: 16px;
     }
 
     .user{
-      margin-left: 30px;
-  
+
       .profilePhoto {
       margin-left: 5px;
      }
