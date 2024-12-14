@@ -69,7 +69,7 @@ const Header = observer(({ className }) => {
               to={`/profile/${localStorage.getItem("user_id")}`}
               className={styles.profilePhoto}
               style={{ backgroundImage: "" }}
-            ></Link>
+            >{username ? username[0].toUpperCase() : ""}</Link>
           </div>
         );
       } else if (
