@@ -1,14 +1,12 @@
 .status {
-  width: 18.75rem;
-  // height: 11.06rem;
-  // width: 300px;
-  // height: 180px;
-
   text-align: center;
 
+  .statusElement {
+    width: 40%;
+  }
+
   .elements {
-    width: 18.75rem;
-    height: 8.44rem;
+    height: 135px;
     margin-top: 10px;
     padding: 15px;
     display: flex;
@@ -16,5 +14,31 @@
     align-content: space-between;
     justify-content: space-between;
     border: 1px solid #545f71;
+  }
+}
+
+@media (min-width: 811px) {
+  .status {
+    width: 300px;
+
+    .elements {
+      width: 300px;
+      height: 135px;
+      font-size: 20px;
+      margin-top: 10px;
+    }
+  }
+}
+
+@media (max-width: 810px) {
+  .status {
+    font-size: 16px;
+    width: 250px;
+
+    .elements {
+      height: 120px;
+      margin-top: 5px;
+      font-size: 16px;
+    }
   }
 }

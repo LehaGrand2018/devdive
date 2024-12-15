@@ -1,5 +1,6 @@
 .profile {
-  width: 100%;
+  width: 90%;
+  height: calc(100vh - 50px);
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 30px;
@@ -7,13 +8,23 @@
 
   .userStatus {
     display: flex;
-    justify-content: space-between;
-
+    flex-wrap: wrap;
   }
 
   .status {
     margin-top: 15px;
-    margin-right: 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .profile {
+    width: 100%;
+  }
+}
+
+@media (min-width: 811px) {
+  .userStatus {
+    justify-content: space-between;
   }
 
   .since {
@@ -22,5 +33,34 @@
 
   .topTags {
     margin-top: 30px;
+  }
+}
+
+@media (max-width: 810px) {
+  .userStatus {
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .since {
+    margin-top: 10px;
+  }
+
+  .topTags {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 654px) {
+  .since {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }

@@ -1,5 +1,4 @@
 .top {
-  // width: 100%;
   text-align: left;
 
   .header {
@@ -7,20 +6,27 @@
   }
 
   .tags {
-    // width: 61.88rem;
-    // width: 100%;
     min-height: 2.5rem;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
     font-weight: 600;
-    font-size: 1rem;
     border: 1px solid #545f71;
 
     .tag {
       display: inline-block;
       margin-right: 20px;
+    }
+  }
+}
+
+@media (max-width: 810px) {
+  .top {
+    font-size: 16px;
+
+    .header {
+      margin-bottom: 5px;
     }
   }
 }

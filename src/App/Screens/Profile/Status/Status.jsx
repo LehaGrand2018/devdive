@@ -11,10 +11,26 @@ const Status = ({ className, reputation, role, questions, answers }) => {
     <div className={`${styles.status} ${className}`}>
       <h2 className={styles.header}>{t("profile.status")}</h2>
       <div className={styles.elements}>
-        <StatusElement first={`${reputation}`} second={t("profile.reputation")}></StatusElement>
-        <StatusElement first={`${role}`} second={t("profile.role")}></StatusElement>
-        <StatusElement first={`${questions}`} second={addEnding(t("profile.question"), questions)}></StatusElement>
-        <StatusElement first={`${answers}`} second={addEnding(t("profile.reply"), answers)}></StatusElement>
+        <StatusElement
+          className={styles.statusElement}
+          first={`${reputation}`}
+          second={t("profile.reputation")}
+        ></StatusElement>
+        <StatusElement
+          className={styles.statusElement}
+          first={`${role}`}
+          second={t("profile.role")}
+        ></StatusElement>
+        <StatusElement
+          className={styles.statusElement}
+          first={`${questions}`}
+          second={addEnding(t("profile.question"), questions)}
+        ></StatusElement>
+        <StatusElement
+          className={styles.statusElement}
+          first={`${answers}`}
+          second={addEnding(t("profile.reply"), answers)}
+        ></StatusElement>
       </div>
     </div>
   );
