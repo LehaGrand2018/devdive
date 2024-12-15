@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import styles from "./TagsList.module.scss";
 import Tag from "./Tag/Tag";
-import TagsHeader from "./TagsHeader/TagsHeader";
 import PropTypes from "prop-types";
 import { getTags } from "../../Requests/TagsRequests";
+import { useTranslation } from "react-i18next";
+import Search from "../../Components/Search/Search";
 
 const TagsList = ({ className }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [tagsObj, setTagsObj] = useState(null);
   const [elements, setElements] = useState(null);
-
+  const { t } = useTranslation();
   // get tags
   useEffect(() => {
     const fetchTags = async () => {
@@ -22,7 +23,6 @@ const TagsList = ({ className }) => {
   // display tags
   useEffect(() => {
     if (tagsObj) {
-
       const filteredTags = tagsObj.tags.filter((tag) => {
         return tag.name.toLowerCase().includes(searchTerm.toLowerCase());
       });
@@ -42,11 +42,17 @@ const TagsList = ({ className }) => {
 
   return (
     <section className={`${styles.tagsList} ${className}`}>
-      <TagsHeader
-        className={styles.header}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-      />
+      <div className={`${styles.header} ${className}`}>
+        <h1 className={styles.title}>{t("tagsList.title")}</h1>
+        <Search
+          className={styles.search}
+          type="text"
+          placeholder={t("tagsList.search")}
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          hideButton={"true"}
+        ></Search>
+      </div>
       <ul className={styles.tags}>{elements}</ul>
     </section>
   );

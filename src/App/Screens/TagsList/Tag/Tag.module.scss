@@ -18,3 +18,31 @@
 
   }
 }
+
+@media (max-width: 680px) {
+  .tag {
+    font-size: 16px;
+    height: 100px;
+    padding: 10px;
+    color: #545F71;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #545F71;
+    cursor: pointer;
+
+    .header {
+      font-size: 24px;
+    }
+
+    .description {
+      margin-top: 10px;
+      font-size: 10px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .tag {
+    width: 80%;
+  }
+}
