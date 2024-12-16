@@ -50,7 +50,7 @@ const Votes = ({ className, rating, sourceId }) => {
         src={plusIcon}
         alt="plus"
       />
-      <p className={styles.rating}>{votes}</p>
+      <div className={styles.rating}>{votes}</div>
       <img
         onClick={decreaseVotes}
         className={`${styles.sign} ${styles.minus}`}

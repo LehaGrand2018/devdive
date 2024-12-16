@@ -15,7 +15,7 @@ const AnswersHeader = ({
   const { t } = useTranslation();
 
   return (
-    <div className={`${styles.question} ${className}`}>
+    <div className={`${styles.header} ${className}`}>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.questionInfo}>
         <p className={styles.date}>{parseDate(date)}</p>

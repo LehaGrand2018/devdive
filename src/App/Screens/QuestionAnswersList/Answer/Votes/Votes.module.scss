@@ -1,48 +1,81 @@
-.votes{
-    width: 40px;
-    height: 120px;
-    align-items: center;
+.votes {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 
-    .sign{
-        display: block;
-        width: 40px;
-        height: 40px;
-        margin: 0 auto;
-    }
-    .plus{
-        width: 39px;
-        height: 39px;
-    }
-    .rating{
-        display: block;
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-        line-height: 40px;
-        text-align: center;
-    }
+
+  .sign {
+    display: block;
+    margin: 0 auto;
+  }
+
+  // .plus {
+  //   width: 39px;
+  //   height: 39px;
+  // }
+
+  .rating {
+    display: block;
+    text-align: center;
+  }
 }
 
-@media (max-width: 480px){
-    .votes{
-        width: 70px;
-        height: 30px;
-        display: flex;
-    
-        .sign{
-            width: 20px;
-            height: 20px;
-        }
-        .plus{
-            width: 20px;
-            height: 20px;
-        }
-        .rating{
-            width: 20px;
-            height: 20px;
-            font-size: 15px;
-            line-height: 20px;
-            padding-left: 0px;
-        }
+
+@media (min-width: 811px) {
+  .votes {
+    flex-direction: column;
+    $size: 40px;
+    width: $size;
+    height: calc($size * 3);
+    align-items: center;
+
+
+    .sign {
+      display: block;
+      width: $size;
+      height: $size;
+      margin: 0 auto;
     }
+
+    // .plus {
+    //   width: 39px;
+    //   height: 39px;
+    // }
+
+    .rating {
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+      line-height: calc(40px);
+    }
+  }
+}
+
+@media (max-width: 810px) {
+  .votes {
+    width: 100px;
+    height: 20px;
+    justify-content: space-between;
+    flex-direction: row;
+
+    .sign {
+      width: 20px;
+      height: 20px;
+    }
+
+    .plus {
+      width: 20px;
+      height: 20px;
+    }
+
+    .rating {
+      width: 20px !important;
+      flex-grow: 0;
+      height: 20px;
+      font-size: 15px;
+      line-height: 20px;
+      margin: 0 auto;
+    }
+  }
 }

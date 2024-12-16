@@ -1,14 +1,39 @@
-.answers{
-    padding-top: 20px;
-    padding-right: 45px;
-    max-height: calc(100vh - 50px); 
-    overflow-y: auto;
+.answersList {
+  width: 80%;
+  height: calc(100vh - 50px);
+  padding-top: 20px;
+  padding-right: 30px;
+  padding-left: 30px;
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
 
-    .answersHeader{
-        width: 950px;
-        min-height: 80px;
-        // width: 61.88rem;
-        // height: 6.81rem;
-    }
+  .header {
+    width: 100%;
+    min-height: 80px;
+  }
+  .answerForm{
+    margin-top: 10px;
+  }
+
 }
 
+
+@media (max-width: 1024px) {
+  .answersList {
+    width: 100%;
+    padding-left: 30px;
+  }
+}
+
+@media (max-width: 810px){
+  .answersList{
+    padding-right: 10px;
+    padding-left: 10px;
+    .header{
+      min-height: 60px;
+    }
+  }
+  .answerForm{
+    height: 165px;
+  }
+}
