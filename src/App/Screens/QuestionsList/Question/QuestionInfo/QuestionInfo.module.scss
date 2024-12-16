@@ -1,5 +1,4 @@
 .QuestionInfo {
-  width: 150px;
   font-weight: 400;
   font-size: 0.88rem;
   line-height: 114%;
@@ -7,17 +6,19 @@
   color: #545f71;
   text-align: center;
 
-  $userPhotoSize: 70px; 
+  $userPhotoSize: 70px;
+
   .UserPhoto {
     width: $userPhotoSize;
     height: $userPhotoSize;
     margin: 0 auto;
-    margin-top: 5px;
+    margin-top: 10px;
     border-radius: 100%;
     background-color: #935D5D;
     box-shadow: 1px 0 8px 0 rgba(0, 0, 0, 0.25);
     cursor: pointer;
-    .letter{
+
+    .letter {
       font-size: calc($userPhotoSize - 10px);
       font-weight: 600;
       color: #e3e3e3;
@@ -29,22 +30,29 @@
 
   .UserName {
     cursor: pointer;
+    max-width: 100%;
+    text-wrap: wrap;
     font-weight: 700;
-    font-size: 1.5rem;
+    margin-top: 5px;
+    font-size: 20px;
   }
 }
 
-@media (max-width: 480px){
-  .QuestionInfo {
-    width: 40%;
-    //padding: 15px;
-    font-size: 15px;
-    //padding-left: 0px;
+@media (max-width: 810px) {
+
+  .user {
     display: flex;
-    //flex-direction: row;
-   // height: 80px;
-  
-   $userPhotoSize: 30px; 
+  }
+
+  .QuestionInfo {
+    display: flex;
+    width: 40%;
+    font-size: 15px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    $userPhotoSize: 30px;
+
     .UserPhoto {
       display: flex;
       position: relative;
@@ -54,8 +62,11 @@
       margin-right: 0px;
       width: $userPhotoSize;
       height: $userPhotoSize;
-      .letter{
 
+      .letter {
+
+        height: $userPhotoSize;
+        width: $userPhotoSize;
         left: 0;
         top: 0;
         font-size: calc($userPhotoSize - 10px);
@@ -63,20 +74,19 @@
         font-weight: 600;
         color: #e3e3e3;
         line-height: $userPhotoSize;
-        height: $userPhotoSize;
-        width: $userPhotoSize;
       }
     }
+
     .UserName {
-      padding: 10px;
+      margin-left: 10px;
+      line-height: 30px;
       font-size: 15px;
-      
+
     }
-    .QuestionDate{
+
+    .QuestionDate {
       padding: 10px;
       white-space: nowrap;
-      //padding-left: 50px;
-      //text-align: right;
     }
   }
 }

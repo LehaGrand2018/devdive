@@ -1,39 +1,114 @@
 .user {
-  width: 600px;
-  height: 155px;
   display: flex;
-  justify-content: space-between;
   text-align: left;
 
-  $photoSize: 155px;
   .photo {
-    
-    width: $photoSize;
-    height: $photoSize;
     border-radius: 50%;
     background-color: #935d5d;
     text-align: center;
-    .letter{
-      font-size: calc($photoSize - 10px);
+
+    .letter {
       color: #e3e3e3;
-      line-height: $photoSize;
       height: 100%;
       width: 100%;
     }
   }
 
   .info {
-    width: 395px;
     font-size: 1rem;
     font-weight: 400;
-
-    .username {
-      font-size: 2rem;
-    }
 
     .description {
       margin-top: 10px;
     }
   }
+}
 
+@media (min-width: 811px) {
+  .user {
+    height: 155px;
+  }
+
+  $photoSize: 155px;
+
+  .photo {
+    width: $photoSize;
+    height: $photoSize;
+
+    .letter {
+      font-size: calc($photoSize - 10px);
+      line-height: $photoSize;
+    }
+  }
+
+  .info {
+    width: 250px;
+    margin-left: 45px;
+
+    .username {
+      font-size: 32px;
+    }
+  }
+}
+
+@media (max-width: 810px) {
+  $photoSize: 100px;
+
+  .photo {
+    width: $photoSize;
+    height: $photoSize;
+
+    .letter {
+      font-size: calc($photoSize - 10px);
+      line-height: $photoSize;
+    }
+  }
+
+  .info {
+    width: 200px;
+    margin-left: 30px;
+
+    .username {
+      font-size: 24px;
+    }
+
+    .description {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 654px) {
+  .user {
+    width: 100%;
+  }
+
+  $photoSize: 70px;
+
+  .photo {
+    width: $photoSize;
+    height: $photoSize;
+
+    .letter {
+      font-size: calc($photoSize - 10px);
+      line-height: $photoSize;
+    }
+  }
+}
+
+@media (max-width: 299px) {
+  .user {
+    width: 100%;
+    $photoSize: 50px;
+
+    .photo {
+      width: $photoSize;
+      height: $photoSize;
+
+      .letter {
+        font-size: calc($photoSize - 10px);
+        line-height: $photoSize;
+      }
+    }
+  }
 }
