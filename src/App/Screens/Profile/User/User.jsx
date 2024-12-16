@@ -1,12 +1,27 @@
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./User.module.scss";
+import { getUserPhoto } from "../../../Requests/UsersRequests";
 
-const User = ({ className, username, description, photo }) => {
+const User = ({ className, username, description, photo, id }) => {
+  const [photoURL, setPhotoURL] = useState(null);
+
   useEffect(() => {
     (async () => {
-      // const res = await axios.get(photo)
+      const photo = await getUserPhoto(id);
+      console.log("Photo", photo);
+      if (photo) {
+        console.log("PHOTO");
+        const url = photo ? URL.createObjectURL(photo) : null;
+        console.log("PhotoURL:", url);
+        setPhotoURL(url);
+      }
     })();
+    return () => {
+      if (photoURL) {
+        URL.revokeObjectURL(photoURL);
+      }
+    };
     // eslint-disable-next-line
   }, []);
 
@@ -14,9 +29,11 @@ const User = ({ className, username, description, photo }) => {
     <div className={`${styles.user} ${className}`}>
       <div
         className={`${styles.photo}`}
-        style={{ backgroundImage: `url(${photo})` }}
+        style={{ backgroundImage: `url(${photoURL})` }}
       >
-        <p className={styles.letter}>{username.slice(0, 1).toUpperCase()}</p>
+        {!photoURL ? (
+          <p className={styles.letter}>{username.slice(0, 1).toUpperCase()}</p>
+        ) : null}
       </div>
       {/* <img className={styles.photo} src={photo} alt="UserPhoto"></img> */}
       <div className={styles.info}>

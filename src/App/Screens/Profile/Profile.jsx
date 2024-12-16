@@ -7,11 +7,12 @@ import Since from "./Since/Since";
 import TopTags from "./TopTags/TopTags";
 import TopQuestions from "./TopQuestions/TopQuestions";
 import PropTypes from "prop-types";
-import { getUser } from "../../Requests/UsersRequests";
+import { getUser, getUserPhoto } from "../../Requests/UsersRequests";
 import { useParams } from "react-router-dom";
 
 const Profile = ({ className }) => {
   const [user, setUser] = useState(null);
+
   const [elements, setElements] = useState(null);
   const { userId } = useParams();
   // get data about user
@@ -35,7 +36,8 @@ const Profile = ({ className }) => {
               className={styles.user}
               username={userGenteralInfo.username}
               description={userGenteralInfo.info}
-              photo={user.presigned_url}
+              // photo={userPhoto}
+              id={userGenteralInfo.id}
             />
             <Status
               className={styles.status}

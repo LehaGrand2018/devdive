@@ -1,4 +1,4 @@
-import { USERS_URL } from "../Constants/URLs";
+import { USERS_URL, USERS_PHOTO_URL } from "../Constants/URLs";
 import axios from "axios";
 import qs from "qs";
 
@@ -11,6 +11,22 @@ export const getUser = async (userId) => {
   });
   console.log(res.data);
   return res.data;
+};
+
+export const getUserPhoto = async (userId) => {
+  try {
+    const res = await axios.get(`${USERS_PHOTO_URL}${userId}`, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+      responseType: "blob",
+    });
+    console.log("Res:", res.data);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const updateUser = async (userId, image, username, info) => {
