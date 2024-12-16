@@ -19,6 +19,10 @@ const NavigationPanel = observer(({ className }) => {
 
   const isVisible = active.value;
 
+  const setInvisible = () => {
+    active.setVisible(false);
+  }
+
   useEffect(() => {
     if (isLoggedIn === "true") {
       setButtons(
@@ -26,12 +30,14 @@ const NavigationPanel = observer(({ className }) => {
           <NavLink
             className={({ isActive }) => `${styles.PanelButton}`}
             to={`/questions?user_id=${localStorage.getItem("user_id")}`}
+            onClick={setInvisible}
           >
             {t("buttons.myQuestions")}
           </NavLink>
           <NavLink
             className={({ isActive }) => `${styles.PanelButton}`}
             to={`chatRoom?user_id=${localStorage.getItem("user_id")}`}
+            onClick={setInvisible}
           >
             {t("buttons.chat")}
           </NavLink>
@@ -51,12 +57,13 @@ const NavigationPanel = observer(({ className }) => {
       }`}
     >
       <LanguageSelector className={styles.languageSelector}/>
-      <NavLink className={({ isActive }) => `${styles.PanelButton}`} to="/">
+      <NavLink className={({ isActive }) => `${styles.PanelButton}`} to="/"         onClick={setInvisible}>
         {t("buttons.main")}
       </NavLink>
 
-      <NavLink className={({ isActive }) => `${styles.PanelButton}`} to="/tags">
+      <NavLink className={({ isActive }) => `${styles.PanelButton}`} to="/tags" onClick={setInvisible}>
         {t("buttons.tags")}
+      
       </NavLink>
 
       {buttons}
