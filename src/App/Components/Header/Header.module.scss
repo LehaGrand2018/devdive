@@ -27,7 +27,7 @@
     .username {
       text-decoration: none;
       display: block;
-      font-size: 24px;
+
       cursor: pointer;
     }
 
@@ -64,6 +64,12 @@
     margin-left: 40%;
   }
 
+  .user {
+    .username {
+      font-size: 24px;
+    }
+  }
+
 }
 
 /* Tablet styles */
@@ -76,7 +82,6 @@
 
     .questionButton {
       line-height: 1.1;
-      font-size: 24px;
     }
 
     .logo {
@@ -89,6 +94,24 @@
       .profilePhoto {
         margin-left: 5px;
       }
+    }
+  }
+}
+
+/* Desktop styles */
+@media (max-width: 810px) {
+  .menu {
+    display: none;
+  }
+
+  .questionButton {
+    width: 140px;
+    font-size: 18px;
+  }
+
+  .user {
+    .username {
+      font-size: 18px;
     }
   }
 }
@@ -106,16 +129,14 @@
     }
 
     .user {
-
       .profilePhoto {
         margin-left: 5px;
       }
-
     }
   }
 }
 
-@media (max-width: 480px) and (min-width: 321px) {
+@media (max-width: 480px) and (min-width: 360px) {
 
   .header {
     .questionButton {
@@ -131,7 +152,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 360px) {
   .logo {
     display: none;
   }

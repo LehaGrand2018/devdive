@@ -13,16 +13,17 @@ const QuestionInfo = ({ className, user, date }) => {
 
   return (
     <div className={`${styles.QuestionInfo} ${className}`}>
-      <div
-        className={styles.UserPhoto}
-        style={{ backgroundImage: "none" /*userPhoto*/ }}
-        onClick={openUserProfile}
-      ><span className={styles.letter}>{user.username.slice(0,1).toUpperCase()}</span>
-
+      <div className={styles.user}>
+        <div
+          className={styles.UserPhoto}
+          style={{ backgroundImage: "none" /*userPhoto*/ }}
+          onClick={openUserProfile}
+        ><span className={styles.letter}>{user.username.slice(0,1).toUpperCase()}</span>
+        </div>
+        <p className={styles.UserName} onClick={openUserProfile}>
+          {user.username}
+        </p>
       </div>
-      <p className={styles.UserName} onClick={openUserProfile}>
-        {user.username}
-      </p>
       <time className={styles.QuestionDate} dateTime={date}>
         {parseDate(date)}
       </time>
