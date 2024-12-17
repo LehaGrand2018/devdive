@@ -1,0 +1,13 @@
+
+
+
+.userPhoto {
+  width: var(--photoSize);
+  height: var(--photoSize);
+
+  .letter {
+    color: #e3e3e3;
+    font-size: calc(var(--photoSize) - 10px);
+    line-height: var(--photoSize);
+  }
+}

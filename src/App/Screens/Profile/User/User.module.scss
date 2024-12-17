@@ -31,16 +31,8 @@
     height: 155px;
   }
 
-  $photoSize: 155px;
-
-  .photo {
-    width: $photoSize;
-    height: $photoSize;
-
-    .letter {
-      font-size: calc($photoSize - 10px);
-      line-height: $photoSize;
-    }
+  :root {
+    --photoSize: 155px;
   }
 
   .info {
@@ -54,17 +46,6 @@
 }
 
 @media (max-width: 810px) {
-  $photoSize: 100px;
-
-  .photo {
-    width: $photoSize;
-    height: $photoSize;
-
-    .letter {
-      font-size: calc($photoSize - 10px);
-      line-height: $photoSize;
-    }
-  }
 
   .info {
     width: 200px;
@@ -80,37 +61,28 @@
   }
 }
 
-@media (max-width: 654px) {
+@media (max-width: 810px) and (min-width: 655px) {
+  :root {
+    --photoSize: 100px;
+  }
+}
+
+@media (max-width: 654px) and (min-width: 300px) {
   .user {
     width: 100%;
   }
 
-  $photoSize: 70px;
-
-  .photo {
-    width: $photoSize;
-    height: $photoSize;
-
-    .letter {
-      font-size: calc($photoSize - 10px);
-      line-height: $photoSize;
-    }
+  :root {
+    --photoSize: 70px;
   }
 }
 
 @media (max-width: 299px) {
+  :root {
+    --photoSize: 45px;
+  }
+
   .user {
     width: 100%;
-    $photoSize: 50px;
-
-    .photo {
-      width: $photoSize;
-      height: $photoSize;
-
-      .letter {
-        font-size: calc($photoSize - 10px);
-        line-height: $photoSize;
-      }
-    }
   }
 }
