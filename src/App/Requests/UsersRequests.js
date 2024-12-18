@@ -18,7 +18,6 @@ export const getUserPhoto = async (userId) => {
     const res = await axios.get(`${USERS_PHOTO_URL}${userId}`, {
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },
       responseType: "blob",
     });

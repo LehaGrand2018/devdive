@@ -1,11 +1,14 @@
 .AutorizationPage {
-
+  width: 80%;
   padding-top: 15px;
-  padding-right: 45px;
+  padding-right: 25px;
+  padding-left: 25px;
+  height: calc(100vh - 50px);
+  max-height: calc(100vh - 50px);
 
   .header {
     text-align: left;
-    width: 950px;
+    width: 100%;
     height: 50px;
     font-size: 32px;
     border-bottom: 1px solid #545f71;
@@ -27,11 +30,11 @@
   .AutorizationPage {
     width: 100%;
     font-size: 12px;
-
+    padding-right: 15px;
+    padding-left: 15px;
 
     .header {
       width: 100%;
-      // margin-left: 15px;
       padding-left: 25px;
       font-size: 28px;
     }
@@ -39,7 +42,8 @@
     .registrationForm {
       width: 90%;
     }
-    .loginForm{
+
+    .loginForm {
       width: 90%;
     }
   }
@@ -49,15 +53,9 @@
   .AutorizationPage {
     width: 100%;
     height: 100vh;
-    //font-size: 12px;
     margin-left: 0px;
-    // padding-top: 15px;
     padding-right: 5px;
-    // text-align: left;
-    // height: calc(100vh - 50px);
-    max-height: calc(100vh - 50px);
-    // max-height: calc(100vh - 50px);
-    // overflow-y: auto;
+    padding-left: 5px;
 
     .header {
       width: 100%;
@@ -67,6 +65,8 @@
 
     .loginForm {
       margin-top: 50px;
+      width: 90%;
+      max-width: 300px;
     }
 
     .registrationForm {
