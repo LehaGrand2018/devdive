@@ -24,6 +24,10 @@ export const getUserPhoto = async (userId) => {
     console.log("Res:", res.data);
     return res.data;
   } catch (error) {
+    if (error.response.status === 404){
+      console.log(`User ${userId} do not have a profile photo`);
+      return;
+    }
     console.log(error);
   }
 };

@@ -4,26 +4,14 @@
   justify-content: space-between;
 
   .user {
+    --photoSize: 29px;
     height: 29px;
-
-    $userPhotoSize : 29px;
+    cursor: pointer;
 
     .userPhoto {
-      width: $userPhotoSize;
-      height: $userPhotoSize;
       display: inline-block;
       border-radius: 50%;
-      background-color: #935d5d;
-
       box-shadow: 1px 0 8px 0 rgba(0, 0, 0, 0.25);
-
-      .letter {
-        font-size: calc($userPhotoSize - 5px);
-        color: #e3e3e3;
-        line-height: $userPhotoSize;
-        height: 100%;
-        width: 100%;
-      }
     }
 
     .username {

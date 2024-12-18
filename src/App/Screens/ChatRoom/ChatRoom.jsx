@@ -53,6 +53,7 @@ const ChatRoom = ({ className }) => {
     socket.onmessage = (messageEvent) => {
       try {
         const dataString = messageEvent.data.replaceAll(`'`, `"`);
+        console.log("Messsage:", dataString);
         const message = JSON.parse(dataString);
         console.log("Recieved message:", message);
         setMessages((prevMessages) => [...prevMessages, message]);
@@ -82,7 +83,9 @@ const ChatRoom = ({ className }) => {
     <div className={`${styles.chat} ${className}`}>
       <div className={styles.header}>
         <h2 className={styles.headerText}>{t("chatRoom.title")}</h2>
-        <h3 className={styles.headerStatus}>{t("chatRoom.status")}: {status}</h3>
+        <h3 className={styles.headerStatus}>
+          {t("chatRoom.status")}: {status}
+        </h3>
       </div>
       <div className={styles.messagesList}>
         {messages.map((msg, index) => (
