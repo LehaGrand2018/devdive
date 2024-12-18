@@ -32,19 +32,14 @@ const ChatRoom = ({ className }) => {
       console.log("Socket opened");
       setStatus(t("chatRoom.connected"));
       (async () => {
-        const recentMessages = await getResentMessages({ limit: 50 });
+        const recentMessages = await getResentMessages({ limit: 5 });
         console.log("Recent messages:", recentMessages);
         const messagesTmp = [];
         recentMessages
           .slice()
           .reverse()
           .forEach((msg) => {
-            messagesTmp.push({
-              data: msg.message,
-              user_id: msg.user.id,
-              username: msg.user.username,
-              created_at: msg.created_at,
-            });
+            messagesTmp.push(msg);
           });
         setMessages(messagesTmp);
       })();
@@ -52,8 +47,7 @@ const ChatRoom = ({ className }) => {
 
     socket.onmessage = (messageEvent) => {
       try {
-        const dataString = messageEvent.data.replaceAll(`'`, `"`);
-        console.log("Messsage:", dataString);
+        let dataString = messageEvent.data.replaceAll(`'`, `"`);
         const message = JSON.parse(dataString);
         console.log("Recieved message:", message);
         setMessages((prevMessages) => [...prevMessages, message]);

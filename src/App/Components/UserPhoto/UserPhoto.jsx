@@ -9,11 +9,9 @@ const UserPhoto = ({ className, userID, username }) => {
   useEffect(() => {
     (async () => {
       const photo = await getUserPhoto(userID);
-      console.log("Photo", photo);
       if (photo) {
-        console.log("PHOTO");
         const url = photo ? URL.createObjectURL(photo) : null;
-        console.log("PhotoURL:", url);
+        // console.log("PhotoURL:", url);
         setPhotoURL(url);
       }
     })();

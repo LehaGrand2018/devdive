@@ -21,7 +21,7 @@ export const getUserPhoto = async (userId) => {
       },
       responseType: "blob",
     });
-    console.log("Res:", res.data);
+    // console.log("Res:", res.data);
     return res.data;
   } catch (error) {
     if (error.response.status === 404){
