@@ -9,7 +9,7 @@ const Message = ({ className, msg }) => {
       <p className={styles.messageText}>{msg.data}</p>
       <MessageFooter
         className={styles.messageFooter}
-        userPhoto={msg.username ? msg.username[0]: "U"}
+        userID={msg.user_id}
         username={msg.username ? msg.username : "undef"}
         messageDate={msg.created_at}
       ></MessageFooter>

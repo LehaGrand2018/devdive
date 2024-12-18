@@ -4,9 +4,16 @@
 .userPhoto {
   width: var(--photoSize);
   height: var(--photoSize);
+  background-color: #935d5d;
+  background-size: contain;
+  background-position: center;
+  overflow: visible;
 
   .letter {
     color: #e3e3e3;
+    // color: red;
+    text-align: center;
+    font-weight: 700;
     font-size: calc(var(--photoSize) - 10px);
     line-height: var(--photoSize);
   }

@@ -7,16 +7,13 @@
 
   .user {
     height: 29px;
+    --photoSize: 29px;
+    cursor: pointer;
 
     .userPhoto {
-      width: 29px;
-      height: 29px;
       display: inline-block;
-      text-align: center;
-      line-height: 29px;
       color: #e3e3e3;
       border-radius: 50%;
-      background-color: #935d5d;
       box-shadow: 1px 0 8px 0 rgba(0, 0, 0, 0.25)
     }
 

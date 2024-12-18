@@ -4,13 +4,14 @@ import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
 import styles from "./Header.module.scss";
 import PropTypes from "prop-types";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import GlobalStore from "../../Stores/GlobalStore";
 import { MenuContext } from "../../Contexts/MenuContext";
 import { signOut } from "../../Requests/AuthRequests";
 import { getUser } from "../../Requests/UsersRequests";
 import { useTranslation } from "react-i18next";
+import UserPhoto from "../UserPhoto/UserPhoto";
 
 const Header = observer(({ className }) => {
   const { active } = useContext(MenuContext);
@@ -58,18 +59,19 @@ const Header = observer(({ className }) => {
       }
       if (!location.pathname.includes("/profile")) {
         elements.push(
-          <div key="headerUser" className={styles.user}>
-            <Link
-              to={`/profile/${localStorage.getItem("user_id")}`}
-              className={styles.username}
-            >
-              {username}
-            </Link>
-            <Link
-              to={`/profile/${localStorage.getItem("user_id")}`}
+          <div
+            key="headerUser"
+            className={styles.user}
+            onClick={() => {
+              navigate(`/profile/${localStorage.getItem("user_id")}`);
+            }}
+          >
+            <p className={styles.username}>{username}</p>
+            <UserPhoto
               className={styles.profilePhoto}
-              style={{ backgroundImage: "" }}
-            >{username ? username[0].toUpperCase() : ""}</Link>
+              userID={localStorage.getItem("user_id")}
+              username={username ? username : ""}
+            />
           </div>
         );
       } else if (
