@@ -1,0 +1,82 @@
+{
+  "buttons": {
+    "main": "Main",
+    "tags": "Tags",
+    "myQuestions": "My questions",
+    "chat": "Chat room",
+    "addQuestion": "Ask question",
+    "signIn": "SignIn",
+    "signUp": "SignUp",
+    "signOut": "SignOut"
+  },
+  "questionsList": {
+    "title": "Questions",
+    "search": "Search"
+  },
+  "tagsList": {
+    "title": "Tags",
+    "search": "Search"
+  },
+  "chatRoom": {
+    "title": "Chat Room",
+    "status": "Status",
+    "message": "Input message",
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "error": "Error"
+  },
+
+  "questionAnswersList": {
+    "rating": "rating",
+    "reply": "reply",
+    "vote": "vote",
+    "yourReply": "Your reply",
+    "inputReply": "Input reply",
+    "addReply": "Add reply"
+  },
+  "profile": {
+    "since": "on website from",
+    "status": "Status",
+    "questionsTop": "Top questions",
+    "tagsTop": "Top tags",
+    "reputation": "reputation",
+    "role": "role",
+    "question": "question",
+    "reply": "reply",
+    "editProfile": {
+      "editProfile" : "Edit Profile",
+      "username" : "Username:",
+      "info" : "Info:",
+      "image": "Image:",
+      "save": "Save",
+      "cancel" : "Cancel"
+    }
+  },
+  "addQuestion": {
+    "title": "Ask question",
+    "header": "Header",
+    "description": "Description",
+    "tags": "Tags",
+    "inputHeader": "Input header",
+    "inputDescription": "Input description",
+    "inputTags": "Input tags"
+  },
+  "autorization": {
+    "title": "Autorization",
+    "login": "Login",
+    "registration": "Registration",
+    "signUp": "SignUp",
+    "signIn": "SignIn",
+    "signOut": "SignOut",
+    "email": "Email",
+    "password": "Password",
+    "username": "Username",
+    "registrationAlert" : "You have successfully registered on the site!",
+    "shortPassword" : "The password must be at least 8 characters",
+    "shortUsername" : "The username must be not empty",
+    "incorrectEmailFormat" : "Enter a valid email address",
+    "fillOutForm" : "Fill out the form!",
+    "incorrectEmailPassword" : "Incorrect email or password!",
+    "userNotFound" : "User does not exist!"
+  }
+}

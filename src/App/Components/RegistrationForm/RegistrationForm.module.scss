@@ -1,26 +1,34 @@
 .RegistrationForm {
-  
-  width: 18.75rem;
-  height: 17.62rem;
+  max-width: 18.75rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 0.625rem;
+
+  .label {
+    width: 100%;
+    line-height: 14px;
+    text-align: left;
+    font-size: 14px;
+    color: red;
+  }
 
   .RegistrationLable {
+    width: 100%;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
   }
 
   .Input {
-    width: 18.75rem;
-    // height: 40px;
-  }
-  .Button{
     width: 100%;
-    // text-shadow: 4px 4px rgba(0, 0, 0, 0.25);
   }
+
+  .Button {
+    width: 100%;
+  }
+
   .LoginButton {
     height: 1.12rem;
     font-weight: 400;

@@ -7,10 +7,11 @@ const Root = observer(() => {
   const { isLoggedIn } = GlobalStore;
   const navigate = useNavigate();
   useEffect(() => {
-    if (isLoggedIn === "false") {
-      navigate("/autorization");
-    }
-    if (isLoggedIn === "true") navigate("/questions");
+    navigate("/questions")
+    // if (isLoggedIn === "false") {
+    //   navigate("/autorization");
+    // }
+    // if (isLoggedIn === "true") navigate("/questions");
     //eslint-disable-next-line
   }, [isLoggedIn]);
 

@@ -1,18 +1,21 @@
 .question {
   position: relative;
-  width: 60.94rem;
-  height: 13.88rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 5px;
   border-bottom: 1px solid #545F71;
 
+  .questionInfo {
+    width: 15%;
+  }
+
   .questionTitle {
     padding-top: 15px;
     padding-left: 25px;
     padding-bottom: 20px;
-    width: 735px;
+    width: 77%;
     font-size: 24px;
     cursor: pointer;
   }
@@ -20,16 +23,82 @@
   .tags {
     display: block;
     font-weight: 600;
-    font-size: 1rem;
     letter-spacing: -0.02em;
     color: #545f71;
-    position: absolute;
     bottom: 10px;
     left: 25px;
-    
+    width: 100%;
+
     .tag {
       display: inline-block;
       margin-right: 10px;
+    }
+  }
+}
+
+@media (min-width: 811px) {
+  .question {
+    .userInfo {
+      order: 1;
+    }
+
+    .questionTitle {
+      order: 2;
+      padding-top: 15px;
+      padding-bottom: 30px;
+      padding-left: 5px;
+      width: 77%;
+      height: auto;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .votes {
+      order: 3;
+      padding-top: 10px;
+      width: 60px;
+    }
+
+    .tags {
+      margin-right: auto;
+      margin-left: auto;
+      order: 4;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+  }
+}
+
+
+@media (max-width: 810px) {
+  .question {
+    width: 100%;
+    height: auto;
+
+    .questionInfo {
+      width: 100%;
+      order: 5;
+    }
+
+    .questionTitle {
+      order: 2;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 5px;
+      width: 100%;
+      height: auto;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .votes {
+      padding-top: 10px;
+      width: 60px;
+    }
+
+    .tags {
+      order: 3;
+      font-size: 15px;
     }
   }
 }

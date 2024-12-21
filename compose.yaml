@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  app:
+    build: ./
+    container_name: dev_dive_frontend
+    ports:
+     - ${PORT}:${PORT}
+    volumes:
+      - ./:/app
+    stdin_open: true
+    tty: true

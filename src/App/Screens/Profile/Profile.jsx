@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import User from "./User/User";
-import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./Profile.module.scss";
 import Status from "./Status/Status";
 import Since from "./Since/Since";
@@ -9,25 +9,28 @@ import TopQuestions from "./TopQuestions/TopQuestions";
 import PropTypes from "prop-types";
 import { getUser } from "../../Requests/UsersRequests";
 import { useParams } from "react-router-dom";
+import EditProfile from "./EditProfile/EditProfile";
 
-const Profile = ({ className, setIsProfile }) => {
+const Profile = ({ className }) => {
+  const { t } = useTranslation();
   const [user, setUser] = useState(null);
   const [elements, setElements] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const { userId } = useParams();
-  // get data about user
+
+  // Получение данных о пользователе
   useEffect(() => {
-      (async () => {
-        const user = await getUser(userId);
-        setUser(user);
-      })();
+    (async () => {
+      const user = await getUser(userId);
+      setUser(user);
+    })();
   }, [userId]);
 
-  // display data about user
+  // Отображение данных о пользователе
   useEffect(() => {
-    console.log("displayEffect");
     if (user) {
       const userGenteralInfo = user.user;
-      console.log(user.presigned_url);
       setElements(
         <>
           <div className={styles.userStatus}>
@@ -35,6 +38,7 @@ const Profile = ({ className, setIsProfile }) => {
               className={styles.user}
               username={userGenteralInfo.username}
               description={userGenteralInfo.info}
+              id={userGenteralInfo.id}
             />
             <Status
               className={styles.status}
@@ -50,23 +54,39 @@ const Profile = ({ className, setIsProfile }) => {
             className={styles.topQuestions}
             questions={user.questions}
           />
+          {user.user.id === localStorage.getItem("user_id") && (
+            <button
+              className={styles.editButton}
+              onClick={() => {
+                setIsModalOpen(true);
+              }}
+            >
+              {t("profile.editProfile.editProfile")}
+            </button>
+          )}
         </>
       );
     }
   }, [user]);
 
-  useEffect(() => {
-    setIsProfile("true");
-    return () => {
-      setIsProfile("false");
-    };
-  });
-
-  return <div className={`${styles.profile} ${className}`}>{elements}</div>;
+  return (
+    <div className={`${styles.profile} ${className}`}>
+      {elements}
+      {isModalOpen && user && (
+        <EditProfile
+          className={styles.editProfile}
+          user={user}
+          setUser={setUser}
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
+    </div>
+  );
 };
 
 Profile.propTypes = {
   className: PropTypes.string,
-  setIsProfile: PropTypes.func,
 };
+
 export default Profile;

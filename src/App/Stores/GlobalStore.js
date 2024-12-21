@@ -1,5 +1,5 @@
 import { makeAutoObservable, action } from "mobx";
-import { getUser } from "../Requests/UsersRequests";
+
 class GlobalStore {
   isLoggedIn =
     localStorage.getItem("isLoggedIn") !== null
@@ -16,19 +16,10 @@ class GlobalStore {
     this.isLoggedIn = value;
     localStorage.setItem("isLoggedIn", value);
   };
-  fetchUser = async ()=> {
-    const res = await getUser(localStorage.getItem("user_id"));
-    const username = res.user.username;
-    console.log("USERNAME:",username)
-    this.username = username;
-  };
-
-  accessToken = localStorage.getItem("accessToken");
-  refreshToken = localStorage.getItem("refreshToken");
 
   constructor() {
     makeAutoObservable(this, {
-      fetchUser : action,
+      setIsLoggedIn: action,
       setUsername: action,
     });
   }

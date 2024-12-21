@@ -12,38 +12,37 @@
   background-color: #E3E3E3;
   box-shadow: 3px 4px 10px 0 rgba(0, 0, 0, 0.25);
 
-  .logo {
-    margin-left: 12px;
-  }
-
-  .questionButton {
-    margin-left: 40%;
-  }
-
   .signInButton {
-    width: 80px;
+    width: 100px;
     margin-right: 25px;
   }
 
-  .user{
-   
+  .user {
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
+
     .username {
+      text-decoration: none;
       display: block;
-      font-size: 24px;
+
       cursor: pointer;
     }
-  
+
+    --photoSize: 40px;
+
     .profilePhoto {
-      display: block;
-      width: 40px;
-      height: 40px;
-      /* border-radius: 50%; */
       margin-left: 25px;
       margin-right: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #E3E3E3;
+      text-decoration: none;
+      // font-size: $profilePhotoSize - 10px;
+      font-weight: 600;
       border-radius: 100%;
       background-color: #935D5D;
       box-shadow: 1px 0 8px 0 rgba(0, 0, 0, 0.25);
@@ -54,18 +53,110 @@
 }
 
 /* Desktop styles */
- @media (min-width: 481px) {
-  .menu{
+@media (min-width: 1024px) {
+  .menu {
     display: none;
+  }
+
+  .questionButton {
+    margin-left: 40%;
+  }
+
+  .user {
+    .username {
+      font-size: 24px;
+    }
   }
 
 }
 
-/* Mobile styles */
-@media (max-width: 480px) {
+/* Tablet styles */
+@media (min-width: 481px) and (max-width: 1024px) {
 
-  .menu{
-    display: block;
+  .header {
+    .menu {
+      display: block;
+    }
+
+    .questionButton {
+      line-height: 1.1;
+    }
+
+    .logo {
+      margin-left: 10px;
+    }
+
+    .user {
+      margin-left: 30px;
+
+      .profilePhoto {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+/* Desktop styles */
+@media (max-width: 810px) {
+  .menu {
+    display: none;
   }
 
+  .questionButton {
+    width: 140px;
+    font-size: 18px;
+  }
+
+  .user {
+    .username {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+
+  .header {
+    .menu {
+      display: block;
+    }
+
+    .questionButton {
+      margin-left: auto;
+      line-height: 1.1;
+    }
+
+    .user {
+      .profilePhoto {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) and (min-width: 360px) {
+
+  .header {
+    .questionButton {
+      width: 90px;
+      font-size: 16px;
+    }
+
+    .user {
+      .profilePhoto {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .logo {
+    display: none;
+  }
+
+  .questionButton {
+    width: 50px;
+    font-size: 12px;
+  }
 }

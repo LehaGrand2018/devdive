@@ -5,8 +5,10 @@ import MessageForm from "./MessageForm/MessageForm";
 import Message from "./Message/Message";
 import { CHAT_WEBSOKET_URL } from "../../Constants/URLs";
 import { getResentMessages } from "../../Requests/ChatRequests";
+import { useTranslation } from "react-i18next";
 
 const ChatRoom = ({ className }) => {
+  const { t } = useTranslation();
   const [socket, setSocket] = useState(null);
   const [status, setStatus] = useState("Connecting...");
   const [messages, setMessages] = useState([]);
@@ -15,29 +17,12 @@ const ChatRoom = ({ className }) => {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "auto" });
   };
-  
+
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
   useEffect(() => {
-
-    // (async()=>{
-    //   const recentMessages = await getResentMessages({limit: 50});
-    //   console.log("Recent messages:", recentMessages);
-    //   const messagesTmp = [];
-    //   recentMessages.forEach(msg => {
-    //     messagesTmp.push({
-    //       data: msg.message,
-    //       user_id: msg.user.id,
-    //       username: msg.user.username,
-    //       created_at: msg.created_at,
-    //     })
-    //   });
-    //   setMessages(messagesTmp)
-    //   // data user_id username created_at
-    // })()
-
     const socket = new WebSocket(
       `${CHAT_WEBSOKET_URL}${localStorage.getItem("user_id")}/ws`
     );
@@ -45,30 +30,27 @@ const ChatRoom = ({ className }) => {
 
     socket.onopen = () => {
       console.log("Socket opened");
-      setStatus("Connected");
-      (async()=>{
-        const recentMessages = await getResentMessages({limit: 50});
+      setStatus(t("chatRoom.connected"));
+      (async () => {
+        const recentMessages = await getResentMessages({ limit: 5 });
         console.log("Recent messages:", recentMessages);
         const messagesTmp = [];
-        recentMessages.slice().reverse().forEach(msg => {
-          messagesTmp.push({
-            data: msg.message,
-            user_id: msg.user.id,
-            username: msg.user.username,
-            created_at: msg.created_at,
-          })
-        });
-        setMessages(messagesTmp)
-      })()
+        recentMessages
+          .slice()
+          .reverse()
+          .forEach((msg) => {
+            messagesTmp.push(msg);
+          });
+        setMessages(messagesTmp);
+      })();
     };
 
     socket.onmessage = (messageEvent) => {
       try {
-        const dataString = messageEvent.data.replaceAll(`'`, `"`);
+        let dataString = messageEvent.data.replaceAll(`'`, `"`);
         const message = JSON.parse(dataString);
-        console.log("Recieved message:", message)
+        console.log("Recieved message:", message);
         setMessages((prevMessages) => [...prevMessages, message]);
-        
       } catch (error) {
         console.error("Error parsing message:", error);
       }
@@ -76,32 +58,32 @@ const ChatRoom = ({ className }) => {
 
     socket.onerror = (event) => {
       console.log("Error event:", event);
-      setStatus("Error");
+      setStatus(t("chatRoom.error"));
     };
 
     socket.onclose = (closeEvent) => {
       console.log("Close event:", closeEvent);
-      setStatus("Disconnected");
+      setStatus(t("chatRoom.disconnected"));
     };
 
     return () => {
       socket.close();
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className={`${styles.chat} ${className}`}>
       <div className={styles.header}>
-        <h2 className={styles.headerText}>Чат комната</h2>
-        <h3 className={styles.headerStatus}>Status: {status}</h3>
+        <h2 className={styles.headerText}>{t("chatRoom.title")}</h2>
+        <h3 className={styles.headerStatus}>
+          {t("chatRoom.status")}: {status}
+        </h3>
       </div>
       <div className={styles.messagesList}>
         {messages.map((msg, index) => (
-          <Message
-            className={styles.message}
-            msg={msg}
-            key={index}
-          />
+          <Message className={styles.message} msg={msg} key={index} />
         ))}
         <div ref={messagesEndRef}></div>
       </div>

@@ -1,5 +1,6 @@
 .AddQuestion {
-
+  width: 75%;
+  height: calc(100vh - 50px);
   label {
     width: 700px;
     margin: 0 auto;
@@ -35,23 +36,26 @@
 
   }
 
+  .form{
+    width: 70%;
+    margin: 0 auto;
+  }
   .header {
-    width: 990px;
+    width: 100%;
     text-align: center;
     margin: 0 auto;
     margin-top: 30px;
   }
 
   .questionHeader {
-    width: 700px;
+    width: 100%;
     margin: 0 auto;
-
   }
 
   .questionDescription {
-    width: 43.75rem;
-    height: 12.75rem;
     // height: 165px;
+    height: 12.75rem;
+    width: 100%;
     padding: 12px;
     text-align: left;
     vertical-align: text-top;
@@ -65,10 +69,26 @@
   }
 
   .questionTags{
-    width: 700px;
+    // width: 700px;
+    width: 100%;
     margin: 0 auto;
   }
   .button{
+    width: 100%;
+    max-width: 200px;
     margin-top: 40px;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .AddQuestion{
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header{
+    font-size: 32px;
   }
 }

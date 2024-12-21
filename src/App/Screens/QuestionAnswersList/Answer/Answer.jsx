@@ -7,11 +7,11 @@ import AnswerFooter from "./AnswerFooter/AnswerFooter";
 const Answer = ({ className, content, sourceId, user, rating, date }) => {
   return (
     <div className={`${styles.answer} ${className}`}>
-      <Votes sourceId={sourceId} rating={rating}></Votes>
+      <Votes className={styles.votes} sourceId={sourceId} rating={rating} />
       <p className={styles.answerText}>{content}</p>
       <AnswerFooter
         className={styles.answerFooter}
-        userPhoto={null}
+        userID={user.id}
         username={user.username}
         answerDate={date}
       ></AnswerFooter>

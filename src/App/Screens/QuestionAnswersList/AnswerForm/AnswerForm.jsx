@@ -5,8 +5,10 @@ import styles from "./AnswerForm.module.scss";
 import PropTypes from "prop-types";
 import { createAnswer } from "../../../Requests/QuestionAnswersRequests";
 import { getQuestion } from "../../../Requests/QuestionsRequests";
+import { useTranslation } from "react-i18next";
 
 const AnswerForm = ({ className, questionId, setQuestion }) => {
+  const { t } = useTranslation();
   const [inputValue, setInputValue] = useState(null);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,15 +23,18 @@ const AnswerForm = ({ className, questionId, setQuestion }) => {
 
   return (
     <form className={`${styles.form} ${className}`} onSubmit={handleSubmit}>
-      <label className={styles.formHeader}>Ваш ответ</label>
+      <label className={styles.formHeader}>{t("questionAnswersList.yourReply")}</label>
       <textarea
         className={styles.formInput}
-        placeholder={"Введите ответ"}
+        placeholder={t("questionAnswersList.inputReply")}
         value={inputValue ? inputValue : ""}
         id="answerInput"
         onChange={(e) => setInputValue(e.target.value)}
       />
-      <Button className={styles.formButton} value="Задать вопрос"></Button>
+      <Button
+        className={styles.formButton}
+        value={t("questionAnswersList.addReply")}
+      ></Button>
     </form>
   );
 };

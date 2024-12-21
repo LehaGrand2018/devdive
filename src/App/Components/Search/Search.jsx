@@ -11,6 +11,7 @@ const Search = ({
   id,
   onChange,
   onClick,
+  hideButton,
 }) => {
   return (
     <div className={`${styles.search} ${className}`}>
@@ -23,7 +24,9 @@ const Search = ({
         onChange={onChange}
       />
       <img
-        className={styles.button}
+        className={`${styles.button} ${className} ${
+          hideButton === "true" ? styles.hide : styles.show
+        }`}
         onClick={onClick}
         src={searchIcon}
         alt={"search"}
@@ -40,6 +43,7 @@ Search.propTypes = {
   id: PropTypes.string,
   onChange: PropTypes.func,
   onClick: PropTypes.func,
+  hideButton: PropTypes.string,
 };
 
 export default Search;

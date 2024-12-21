@@ -28,6 +28,7 @@ const Question = ({ className, questionTitle, questionId, user, date, answersCou
         user={user}
         date={date}
       ></QuestionInfo>
+      
       <h3
         className={styles.questionTitle}
         onClick={() => {

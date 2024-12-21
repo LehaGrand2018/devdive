@@ -1,16 +1,27 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./AnswerFooter.module.scss";
 import { parseDate } from "../../../../Functions/Functions";
 import PropTypes from "prop-types";
 
-const AnswerFooter = ({ className, username, userPhoto, answerDate }) => {
+import UserPhoto from "../../../../Components/UserPhoto/UserPhoto";
+
+const AnswerFooter = ({ className, username, userID, answerDate }) => {
+  const navigate = useNavigate();
+
   return (
     <div className={`${styles.answerFooter} ${className}`}>
-      <div className={styles.user}>
-        <div
+      <div
+        className={styles.user}
+        onClick={() => {
+          navigate(`../profile/${userID}`);
+        }}
+      >
+        <UserPhoto
           className={styles.userPhoto}
-          styles={{ backgroundImage: "" }}
-        ></div>
+          userID={userID}
+          username={username}
+        />
         <p className={styles.username}>{username}</p>
       </div>
       <time className={styles.answerDate} dateTime={answerDate}>

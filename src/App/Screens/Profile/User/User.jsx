@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import React from "react";
 import styles from "./User.module.scss";
+import UserPhoto from "../../../Components/UserPhoto/UserPhoto";
 
-const User = ({ className, username, description, photo }) => {
+const User = ({ className, username, description, photo, id }) => {
   return (
     <div className={`${styles.user} ${className}`}>
-      <div className={`${styles.photo}`} style={{ backgroundImage: `url(${photo})` }}></div>
-      {/* <img className={styles.photo} src={photo} alt="UserPhoto"></img> */}
+      <UserPhoto className={styles.photo} userID={id} username={username} />
       <div className={styles.info}>
         <h2 className={styles.username}>{username}</h2>
         <div className={styles.description}>{description}</div>

@@ -54,9 +54,9 @@ const QuestionAnswersList = ({ className }) => {
   }, [answers, question]);
 
   return (
-    <div className={`${styles.answers} ${className}`}>
+    <div className={`${styles.answersList} ${className}`}>
       <AnswersHeader
-        className={styles.answersHeader}
+        className={styles.header}
         title={question ? question.content : "undefined"}
         date={question ? question.created_at : null}
         answersCount={answersCount}
@@ -65,6 +65,7 @@ const QuestionAnswersList = ({ className }) => {
       ></AnswersHeader>
       {elements}
       <AnswerForm
+        className={styles.answerForm}
         questionId={question ? question.id : null}
         setQuestion={setQuestion}
       />

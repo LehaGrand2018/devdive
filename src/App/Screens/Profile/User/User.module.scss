@@ -1,29 +1,88 @@
 .user {
-  width: 600px;
-  height: 155px;
   display: flex;
-  justify-content: space-between;
   text-align: left;
 
   .photo {
-    width: 155px;
-    height: 155px;
     border-radius: 50%;
     background-color: #935d5d;
+    text-align: center;
+    background-size: contain;
+    background-position: center;
+
+    .letter {
+      color: #e3e3e3;
+      height: 100%;
+      width: 100%;
+    }
   }
 
   .info {
-    width: 395px;
     font-size: 1rem;
     font-weight: 400;
-
-    .username {
-      font-size: 2rem;
-    }
 
     .description {
       margin-top: 10px;
     }
   }
+}
 
+@media (min-width: 811px) {
+  .user {
+    height: 155px;
+  }
+
+  :root {
+    --photoSize: 155px;
+  }
+
+  .info {
+    width: 250px;
+    margin-left: 45px;
+
+    .username {
+      font-size: 32px;
+    }
+  }
+}
+
+@media (max-width: 810px) {
+
+  .info {
+    width: 200px;
+    margin-left: 30px;
+
+    .username {
+      font-size: 24px;
+    }
+
+    .description {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 810px) and (min-width: 655px) {
+  :root {
+    --photoSize: 100px;
+  }
+}
+
+@media (max-width: 654px) and (min-width: 300px) {
+  .user {
+    width: 100%;
+  }
+
+  :root {
+    --photoSize: 70px;
+  }
+}
+
+@media (max-width: 299px) {
+  :root {
+    --photoSize: 45px;
+  }
+
+  .user {
+    width: 100%;
+  }
 }

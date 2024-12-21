@@ -45,19 +45,25 @@ export const signUp = async (username, password, email) => {
 
 export const refreshToken = async () => {
   console.log("Refresh token function called");
-  const res = await axios.post(REFRESH_TOKEN_URL, null, {
-    headers: {
-      accept: "application/json",
-      refresh: localStorage.getItem("refresh_token"),
-    },
-  });
-  const data = res.data;
-  console.log(data);
-  localStorage.setItem("access_token", data.access_token);
-  localStorage.setItem("refresh_token", data.refresh_token);
-  localStorage.setItem("token_type", data.token_type);
-  setIsLoggedIn("true");
-  localStorage.setItem("token_refreshed_at", Date.now());
+  try {
+    const res = await axios.post(REFRESH_TOKEN_URL, null, {
+      headers: {
+        accept: "application/json",
+        refresh: localStorage.getItem("refresh_token"),
+      },
+    });
+    const data = res.data;
+    console.log(data);
+    localStorage.setItem("access_token", data.access_token);
+    localStorage.setItem("refresh_token", data.refresh_token);
+    localStorage.setItem("token_type", data.token_type);
+    setIsLoggedIn("true");
+    localStorage.setItem("token_refreshed_at", Date.now());
+  } catch (e) {
+    if (e.status === 401) {
+      signOut();
+    }
+  }
 };
 
 export const signOut = () => {

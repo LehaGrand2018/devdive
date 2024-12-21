@@ -1,0 +1,82 @@
+{
+  "buttons": {
+    "main": "Главная",
+    "tags": "Метки",
+    "myQuestions": "Мои вопросы",
+    "chat": "Чат комната",
+    "addQuestion": "Задать вопрос",
+    "signIn": "Вход",
+    "signUp": "Регистрация",
+    "signOut": "Выйти"
+  },
+  "questionsList": {
+    "title": "Вопросы",
+    "search": "Поиск"
+  },
+  "tagsList": {
+    "title": "Метки",
+    "search": "Поиск"
+  },
+  "chatRoom": {
+    "title": "Чат комната",
+    "status": "Статус",
+    "message": "Введите сообщения",
+    "connected": "Подключен",
+    "disconnected": "Отключен",
+    "error": "Ошибка"
+  },
+
+  "questionAnswersList": {
+    "rating": "рейтинг",
+    "reply": "ответ",
+    "vote": "голос",
+    "yourReply": "Ваш ответ",
+    "inputReply": "Введите ответ",
+    "addReply": "Добавить ответ"
+  },
+  "profile": {
+    "since": "на сайте с",
+    "status": "Статус",
+    "questionsTop": "Топ вопросов",
+    "tagsTop": "Топ меток",
+    "reputation": "репутация",
+    "role": "роль",
+    "question": "вопрос",
+    "reply": "ответ",
+    "editProfile": {
+      "editProfile" : "Редактировать профиль",
+      "username" : "Имя пользователя:",
+      "info" : "Информация:",
+      "image": "Фото профиля:",
+      "save": "Сохранить",
+      "cancel" : "Отмена"
+    }
+  },
+  "addQuestion": {
+    "title": "Задать вопрос",
+    "header": "Заголовок",
+    "description": "Описание",
+    "tags": "Метки",
+    "inputHeader": "Введите заголовок",
+    "inputDescription": "Введите описание",
+    "inputTags": "Введите метки"
+  },
+  "autorization": {
+    "title": "Авторизация",
+    "login": "Вход",
+    "registration": "Регистрация",
+    "signIn": "Вход",
+    "signOut": "Выход",
+    "signUp": "Регистрация",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "username": "Имя пользователя",
+    "registrationAlert": "Вы успешно зарегистрировались на сайте!",
+    "shortPassword" : "Пароль должен содержать не менее 8 символов",
+    "shortUsername" : "Имя пользователя должно содержать не менее одного символа",
+    "incorrectEmailFormat" : "Введите действительный email",
+    "fillOutForm" : "Заполните форму",
+    "incorrectEmailPassword" : "Неверный email или пароль!",
+    "userNotFound" : "Такого пользователя не существует!"
+  } 
+}
