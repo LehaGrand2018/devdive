@@ -42,7 +42,15 @@
     "reputation": "reputation",
     "role": "role",
     "question": "question",
-    "reply": "reply"
+    "reply": "reply",
+    "editProfile": {
+      "editProfile" : "Edit Profile",
+      "username" : "Username:",
+      "info" : "Info:",
+      "image": "Image:",
+      "save": "Save",
+      "cancel" : "Cancel"
+    }
   },
   "addQuestion": {
     "title": "Ask question",
@@ -63,6 +71,10 @@
     "email": "Email",
     "password": "Password",
     "username": "Username",
-    "registrationAlert" : "You have successfully registered on the site!"
+    "registrationAlert" : "You have successfully registered on the site!",
+    "shortPassword" : "The password must be at least 8 characters",
+    "shortUsername" : "The username must be not empty",
+    "incorrectEmailFormat" : "Enter a valid email address",
+    "fillOutForm" : "Fill out the form!"
   }
 }

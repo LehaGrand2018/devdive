@@ -8,34 +8,44 @@ import { signIn } from "../../Requests/AuthRequests.js";
 import { useTranslation } from "react-i18next";
 
 const LoginForm = ({ className, registrationFunc }) => {
+
   const { t } = useTranslation();
   const [email, setEmail] = useState(null);
-  const [username, setUsername] = useState(null);
+  const [emailLabelText, setEmailLableText] = useState(null);
+  const [passwordLabelText, setPasswordLableText] = useState(null);
   const [password, setPassword] = useState(null);
+  const [validationCode, setValidationCode] = useState(1);
 
-  // eslint-disable-next-line no-unused-vars
-  const validate = (name, value) => {
+
+  const validate = (name, value = "") => {
     console.log("Validate function called");
-    let error = "undefined";
-    let code = 0;
 
     switch (name) {
       case "email":
-        break;
-      case "password":
+        const emailRegExp = /[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/g;
+        if (!emailRegExp.test(value)) {
+          return t("autorization.incorrectEmailFormat");
+        }
         break;
 
-      case "username":
+      case "password":
+        if (value.length < 8) {
+          return t("autorization.shortPassword");
+        }
         break;
 
       default:
         break;
     }
-    return { error, code };
+    return "";
   };
 
   const signInButtonHandler = async () => {
     console.log("SignIn button function called");
+    if (validationCode === 1) {
+      alert (t("autorization.fillOutForm"));
+      return;
+    }
     try {
       await signIn(email, password);
     } catch (error) {
@@ -48,54 +58,66 @@ const LoginForm = ({ className, registrationFunc }) => {
     }
   };
 
-  const handleBlur = (event) => {
+  const handleEmailBlur = (event) => {
     const { name, value } = event.target;
     console.log(`${name}: `, value);
-    const { code } = validate(name, value);
-
-    if (code !== 0) {
-      console.error("Validation error");
+    const result = validate("email", value);
+    console.log("Validate function output:", result);
+    if (result !== "") {
+      setEmailLableText(result);
+      setValidationCode(1);
+      setEmail("");
+    } else {
+      setEmailLableText("");
+      setValidationCode(0);
+      setEmail(value);
     }
-    switch (name) {
-      case "email":
-        setEmail(value);
-        break;
-      case "password":
-        setPassword(value);
-        break;
+  };
 
-      case "username":
-        setUsername(value);
-        break;
-      default:
-        console.log("Input data!");
-        break;
+  const handlePasswordBlur = (event) => {
+    const { name, value } = event.target;
+    console.log(`${name}: `, value);
+    const result = validate("password", value);
+    if (result !== "") {
+      setPasswordLableText(result);
+      setValidationCode(1);
+      setPassword("");
+    } else {
+      setPasswordLableText("");
+      setValidationCode(0);
+      setPassword(value);
     }
   };
 
   return (
     <form className={`${styles.LoginForm} ${className}`}>
       <h2 className={styles.LoginLable}>{t("autorization.login")}</h2>
+      <label className={styles.label} htmlFor="email">
+        {emailLabelText}
+      </label>
       <Input
         placeholder={t("autorization.email")}
         type="text"
         name="email"
         id="email"
-        onBlur={handleBlur}
+        onBlur={handleEmailBlur}
       />
+      <label className={styles.label} htmlFor="password">
+        {passwordLabelText}
+      </label>
       <PasswordInput
         placeholder={t("autorization.password")}
         type="text"
         name="password"
         id="password"
-        onBlur={handleBlur}
+        onBlur={handlePasswordBlur}
       />
       <Button
         className={styles.Button}
         value={t("autorization.signIn")}
         onClick={(e) => {
           e.preventDefault();
-          console.log(email, password, username);
+          console.log(email, password);
           signInButtonHandler();
         }}
       />

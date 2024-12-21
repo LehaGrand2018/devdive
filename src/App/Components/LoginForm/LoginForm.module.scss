@@ -1,6 +1,5 @@
 .LoginForm {
-  max-width: 18.75rem;
-  height: 15rem;
+  max-width: 300px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -8,6 +7,13 @@
   align-items: flex-start;
   gap: 0.625rem;
 
+  .label{
+    width: 100%;
+    line-height: 14px;
+    text-align: left;
+    font-size: 14px;
+    color: red;
+  }
   .Input {
     width: 100%;
   }

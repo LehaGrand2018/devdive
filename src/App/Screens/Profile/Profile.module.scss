@@ -5,7 +5,7 @@
   padding-right: 30px;
   padding-top: 30px;
   padding-bottom: 35px;
-
+  overflow: scroll;
   .userStatus {
     display: flex;
     flex-wrap: wrap;
@@ -14,6 +14,78 @@
   .status {
     margin-top: 15px;
   }
+
+  .editProfile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  // .modalHeader {
+  //   margin-top: 0;
+  //   font-size: 1.5rem;
+  //   color: #333;
+  // }
+  
+  // label {
+  //   display: block;
+  //   margin-top: 15px;
+  //   font-size: 1rem;
+  //   color: #555;
+  
+  //   input,
+  //   textarea {
+  //     width: 100%;
+  //     padding: 8px;
+  //     margin-top: 5px;
+  //     border: 1px solid #ccc;
+  //     border-radius: 4px;
+  //     font-size: 1rem;
+  //   }
+  
+  //   textarea {
+  //     resize: vertical;
+  //     height: 80px;
+  //   }
+  // }
+  
+  // .modalActions {
+  //   margin-top: 20px;
+  //   display: flex;
+  //   justify-content: flex-end;
+  //   gap: 10px;
+  // }
+  
+  // .saveButton {
+  //   background-color: #4caf50;
+  //   color: #fff;
+  //   border: none;
+  //   padding: 10px 15px;
+  //   border-radius: 4px;
+  //   cursor: pointer;
+  //   transition: background-color 0.2s;
+  
+  //   &:hover {
+  //     background-color: #45a049;
+  //   }
+  // }
+  
+  // .cancelButton {
+  //   background-color: #f44336;
+  //   color: #fff;
+  //   border: none;
+  //   padding: 10px 15px;
+  //   border-radius: 4px;
+  //   cursor: pointer;
+  //   transition: background-color 0.2s;
+  
+  //   &:hover {
+  //     background-color: #e53935;
+  //   }
+  // }
+  
 }
 
 @media (max-width: 1024px) {
