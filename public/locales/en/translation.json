@@ -75,6 +75,8 @@
     "shortPassword" : "The password must be at least 8 characters",
     "shortUsername" : "The username must be not empty",
     "incorrectEmailFormat" : "Enter a valid email address",
-    "fillOutForm" : "Fill out the form!"
+    "fillOutForm" : "Fill out the form!",
+    "incorrectEmailPassword" : "Incorrect email or password!",
+    "userNotFound" : "User does not exist!"
   }
 }

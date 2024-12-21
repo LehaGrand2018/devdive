@@ -32,11 +32,11 @@ const EditProfile = ({ className, user, setUser, setIsModalOpen }) => {
   };
 
   const handleSave = async () => {
-    const formData = new FormData(); // Создаем экземпляр FormData
-    formData.append("username", username); // Добавляем имя пользователя
-    formData.append("info", info); // Добавляем описание
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("info", info);
     if (image) {
-      formData.append("image", image); // Добавляем файл, если он выбран
+      formData.append("image", image);
     }
     try {
       await updateUser(user.user.id, formData);
@@ -64,7 +64,7 @@ const EditProfile = ({ className, user, setUser, setIsModalOpen }) => {
           {t("profile.editProfile.editProfile")}
         </h2>
         <label className={styles.label} htmlFor="username">
-          Username:
+        {t("profile.editProfile.username")}
         </label>
         <Input
           className={styles.input}

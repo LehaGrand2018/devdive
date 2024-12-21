@@ -75,6 +75,8 @@
     "shortPassword" : "Пароль должен содержать не менее 8 символов",
     "shortUsername" : "Имя пользователя должно содержать не менее одного символа",
     "incorrectEmailFormat" : "Введите действительный email",
-    "fillOutForm" : "Заполните форму"
+    "fillOutForm" : "Заполните форму",
+    "incorrectEmailPassword" : "Неверный email или пароль!",
+    "userNotFound" : "Такого пользователя не существует!"
   } 
 }

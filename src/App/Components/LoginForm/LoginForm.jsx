@@ -8,14 +8,12 @@ import { signIn } from "../../Requests/AuthRequests.js";
 import { useTranslation } from "react-i18next";
 
 const LoginForm = ({ className, registrationFunc }) => {
-
   const { t } = useTranslation();
   const [email, setEmail] = useState(null);
   const [emailLabelText, setEmailLableText] = useState(null);
   const [passwordLabelText, setPasswordLableText] = useState(null);
   const [password, setPassword] = useState(null);
   const [validationCode, setValidationCode] = useState(1);
-
 
   const validate = (name, value = "") => {
     console.log("Validate function called");
@@ -43,12 +41,18 @@ const LoginForm = ({ className, registrationFunc }) => {
   const signInButtonHandler = async () => {
     console.log("SignIn button function called");
     if (validationCode === 1) {
-      alert (t("autorization.fillOutForm"));
+      alert(t("autorization.fillOutForm"));
       return;
     }
     try {
       await signIn(email, password);
     } catch (error) {
+      if (error.status === 403) {
+        alert(t("autorization.incorrectEmailPassword"));
+      }
+      if (error.status === 404) {
+        alert(t("autorization.userNotFound"));
+      }
       console.error(error);
       console.log(`Error code: ${error.response.status}`);
       console.log(`Error statusText: ${error.response.statusText}`);
