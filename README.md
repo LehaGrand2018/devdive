@@ -10,6 +10,7 @@
 - MobX
 - Axios
 - SASS
+- i18next
 - Webpack
 - create-react-app utility
   
